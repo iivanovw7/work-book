@@ -1,0 +1,61 @@
+{
+	"name": "server",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "jest --passWithNoTests --config ./api/test/jest.config.js",
+		"start": "nodemon",
+		"prod": "babel-node -- ./api/index.js --debug"
+	},
+	"keywords": [
+		"server",
+		"api"
+	],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"apollo-server": "^2.6.4",
+		"apollo-server-express": "^2.6.4",
+		"bcryptjs": "^2.4.3",
+		"body-parser": "^1.19.0",
+		"concurrently": "^4.1.0",
+		"cors": "^2.8.5",
+		"dotenv": "^7.0.0",
+		"express": "^4.17.1",
+		"express-validation": "^1.0.2",
+		"graphql": "^14.3.1",
+		"graphql-iso-date": "^3.6.1",
+		"graphql-resolvers": "^0.3.3",
+		"graphql-tag": "^2.10.1",
+		"graphql-tools": "^4.0.5",
+		"http-status": "^1.3.2",
+		"joi": "^14.3.1",
+		"joi-objectid": "^2.0.0",
+		"jsonwebtoken": "^8.5.1",
+		"merge-graphql-schemas": "^1.5.8",
+		"mongoose": "^5.6.0",
+		"nodemon": "^1.19.1",
+		"qs-middleware": "^1.0.3"
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.4.4",
+		"@babel/core": "^7.4.5",
+		"@babel/node": "^7.4.5",
+		"@babel/polyfill": "^7.4.4",
+		"@babel/preset-env": "^7.4.5",
+		"apollo-server-testing": "^2.6.4",
+		"eslint": "^5.16.0",
+		"eslint-config-airbnb": "^17.1.0",
+		"eslint-plugin-import": "^2.17.3",
+		"eslint-plugin-jsx-a11y": "^6.2.1",
+		"eslint-plugin-react": "^7.13.0",
+		"eslint-plugin-react-hooks": "^1.6.0",
+		"jest": "^24.5.0",
+		"jest-config": "^24.5.0",
+		"jest-environment-node": "^24.5.0",
+		"jest-mock": "^24.8.0",
+		"mongodb-memory-server": "^5.1.5",
+		"supertest": "^4.0.2"
+	}
+}

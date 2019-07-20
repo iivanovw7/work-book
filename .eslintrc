@@ -1,0 +1,60 @@
+{
+  "env": {
+    "node": 1,
+    "browser": 1,
+	"jest": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
+    "airbnb"
+  ],
+  "globals": {
+    "exampleGlobalVariable": true
+  },
+  "rules": {
+	"max-len": [2, {"code": 120}],
+	"react/jsx-uses-react": "error",
+	"react/jsx-uses-vars": "error",
+    "react/forbid-prop-types": 0,
+    "eqeqeq": 1,
+    "comma-dangle": ["error", "never"],
+    "semi": ["error", "always"],
+    "quotes": ["error", "single"],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true,
+        "optionalDependencies": false
+      }
+    ],
+	"indent": ["error", "tab"],
+
+	// Indent JSX with 4 spaces
+	"react/jsx-indent": ["error", "tab"],
+
+	// Indent props with 4 spaces
+	"react/jsx-indent-props": ["error", "tab"],
+	"no-tabs": 0,
+	"jsx-quotes": ["error", "prefer-double"]
+  },
+  "plugins": [
+	"react",
+    "jsx-a11y",
+    "react-hooks"
+  ],
+  "settings": {
+    "import/extensions": [
+      ".js",
+      ".jsx"
+    ]
+  },
+  "parserOptions": {
+	"ecmaFeatures": {
+ 		"jsx": true
+	}
+  }
+}

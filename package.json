@@ -1,0 +1,32 @@
+{
+	"name": "work-book",
+	"version": "1.0.0",
+	"description": "Blog SPA",
+	"main": "index.js",
+	"scripts": {
+		"start": "concurrently 'npm run server' 'serve -s ./client/dist -l 4789'",
+		"server": "cd server && npm run prod",
+		"install:all": "concurrently \"npm run install:client\" \"npm run install:server\" ",
+		"test": "concurrently \"npm run test:client\" \"npm run test:server\" ",
+		"build": "cd client && npm run build",
+		"test:client": "cd client && npm run test",
+		"test:server": "cd server && npm run test",
+		"install:client": "cd client && npm install",
+		"install:server": "cd server && npm install"
+	},
+	"author": "iivanow7",
+	"license": "ISC",
+	"dependencies": {
+		"concurrently": "^4.1.1",
+		"serve": "^11.1.0"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "npm run test",
+			"pre-push": "npm run test"
+		}
+	},
+	"devDependencies": {
+		"husky": "^3.0.1"
+	}
+}

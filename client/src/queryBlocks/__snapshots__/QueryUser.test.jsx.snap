@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing QueryUser() graphql query:  Should render Component and match snapshot 1`] = `ReactWrapper {}`;

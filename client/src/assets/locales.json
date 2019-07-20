@@ -1,0 +1,90 @@
+{
+	"locales": {
+		"eng": "eng",
+		"rus": "rus"
+	},
+	"topBar": {
+		"langTitle": {
+			"eng": "Interface language",
+			"rus": "Изменить язык интерфейса"
+		}
+	},
+	"login": {
+		"loginSuccess": {
+			"eng": "Success!",
+			"rus": "Вход выполнен!"
+		},
+		"loginError": {
+			"eng": "Wrong login data!",
+			"rus": "Неверные учётные данные!"
+		},
+		"loginButtonText": {
+			"eng": "Login",
+			"rus": "Войти"
+		},
+		"homeButtonText": {
+			"eng": "Home",
+			"rus": "Назад"
+		},
+		"usernameLabel": {
+			"eng": "Email",
+			"rus": "Почта"
+		},
+		"passwordLabel": {
+			"eng": "Password",
+			"rus": "Пароль"
+		},
+		"logoutButtonText": {
+			"eng": "Logout",
+			"rus": "Выйти"
+		}
+	},
+	"pageNotFound": {
+		"notification": {
+			"eng": "path not found!",
+			"rus": "страница не найдена!"
+		},
+		"linkText": {
+			"eng": "Home",
+			"rus": "Главная"
+		}
+	},
+	"navigation": {
+		"home": {
+			"eng": "Home",
+			"rus": "Главная"
+		},
+		"theme": {
+			"eng": "Theme",
+			"rus": "Тема"
+		},
+		"addPost": {
+			"eng": "Create",
+			"rus": "Написать"
+		},
+		"profile": {
+			"eng": "Profile",
+			"rus": "Профиль"
+		},
+		"readMore": {
+			"eng": "Read more...",
+			"rus": "Подробнее..."
+		},
+		"back": {
+			"eng": "Back",
+			"rus": " Назад"
+		},
+		"update": {
+			"eng": "Update",
+			"rus": "Редактировать"
+		},
+		"delete": {
+			"eng": "Delete",
+			"rus": "Удалить"
+		},
+		"save": {
+			"eng": "Save",
+			"rus": "Сохранить"
+		}
+	}
+}

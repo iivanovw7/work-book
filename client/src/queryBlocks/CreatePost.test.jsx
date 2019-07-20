@@ -53,7 +53,7 @@ describe('Testing CreatePost() graphql query: ', () => {
 
 		await wait(0);
 		await component.update();
-		expect(component.find('button').first().text()).toBe('Save');
+		expect(component.find('button').first().text()).toBe('Back');
 		expect(component.find('PostForm').length).toEqual(1);
 	});
 });

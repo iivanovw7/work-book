@@ -14,6 +14,9 @@ export const GET_POSTS = gql`
   }
 `;
 
+// export const GET_POSTS_BY_TAG = gql`
+// `;
+
 export const GET_TAGS = gql`
   query GetTags{
     getTags

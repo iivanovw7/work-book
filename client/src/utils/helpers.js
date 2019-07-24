@@ -1,5 +1,6 @@
 import Cookies from 'js-cookie';
 import * as localized from '../assets/locales.json';
+import { symbolsPerMinute } from '../config';
 
 // Converts string in array of words
 export const words = (str, pattern = /[^a-zA-Z-]+/) => str.split(pattern).filter(Boolean);
@@ -12,15 +13,13 @@ export const filterNonUniqueBy = (arr, fn) => arr.filter(
 	(v, i) => arr.every((x, j) => (i === j) === fn(v, x, i, j))
 );
 
-export const mapKeys = (obj, fn) => Object.keys(obj)
-																					.reduce((acc, k) => {
-																						acc[fn(obj[k], k, obj)] = obj[k];
-																						return acc;
-																					}, {});
+export const mapKeys = (obj, fn) => Object.keys(obj).reduce((acc, k) => {
+	acc[fn(obj[k], k, obj)] = obj[k];
+	return acc;
+}, {});
 
 // Iterates over properties of an object, run callback every time.
-export const forOwnProp = (obj, fn) => Object.keys(obj)
-																						 .forEach(key => fn(obj[key], key, obj));
+export const forOwnProp = (obj, fn) => Object.keys(obj).forEach(key => fn(obj[key], key, obj));
 
 // Finds value in object, returns first match value if nothing found returns null
 export function ifFieldExistsInObject(value, object) {
@@ -50,4 +49,27 @@ export function setLocale() {
 		: 'eng';
 
 	return previousLocale === undefined ? defaultLocale : verifiedPreviousLocale;
+}
+
+// Returns correct word for numbers
+export function declOfNum(number, titles) {
+	const cases = [2, 0, 1, 1, 1, 2];
+	return titles[(number % 100 > 4 && number % 100 < 20) ? 2 : cases[(number % 10 < 5) ? number % 10 : 5]];
+}
+
+export function fromEstimationEnding(minutes = 0, locale = 'eng') {
+	const text = localized.posts.estimates;
+	if (minutes < 1) {
+		return text.less[locale];
+	}
+	return declOfNum(minutes, [text.one[locale], text.few[locale], text.many[locale]]);
+}
+
+export function calculateReadingTime(length = 0, locale = 'eng') {
+	const minutes = Math.floor(Math.abs(length) / symbolsPerMinute);
+
+	return {
+		minutes,
+		ending: fromEstimationEnding(minutes, locale)
+	};
 }

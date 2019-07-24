@@ -51,6 +51,7 @@ const PostView = (props) => {
 	const post = data.getPost;
 	const date = post ? String(post.created) : 'Invalid date';
 	const [userAccess, setUserAccess] = useState(false);
+	const est = utils.calculateReadingTime(post.text.length, locale);
 
 	useEffect(() => {
 		const getAccessRights = async () => setUserAccess(await utils.checkUser());
@@ -84,6 +85,11 @@ const PostView = (props) => {
 				<p className="dates">
 					{moment(date, 'x')
 						.format('DD MMM YYYY HH:MM A')}
+				</p>
+				<p className="dates">
+					{est.minutes}
+					{' '}
+					{est.ending}
 				</p>
 				<TagsCloud data={post.tags} history={history} postTags {...props} />
 				<StyledText dangerouslySetInnerHTML={utils.sanitize(post.text)} />

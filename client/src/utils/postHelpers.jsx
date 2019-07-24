@@ -10,11 +10,11 @@ const SwitchedPostComponent = (props) => {
 		location, locale, text, theme
 	} = props;
 	const pathName = location.pathname.split('/')[2];
+
 	switch (pathName) {
 		// Render CreatePost block
 		case 'new':
 			return <CreatePost locale={locale} text={text} theme={theme} {...props} />;
-
 		// Render UpdatePost block
 		case 'update':
 			return (

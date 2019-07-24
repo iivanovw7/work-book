@@ -23,7 +23,8 @@ const SideBarWrapper = styled.nav`
 
 const StyledContentBlock = styled.div`
  		padding: 1em;
- 		margin: 0.5em;
+ 		margin-top: 0.5em;
+ 		margin-bottom: 0.5em;
   	background-color: ${opacify('0.01', 'rgba(25, 0, 0, 0.1)')};
 }
   	

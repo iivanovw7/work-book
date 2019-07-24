@@ -7,7 +7,7 @@ export const postResolvers = {
 
 	Query: {
 
-		getPosts: async () => Post.find({}).exec(),
+		getPosts: async () => Post.find({}).sort({ created: '-1' }).exec(),
 
 		getPost: async (_, args) => Post.findOne({ _id: args._id }).exec(),
 

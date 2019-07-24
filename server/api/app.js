@@ -2,13 +2,15 @@ import { ApolloServer } from 'apollo-server-express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
+import favicon from 'serve-favicon';
+import path from 'path';
 import { resolvers } from './resolvers';
 import { authRoutes } from './routes/auth.routes';
 import { typeDefs } from './typeDefs';
 import { checkAccess } from './utils';
 
 const app = express();
-const path = '/graphql';
+const api = '/graphql';
 
 // CORS configuration
 const allowCrossDomain = function (req, res, next) {
@@ -27,6 +29,7 @@ app.use(cors({
 app.use(allowCrossDomain);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 // Setup apollo server with context
 const server = new ApolloServer({
@@ -43,6 +46,7 @@ app.use('/auth', authRoutes);
 
 server.applyMiddleware({
 	app,
-	path
+	api
 });
+
 export { app };

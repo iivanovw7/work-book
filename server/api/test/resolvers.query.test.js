@@ -1,4 +1,4 @@
-import '@babel/polyfill';
+import '@babel/polyfill/noConflict';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import Post from '../../models/Post';

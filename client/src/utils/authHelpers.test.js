@@ -1,4 +1,4 @@
-import '@babel/polyfill';
+import '@babel/polyfill/noConflict';
 import mockAxios from 'jest-mock-axios';
 import * as mocks from '../__mocks__';
 import { checkUser, ifTokenExists, loginUser } from './authHelpers';

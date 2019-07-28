@@ -1,4 +1,4 @@
-import '@babel/polyfill';
+import 'cross-fetch/polyfill';
 import createStore from 'storeon';
 import locale from './locale';
 

@@ -8,7 +8,6 @@ import { MockedProvider } from 'react-apollo/test-utils';
 import * as mocks from '../__mocks__';
 import * as testUtils from '../testUtils';
 import UpdatePost from './UpdatePost';
-// import 'babel-polyfill';
 
 jest.mock('../config/apiURL', () => () => {
 	return '/api';

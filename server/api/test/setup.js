@@ -1,4 +1,4 @@
-import '@babel/polyfill';
+import '@babel/polyfill/noConflict';
 import fs from 'fs';
 import MongoMemoryServer from 'mongodb-memory-server';
 import path from 'path';

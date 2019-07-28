@@ -4,6 +4,10 @@ import styled, { ThemeProvider } from 'styled-components';
 import { btnBackground, btnTextColor } from '../../theme';
 /* eslint react/require-default-props: 0 */
 
+const StyledContainer = styled.div`
+	font-size: 0.7em;
+`;
+
 const StyledNumber = styled.span`
 	 margin-right: 0.1em;
    border-radius: 100%;
@@ -22,13 +26,13 @@ const Number = (props) => {
 
 	return (
 		<ThemeProvider theme={{ mode: theme }}>
-			<div className="dates">
+			<StyledContainer className="dates">
 				<StyledNumber variant={variant}>
 					{value}
 				</StyledNumber>
 				{' '}
 				{label}
-			</div>
+			</StyledContainer>
 		</ThemeProvider>
 	);
 };

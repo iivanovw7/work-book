@@ -33,4 +33,3 @@ export const words = (str, pattern = /[^a-zA-Z-0-9]+/) => str.split(pattern).fil
 
 // Runs over an array and executes callback on every element
 export const forEachCallback = (arr, callback) => arr.slice(0).forEach(callback);
-

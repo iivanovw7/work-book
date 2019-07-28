@@ -1,4 +1,4 @@
-import '@babel/polyfill';
+import '@babel/polyfill/noConflict';
 import dotenv from 'dotenv';
 import React from 'react';
 import ReactDOM from 'react-dom';

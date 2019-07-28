@@ -1,4 +1,5 @@
-import '@babel/polyfill';
+import 'babel-polyfill';
+import 'cross-fetch/polyfill';
 import createStore from 'storeon';
 import theme from './theme';
 

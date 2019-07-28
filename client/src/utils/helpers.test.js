@@ -1,6 +1,11 @@
+import 'cross-fetch/polyfill';
 import * as helpers from './helpers';
 import * as localized from '../assets/locales.json';
 import * as testUtils from '../testUtils';
+
+jest.mock('../config/apiURL', () => () => {
+	return '/api';
+});
 
 describe('Testing helpers: ', () => {
 
@@ -32,5 +37,17 @@ describe('Testing helpers: ', () => {
 
 		helpers.forEachCallback(arr, value => fn(value));
 		expect(fn.mock.calls.length).toBe(3);
+	});
+
+	it('Should run declOfNum() and verify results', () => {
+		const endings = ['A', 'B', 'C'];
+		const numbers = [1, 41, 2, 178];
+		const results = [];
+
+		for (let i = 0; i <= numbers.length; i++) {
+			results.push(helpers.declOfNum(numbers[i], endings));
+		}
+
+		expect(results).toEqual(['A', 'A', 'B', 'C', 'C']);
 	});
 });

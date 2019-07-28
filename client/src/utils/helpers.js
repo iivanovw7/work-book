@@ -51,12 +51,13 @@ export function setLocale() {
 	return previousLocale === undefined ? defaultLocale : verifiedPreviousLocale;
 }
 
-// Returns correct word for numbers
+// Returns correct word ending for numbers
 export function declOfNum(number, titles) {
 	const cases = [2, 0, 1, 1, 1, 2];
 	return titles[(number % 100 > 4 && number % 100 < 20) ? 2 : cases[(number % 10 < 5) ? number % 10 : 5]];
 }
 
+// Forms estimated read time label text
 export function fromEstimationEnding(minutes = 0, locale = 'eng') {
 	const text = localized.posts.estimates;
 	if (minutes < 1) {

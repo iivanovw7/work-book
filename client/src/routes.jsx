@@ -6,6 +6,7 @@ import PageRoute from './pageRoute';
 import Login from './screens/Login';
 import Post from './screens/Post';
 import Posts from './screens/Posts';
+import Search from './screens/Search';
 import User from './screens/User';
 
 const NoMatch = ({ location }) => (
@@ -21,6 +22,7 @@ export default (
 		<PageRoute path="/posts/update/:id" component={Post} privateRoute />
 		<PageRoute path="/posts/new" component={Post} privateRoute />
 		<PageRoute path="/posts/:id" component={Post} privateRoute={false} />
+		<PageRoute path="/search/:tag" component={Search} privateRoute={false} />
 		<Route component={NoMatch} />
 	</Switch>
 );

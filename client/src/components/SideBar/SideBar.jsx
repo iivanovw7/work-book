@@ -18,6 +18,10 @@ const SideBarWrapper = styled.nav`
   	width: 19.5vw;
   	display: flex;
   	flex-direction: column;
+  	
+  	>div: first-of-type {
+  		flex-direction: column
+  	}
   }
 `;
 
@@ -26,8 +30,12 @@ const StyledContentBlock = styled.div`
  		margin-top: 0.5em;
  		margin-bottom: 0.5em;
   	background-color: ${opacify('0.01', 'rgba(25, 0, 0, 0.1)')};
-}
+  	display: flex;
+  	flex-wrap: wrap;
   	
+  	@media screen and (max-width: ${mdOffset}rem) {
+      display: none;
+		}
 `;
 
 const SideBar = (props) => {
@@ -64,7 +72,7 @@ const SideBar = (props) => {
 					/>
 				</StyledContentBlock>
 				{userAccess && (
-					<StyledContentBlock className="desktop">
+					<StyledContentBlock>
 						<Button
 							variant="primary"
 							text={text.navigation.profile[locale]}

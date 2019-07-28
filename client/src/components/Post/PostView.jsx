@@ -48,6 +48,10 @@ const StyledButtonsContainer = styled.div`
 	}
 `;
 
+const StyledTagsContainer = styled.div`
+	display: flex;
+`;
+
 const PostView = (props) => {
 	const {
 		history, data, theme, locale, text
@@ -95,7 +99,9 @@ const PostView = (props) => {
 					{' '}
 					{est.ending}
 				</StyledTimeContainer>
-				<TagsCloud data={post.tags} history={history} postTags {...props} />
+				<StyledTagsContainer>
+					<TagsCloud data={post.tags} history={history} theme={theme} postTags {...props} />
+				</StyledTagsContainer>
 				<StyledText dangerouslySetInnerHTML={utils.sanitize(post.text)} />
 				<StyledButtonsContainer>
 					<Button

@@ -7,7 +7,8 @@ const localizedText = {
 	login: localized.login,
 	navigation: localized.navigation,
 	pageNotFound: localized.pageNotFound,
-	posts: localized.posts
+	posts: localized.posts,
+	search: localized.search
 };
 
 export default (store) => {

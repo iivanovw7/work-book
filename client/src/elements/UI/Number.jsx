@@ -5,17 +5,20 @@ import { btnBackground, btnTextColor } from '../../theme';
 /* eslint react/require-default-props: 0 */
 
 const StyledContainer = styled.div`
-	font-size: 0.7em;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	font-size: 0.8em;
 `;
 
 const StyledNumber = styled.span`
-	 margin-right: 0.1em;
+	 margin-right: 0.8em;
    border-radius: 100%;
    background-color: ${btnBackground};
    color: ${btnTextColor};
    width: 1.4em;
    height: 1.4em;
-   padding: 0.2em;
+   padding: 0.1em;
    text-align: center;
    display: inline-block; 
 `;

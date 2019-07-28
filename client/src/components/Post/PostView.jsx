@@ -28,6 +28,10 @@ const StyledText = styled.p`
 	background-color: ${opacify('0.01', 'rgba(25, 0, 0, 0.1)')};
 `;
 
+const StyledTimeContainer = styled.p`
+	font-size: 0.7em;
+`;
+
 const StyledButtonsContainer = styled.div`
 	display: flex;
 	flex-direction: row;
@@ -86,11 +90,11 @@ const PostView = (props) => {
 					{moment(date, 'x')
 						.format('DD MMM YYYY HH:MM A')}
 				</p>
-				<p className="dates">
+				<StyledTimeContainer className="dates">
 					{est.minutes}
 					{' '}
 					{est.ending}
-				</p>
+				</StyledTimeContainer>
 				<TagsCloud data={post.tags} history={history} postTags {...props} />
 				<StyledText dangerouslySetInnerHTML={utils.sanitize(post.text)} />
 				<StyledButtonsContainer>

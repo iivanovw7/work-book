@@ -31,34 +31,34 @@ const StyledIconButton = styled.button`
 `;
 
 const SvgButton = (props) => {
-	const {
-		Image, variant, handleClick, text, width, height
-	} = props;
+  const {
+    Image, variant, handleClick, text, width, height
+  } = props;
 
-	return (
-		<ThemeProvider theme={{ mode: 'dark' }}>
-			<StyledIconButton variant={variant} onClick={handleClick}>
-				<Image width={width} height={height} alt={text} />
-			</StyledIconButton>
-		</ThemeProvider>
-	);
+  return (
+    <ThemeProvider theme={{ mode: 'dark' }}>
+      <StyledIconButton variant={variant} onClick={handleClick}>
+        <Image width={width} height={height} alt={text} />
+      </StyledIconButton>
+    </ThemeProvider>
+  );
 };
 
 StyledIconButton.propTypes = {
-	variant: PropTypes.oneOf(['primary', 'secondary'])
+  variant: PropTypes.oneOf(['primary', 'secondary'])
 };
 
 StyledIconButton.defaultProps = {
-	variant: 'primary'
+  variant: 'primary'
 };
 
 SvgButton.propTypes = {
-	handleClick: PropTypes.func,
-	Image: PropTypes.any.isRequired,
-	variant: PropTypes.string.isRequired,
-	height: PropTypes.string.isRequired,
-	width: PropTypes.string.isRequired,
-	text: PropTypes.string.isRequired
+  handleClick: PropTypes.func,
+  Image: PropTypes.any.isRequired,
+  variant: PropTypes.string.isRequired,
+  height: PropTypes.string.isRequired,
+  width: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired
 };
 
 export default SvgButton;

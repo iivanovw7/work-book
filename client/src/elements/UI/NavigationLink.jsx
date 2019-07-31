@@ -4,15 +4,15 @@ import { NavLink } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 import { ripples } from '../../styles';
 import {
-	btnHighlight, textColor, textColorActive, textColorLighten
+  btnHighlight, textColor, textColorActive, textColorLighten
 } from '../../theme';
 /* eslint react/require-default-props: 0 */
 
 const activeClassName = 'selected';
 const StyledLinkIcon = styled(NavLink)
-	.attrs({
-		activeClassName
-	})`
+  .attrs({
+    activeClassName
+  })`
 	${ripples};
   display: flex;
   flex-wrap: nowrap;
@@ -44,52 +44,52 @@ const StyledLinkIcon = styled(NavLink)
 `;
 
 const NavigationLink = (props) => {
-	const {
-		link, text, variant, theme, highlight, icon, direction, padding, fontSize, radius
-	} = props;
+  const {
+    link, text, variant, theme, highlight, icon, direction, padding, fontSize, radius
+  } = props;
 
-	return (
-		<ThemeProvider theme={{ mode: theme }}>
-			<StyledLinkIcon
-				variant={variant}
-				selected={highlight}
-				exact
-				to={link}
-				direction={direction}
-				padding={padding}
-				fontSize={fontSize}
-				radius={radius}
-			>
-				<i className="material-icons">
-					{icon}
-				</i>
-				<span>
-					{text}
-				</span>
-			</StyledLinkIcon>
-		</ThemeProvider>
-	);
+  return (
+    <ThemeProvider theme={{ mode: theme }}>
+      <StyledLinkIcon
+        variant={variant}
+        selected={highlight}
+        exact
+        to={link}
+        direction={direction}
+        padding={padding}
+        fontSize={fontSize}
+        radius={radius}
+      >
+        <i className="material-icons">
+          {icon}
+        </i>
+        <span>
+          {text}
+        </span>
+      </StyledLinkIcon>
+    </ThemeProvider>
+  );
 };
 
 NavigationLink.propTypes = {
-	variant: PropTypes.oneOf(['primary', 'secondary'])
+  variant: PropTypes.oneOf(['primary', 'secondary'])
 };
 
 NavigationLink.defaultProps = {
-	variant: 'primary'
+  variant: 'primary'
 };
 
 NavigationLink.propTypes = {
-	text: PropTypes.string.isRequired,
-	link: PropTypes.string.isRequired,
-	direction: PropTypes.string.isRequired,
-	variant: PropTypes.string,
-	padding: PropTypes.string.isRequired,
-	theme: PropTypes.string.isRequired,
-	fontSize: PropTypes.string.isRequired,
-	radius: PropTypes.string.isRequired,
-	highlight: PropTypes.bool.isRequired,
-	icon: PropTypes.string
+  text: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
+  direction: PropTypes.string.isRequired,
+  variant: PropTypes.string,
+  padding: PropTypes.string.isRequired,
+  theme: PropTypes.string.isRequired,
+  fontSize: PropTypes.string.isRequired,
+  radius: PropTypes.string.isRequired,
+  highlight: PropTypes.bool.isRequired,
+  icon: PropTypes.string
 };
 
 export default NavigationLink;

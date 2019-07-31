@@ -45,67 +45,64 @@ const SearchWrapper = styled.div`
 `;
 
 const SearchList = (props) => {
-	const {
-		data, history, theme, locale, text, query
-	} = props;
+  const {
+    data, history, theme, locale, text, query
+  } = props;
 
-	function handlePostClick(id) {
-		history.push(`/posts/${id}`);
-	}
+  function handlePostClick(id) {
+    history.push(`/posts/${id}`);
+  }
 
-	function handleTagClick() {
-		history.push(`/search/${query}`);
-	}
+  function handleTagClick() {
+    history.push(`/search/${query}`);
+  }
 
-	return (data.findPostsByTag.map((post) => {
-
-		return (
-			<SearchWrapper key={post._id}>
-				<div>
-					<h2>
-						<TextLink
-							theme={theme}
-							text={post.title}
-							variant="primary"
-							link="/"
-							handleClick={(e) => {
-								e.preventDefault();
-								handlePostClick(post._id);
-							}}
-						/>
-					</h2>
-					<h3>{post.subject}</h3>
-					<DescriptionGroup
-						post={post}
-						theme={theme}
-						query={query}
-						handleTagClick={handleTagClick}
-						locale={locale}
-					/>
-				</div>
-				<div className="desktop">
-					<ButtonGroup
-						post={post}
-						text={text}
-						theme={theme}
-						query={query}
-						handleTagClick={handleTagClick}
-						handlePostClick={handlePostClick}
-						locale={locale}
-					/>
-				</div>
-			</SearchWrapper>
-		);
-	}));
+  return (data.findPostsByTag.map(post => (
+    <SearchWrapper key={post._id}>
+      <div>
+        <h2>
+          <TextLink
+            theme={theme}
+            text={post.title}
+            variant="primary"
+            link="/"
+            handleClick={(e) => {
+              e.preventDefault();
+              handlePostClick(post._id);
+            }}
+          />
+        </h2>
+        <h3>{post.subject}</h3>
+        <DescriptionGroup
+          post={post}
+          theme={theme}
+          query={query}
+          handleTagClick={handleTagClick}
+          locale={locale}
+        />
+      </div>
+      <div className="desktop">
+        <ButtonGroup
+          post={post}
+          text={text}
+          theme={theme}
+          query={query}
+          handleTagClick={handleTagClick}
+          handlePostClick={handlePostClick}
+          locale={locale}
+        />
+      </div>
+    </SearchWrapper>
+  )));
 };
 
 export default SearchList;
 
 SearchList.propTypes = {
-	data: PropTypes.object.isRequired,
-	history: PropTypes.object.isRequired,
-	locale: PropTypes.string.isRequired,
-	text: PropTypes.object.isRequired,
-	theme: PropTypes.string.isRequired,
-	query: PropTypes.string.isRequired
+  data: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+  locale: PropTypes.string.isRequired,
+  text: PropTypes.object.isRequired,
+  theme: PropTypes.string.isRequired,
+  query: PropTypes.string.isRequired
 };

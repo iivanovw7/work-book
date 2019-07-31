@@ -38,45 +38,45 @@ const StyledIconButton = styled.button`
 `;
 
 const ButtonTextIcon = (props) => {
-	const {
-		icon, variant, handleClick, text, theme, padding, fontSize
-	} = props;
+  const {
+    icon, variant, handleClick, text, theme, padding, fontSize
+  } = props;
 
-	return (
-		<ThemeProvider theme={{ mode: theme }}>
-			<StyledIconButton
-				variant={variant}
-				onClick={handleClick}
-				padding={padding}
-				fontSize={fontSize}
-			>
-				<i className="material-icons">
-					{icon}
-				</i>
-				<span>
-					{text}
-				</span>
-			</StyledIconButton>
-		</ThemeProvider>
-	);
+  return (
+    <ThemeProvider theme={{ mode: theme }}>
+      <StyledIconButton
+        variant={variant}
+        onClick={handleClick}
+        padding={padding}
+        fontSize={fontSize}
+      >
+        <i className="material-icons">
+          {icon}
+        </i>
+        <span>
+          {text}
+        </span>
+      </StyledIconButton>
+    </ThemeProvider>
+  );
 };
 
 StyledIconButton.propTypes = {
-	variant: PropTypes.oneOf(['primary', 'secondary'])
+  variant: PropTypes.oneOf(['primary', 'secondary'])
 };
 
 StyledIconButton.defaultProps = {
-	variant: 'primary'
+  variant: 'primary'
 };
 
 ButtonTextIcon.propTypes = {
-	handleClick: PropTypes.func,
-	icon: PropTypes.string.isRequired,
-	variant: PropTypes.string.isRequired,
-	theme: PropTypes.string.isRequired,
-	text: PropTypes.string.isRequired,
-	fontSize: PropTypes.string.isRequired,
-	padding: PropTypes.string.isRequired
+  handleClick: PropTypes.func,
+  icon: PropTypes.string.isRequired,
+  variant: PropTypes.string.isRequired,
+  theme: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  fontSize: PropTypes.string.isRequired,
+  padding: PropTypes.string.isRequired
 };
 
 export default ButtonTextIcon;

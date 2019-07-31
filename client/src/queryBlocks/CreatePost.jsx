@@ -9,38 +9,36 @@ import { ADD_POST } from '../graphql/mutations';
 import { GET_POSTS } from '../graphql/queries';
 
 const CreatePost = (props) => {
-	const { theme, history } = props;
+  const { theme, history } = props;
 
-	return (
-		<Mutation
-			mutation={ADD_POST}
-			refetchQueries={() => [{
-				query: GET_POSTS
-			}]}
-		>
-			{(addPost, { loading, error, data }) => (
-				<div>
-					<PostForm addPost={addPost} data={data} {...props} />
-					{loading && <Spinner theme={theme} />}
-					{error && (
-						<ErrorMessage
-							theme={theme}
-							text="Back"
-							message="Error =( Try again later..."
-							handleClick={() => {
-								history.push('/');
-							}}
-						/>
-					)}
-				</div>
-			)}
-		</Mutation>
-	);
+  return (
+    <Mutation
+      mutation={ADD_POST}
+      refetchQueries={() => [{ query: GET_POSTS }]}
+    >
+      {(addPost, { loading, error, data }) => (
+        <div>
+          <PostForm addPost={addPost} data={data} {...props} />
+          {loading && <Spinner theme={theme} />}
+          {error && (
+            <ErrorMessage
+              theme={theme}
+              text="Back"
+              message="Error =( Try again later..."
+              handleClick={() => {
+                history.push('/');
+              }}
+            />
+          )}
+        </div>
+      )}
+    </Mutation>
+  );
 };
 
 export default withRouter(CreatePost);
 
 CreatePost.propTypes = {
-	history: PropTypes.object.isRequired,
-	theme: PropTypes.string.isRequired
+  history: PropTypes.object.isRequired,
+  theme: PropTypes.string.isRequired
 };

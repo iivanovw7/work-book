@@ -14,7 +14,7 @@ const NavBarWrapper = styled.nav`
   width: 100%;
   position: fixed;
   display: flex;
-  bottom: 0;   
+  bottom: 0;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -25,110 +25,110 @@ const NavBarWrapper = styled.nav`
 `;
 
 const MobileNavBar = (props) => {
-	const {
-		history, userAccess, user, location, text, locale, theme
-	} = props;
-	const { dispatch, pages } = useStoreon('pages');
+  const {
+    history, userAccess, user, location, text, locale, theme
+  } = props;
+  const { dispatch, pages } = useStoreon('pages');
 
-	// Base NavBar UI configuration
-	const baseConfig = {
-		direction: 'column',
-		variant: 'primary',
-		padding: '0.5em',
-		radius: '0.5em',
-		fontSize: '0.9em'
-	};
+  // Base NavBar UI configuration
+  const baseConfig = {
+    direction: 'column',
+    variant: 'primary',
+    padding: '0.5em',
+    radius: '0.5em',
+    fontSize: '0.9em'
+  };
 
-	return (
-		<ThemeProvider theme={{ mode: theme }}>
-			<NavBarWrapper>
-				{pages.map(page => (
-					<NavigationLink
-						key={page.url}
-						link={page.url}
-						icon={page.icon}
-						text={page.mobTitle[locale]}
-						highlight={location.pathname === page.url}
-						theme={theme}
-						{...baseConfig}
-					/>
-				))}
-				{userAccess && (
-					<NavigationLink
-						link={`/user/${user._id}`}
-						icon="account_box"
-						text={text.navigation.profile[locale]}
-						theme={theme}
-						highlight={location.pathname === `/user/${user._id}`}
-						{...baseConfig}
-					/>
-				)}
-				{userAccess && (
-					<NavigationLink
-						link="/posts/new"
-						icon="add_box"
-						text={text.navigation.addPost[locale]}
-						theme={theme}
-						highlight={location.pathname === '/posts/new'}
-						{...baseConfig}
-					/>
-				)}
-				{userAccess && (
-					<ButtonTextIcon
-						theme={theme}
-						link="/"
-						icon="exit_to_app"
-						text={text.login.logoutButtonText[locale]}
-						handleClick={(e) => {
-							e.preventDefault();
-							Cookies.remove('token');
-							history.push('/login');
-						}}
-						{...baseConfig}
-					/>
-				)}
-				<ButtonTextIcon
-					theme={theme}
-					link="/"
-					icon="invert_colors"
-					text={text.navigation.theme[locale]}
-					handleClick={(e) => {
-						e.preventDefault();
-						dispatch('switch');
-					}}
-					{...baseConfig}
-				/>
-				<ButtonTextIcon
-					theme={theme}
-					icon="language"
-					text={text.locales[locale]}
-					handleClick={(e) => {
-						e.preventDefault();
-						dispatch('changeLocale');
-					}}
-					{...baseConfig}
-				/>
-			</NavBarWrapper>
-		</ThemeProvider>
-	);
+  return (
+    <ThemeProvider theme={{ mode: theme }}>
+      <NavBarWrapper>
+        {pages.map(page => (
+          <NavigationLink
+            key={page.url}
+            link={page.url}
+            icon={page.icon}
+            text={page.mobTitle[locale]}
+            highlight={location.pathname === page.url}
+            theme={theme}
+            {...baseConfig}
+          />
+        ))}
+        {userAccess && (
+          <NavigationLink
+            link={`/user/${user._id}`}
+            icon="account_box"
+            text={text.navigation.profile[locale]}
+            theme={theme}
+            highlight={location.pathname === `/user/${user._id}`}
+            {...baseConfig}
+          />
+        )}
+        {userAccess && (
+          <NavigationLink
+            link="/posts/new"
+            icon="add_box"
+            text={text.navigation.addPost[locale]}
+            theme={theme}
+            highlight={location.pathname === '/posts/new'}
+            {...baseConfig}
+          />
+        )}
+        {userAccess && (
+          <ButtonTextIcon
+            theme={theme}
+            link="/"
+            icon="exit_to_app"
+            text={text.login.logoutButtonText[locale]}
+            handleClick={(e) => {
+              e.preventDefault();
+              Cookies.remove('token');
+              history.push('/login');
+            }}
+            {...baseConfig}
+          />
+        )}
+        <ButtonTextIcon
+          theme={theme}
+          link="/"
+          icon="invert_colors"
+          text={text.navigation.theme[locale]}
+          handleClick={(e) => {
+            e.preventDefault();
+            dispatch('switch');
+          }}
+          {...baseConfig}
+        />
+        <ButtonTextIcon
+          theme={theme}
+          icon="language"
+          text={text.locales[locale]}
+          handleClick={(e) => {
+            e.preventDefault();
+            dispatch('changeLocale');
+          }}
+          {...baseConfig}
+        />
+      </NavBarWrapper>
+    </ThemeProvider>
+  );
 };
 
 NavBarWrapper.propTypes = {
-	variant: PropTypes.oneOf(['primary', 'secondary'])
+  variant: PropTypes.oneOf(['primary', 'secondary'])
 };
 
 NavBarWrapper.defaultProps = {
-	variant: 'primary'
+  variant: 'primary'
 };
 
 MobileNavBar.propTypes = {
-	history: PropTypes.object.isRequired,
-	locale: PropTypes.string.isRequired,
-	location: PropTypes.object.isRequired,
-	text: PropTypes.object.isRequired,
-	theme: PropTypes.string.isRequired,
-	user: PropTypes.object.isRequired,
-	userAccess: PropTypes.bool.isRequired
+  history: PropTypes.object.isRequired,
+  locale: PropTypes.string.isRequired,
+  location: PropTypes.object.isRequired,
+  text: PropTypes.object.isRequired,
+  theme: PropTypes.string.isRequired,
+  user: PropTypes.object.isRequired,
+  userAccess: PropTypes.bool.isRequired
 };
 
 export default MobileNavBar;

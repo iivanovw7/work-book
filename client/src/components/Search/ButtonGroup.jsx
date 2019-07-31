@@ -22,52 +22,52 @@ const StyledPostDescription = styled.div`
 `;
 
 const ButtonGroup = (props) => {
-	const {
-		theme, locale, text, query, post, handlePostClick, handleTagClick
-	} = props;
-	const colorIndex = utils.getRandomInt(0, colorScheme.tagBtnBgColors.length);
-	const date = post.created.toString();
+  const {
+    theme, locale, text, query, post, handlePostClick, handleTagClick
+  } = props;
+  const colorIndex = utils.getRandomInt(0, colorScheme.tagBtnBgColors.length);
+  const date = post.created.toString();
 
-	return (
-		<StyledPostDescription>
-			<div>
-				<h3 className="dates">
-					{moment(date, 'x')
-						.format('MMMM DD, YYYY')}
-				</h3>
-				<Button
-					variant="primary"
-					text={text.navigation.readMore[locale]}
-					theme={theme}
-					handleClick={(e) => {
-						e.preventDefault();
-						handlePostClick(post._id);
-					}}
-				/>
-			</div>
-			<TagButton
-				text={query}
-				theme={theme}
-				label={text.search.query[locale]}
-				bgColor={colorScheme.tagBtnBgColors[colorIndex]}
-				textColor={colorScheme.tagBtnTextColors[colorIndex]}
-				handleClick={(e) => {
-					e.preventDefault();
-					handleTagClick();
-				}}
-			/>
-		</StyledPostDescription>
-	);
+  return (
+    <StyledPostDescription>
+      <div>
+        <h3 className="dates">
+          {moment(date, 'x')
+            .format('MMMM DD, YYYY')}
+        </h3>
+        <Button
+          variant="primary"
+          text={text.navigation.readMore[locale]}
+          theme={theme}
+          handleClick={(e) => {
+            e.preventDefault();
+            handlePostClick(post._id);
+          }}
+        />
+      </div>
+      <TagButton
+        text={query}
+        theme={theme}
+        label={text.search.query[locale]}
+        bgColor={colorScheme.tagBtnBgColors[colorIndex]}
+        textColor={colorScheme.tagBtnTextColors[colorIndex]}
+        handleClick={(e) => {
+          e.preventDefault();
+          handleTagClick();
+        }}
+      />
+    </StyledPostDescription>
+  );
 };
 
 export default ButtonGroup;
 
 ButtonGroup.propTypes = {
-	locale: PropTypes.string.isRequired,
-	text: PropTypes.object.isRequired,
-	theme: PropTypes.string.isRequired,
-	query: PropTypes.string.isRequired,
-	post: PropTypes.object.isRequired,
-	handlePostClick: PropTypes.func.isRequired,
-	handleTagClick: PropTypes.func.isRequired
+  locale: PropTypes.string.isRequired,
+  text: PropTypes.object.isRequired,
+  theme: PropTypes.string.isRequired,
+  query: PropTypes.string.isRequired,
+  post: PropTypes.object.isRequired,
+  handlePostClick: PropTypes.func.isRequired,
+  handleTagClick: PropTypes.func.isRequired
 };

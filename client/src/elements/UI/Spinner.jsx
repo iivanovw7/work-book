@@ -7,7 +7,7 @@ const StyledWrapper = styled.div`
 	display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;  
+  justify-content: center;
 
   div {
   	margin-top: 5rem;
@@ -35,7 +35,7 @@ const StyledSpinner = styled.div`
     	-webkit-transform: rotate(360deg);
 		}
 	}
-  	
+ 
 
 	@-webkit-keyframes spin {
 		0% {
@@ -51,27 +51,27 @@ const StyledSpinner = styled.div`
 `;
 
 const Spinner = (props) => {
-	const { theme } = props;
+  const { theme } = props;
 
-	return (
-		<ThemeProvider theme={{ mode: theme }}>
-			<StyledWrapper>
-				<StyledSpinner variant="primary" />
-			</StyledWrapper>
-		</ThemeProvider>
-	);
+  return (
+    <ThemeProvider theme={{ mode: theme }}>
+      <StyledWrapper>
+        <StyledSpinner variant="primary" />
+      </StyledWrapper>
+    </ThemeProvider>
+  );
 };
 
 export default Spinner;
 
 Spinner.propTypes = {
-	theme: PropTypes.string.isRequired
+  theme: PropTypes.string.isRequired
 };
 
 StyledSpinner.propTypes = {
-	variant: PropTypes.oneOf(['primary', 'secondary'])
+  variant: PropTypes.oneOf(['primary', 'secondary'])
 };
 
 StyledSpinner.defaultProps = {
-	variant: 'primary'
+  variant: 'primary'
 };

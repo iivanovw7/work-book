@@ -13,43 +13,43 @@ const StyledBottomContainer = styled.div`
 `;
 
 const DescriptionGroup = (props) => {
-	const {
-		theme, query, handleTagClick, post, locale
-	} = props;
+  const {
+    theme, query, handleTagClick, post, locale
+  } = props;
 
-	const est = utils.calculateReadingTime(post.text.length, locale);
-	const colorIndex = utils.getRandomInt(0, colorScheme.tagBtnBgColors.length);
+  const est = utils.calculateReadingTime(post.text.length, locale);
+  const colorIndex = utils.getRandomInt(0, colorScheme.tagBtnBgColors.length);
 
-	return (
-		<StyledBottomContainer>
-			<Number
-				variant="primary"
-				value={est.minutes}
-				label={est.ending}
-				theme={theme}
-			/>
-			<div className="mobile">
-				<TagButton
-					text={query}
-					theme={theme}
-					bgColor={colorScheme.tagBtnBgColors[colorIndex]}
-					textColor={colorScheme.tagBtnTextColors[colorIndex]}
-					handleClick={(e) => {
-						e.preventDefault();
-						handleTagClick();
-					}}
-				/>
-			</div>
-		</StyledBottomContainer>
-	);
+  return (
+    <StyledBottomContainer>
+      <Number
+        variant="primary"
+        value={est.minutes}
+        label={est.ending}
+        theme={theme}
+      />
+      <div className="mobile">
+        <TagButton
+          text={query}
+          theme={theme}
+          bgColor={colorScheme.tagBtnBgColors[colorIndex]}
+          textColor={colorScheme.tagBtnTextColors[colorIndex]}
+          handleClick={(e) => {
+            e.preventDefault();
+            handleTagClick();
+          }}
+        />
+      </div>
+    </StyledBottomContainer>
+  );
 };
 
 export default DescriptionGroup;
 
 DescriptionGroup.propTypes = {
-	theme: PropTypes.string.isRequired,
-	query: PropTypes.string.isRequired,
-	post: PropTypes.object.isRequired,
-	handleTagClick: PropTypes.func.isRequired,
-	locale: PropTypes.string.isRequired
+  theme: PropTypes.string.isRequired,
+  query: PropTypes.string.isRequired,
+  post: PropTypes.object.isRequired,
+  handleTagClick: PropTypes.func.isRequired,
+  locale: PropTypes.string.isRequired
 };

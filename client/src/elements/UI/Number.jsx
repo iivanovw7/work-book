@@ -20,39 +20,39 @@ const StyledNumber = styled.span`
    height: 1.4em;
    padding: 0.1em;
    text-align: center;
-   display: inline-block; 
+   display: inline-block;
 `;
 const Number = (props) => {
-	const {
-		value, label, variant, theme
-	} = props;
+  const {
+    value, label, variant, theme
+  } = props;
 
-	return (
-		<ThemeProvider theme={{ mode: theme }}>
-			<StyledContainer className="dates">
-				<StyledNumber variant={variant}>
-					{value}
-				</StyledNumber>
-				{' '}
-				{label}
-			</StyledContainer>
-		</ThemeProvider>
-	);
+  return (
+    <ThemeProvider theme={{ mode: theme }}>
+      <StyledContainer className="dates">
+        <StyledNumber variant={variant}>
+          {value}
+        </StyledNumber>
+        {' '}
+        {label}
+      </StyledContainer>
+    </ThemeProvider>
+  );
 };
 
 StyledNumber.propTypes = {
-	variant: PropTypes.oneOf(['primary', 'secondary'])
+  variant: PropTypes.oneOf(['primary', 'secondary'])
 };
 
 StyledNumber.defaultProps = {
-	variant: 'primary'
+  variant: 'primary'
 };
 
 Number.propTypes = {
-	label: PropTypes.string.isRequired,
-	value: PropTypes.number.isRequired,
-	variant: PropTypes.string.isRequired,
-	theme: PropTypes.string.isRequired
+  label: PropTypes.string.isRequired,
+  value: PropTypes.number.isRequired,
+  variant: PropTypes.string.isRequired,
+  theme: PropTypes.string.isRequired
 };
 
 export default Number;

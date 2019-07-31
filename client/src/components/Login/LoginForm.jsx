@@ -30,7 +30,7 @@ const StyledForm = styled.form`
     width: 400px;
     height: 380px;
   }
-    
+  
   @media (min-width: 1157px) {
   	left: 25%;
     right: 25%;
@@ -38,7 +38,7 @@ const StyledForm = styled.form`
     width: 400px;
     height: 380px;
   }
-    
+  
   @media (max-width: 736px) {
   	left: 0;
     right: 0;
@@ -47,129 +47,129 @@ const StyledForm = styled.form`
     max-width: 100%;
     max-height: 100%;
   }
-   
+  
 `;
 
 const LoginForm = (props) => {
-	const {
-		history, theme, locale, text
-	} = props;
-	const [response, setResponse] = useState({ success: false, message: '' });
-	const [emailValidation, setEmailValidation] = useState('');
-	const [passwordValidation, setPasswordValidation] = useState('');
-	const { value: email, bind: bindEmail, reset: resetEmail } = utils.useInput('');
-	const { value: password, bind: bindPassword, reset: resetPassword } = utils.useInput('');
-	const [userAccess, setUserAccess] = useState(false);
+  const {
+    history, theme, locale, text
+  } = props;
+  const [response, setResponse] = useState({ success: false, message: '' });
+  const [emailValidation, setEmailValidation] = useState('');
+  const [passwordValidation, setPasswordValidation] = useState('');
+  const { value: email, bind: bindEmail, reset: resetEmail } = utils.useInput('');
+  const { value: password, bind: bindPassword, reset: resetPassword } = utils.useInput('');
+  const [userAccess, setUserAccess] = useState(false);
 
-	// Checking current user access rights every time route has been called
-	useEffect(() => {
-		if (utils.ifTokenExists()) {
-			const getAccessRights = async () => setUserAccess(await utils.checkUser());
-			getAccessRights()
-				.catch(e => console.log(e));
-		}
-	}, []);
+  // Checking current user access rights every time route has been called
+  useEffect(() => {
+    if (utils.ifTokenExists()) {
+      const getAccessRights = async () => setUserAccess(await utils.checkUser());
+      getAccessRights()
+        .catch(e => console.log(e));
+    }
+  }, []);
 
+  function validateInput() {
+    const validationResult = validate({
+      email,
+      password
+    }, utils.constraints);
 
-	function validateInput() {
-		const validationResult = validate({
-			email,
-			password
-		}, utils.constraints);
-		if (validationResult) {
-			if (validationResult.email) {
-				setEmailValidation(validationResult.email[0][locale]);
-			} else {
-				setEmailValidation('');
-			}
-			if (validationResult.password) {
-				setPasswordValidation(validationResult.password[0][locale]);
-			} else {
-				setPasswordValidation('');
-			}
-		} else {
-			setEmailValidation('');
-			setPasswordValidation('');
-		}
+    if (validationResult) {
+      if (validationResult.email) {
+        setEmailValidation(validationResult.email[0][locale]);
+      } else {
+        setEmailValidation('');
+      }
+      if (validationResult.password) {
+        setPasswordValidation(validationResult.password[0][locale]);
+      } else {
+        setPasswordValidation('');
+      }
+    } else {
+      setEmailValidation('');
+      setPasswordValidation('');
+    }
 
-		return validationResult;
-	}
+    return validationResult;
+  }
 
-	const handleSubmit = async (event) => {
-		event.preventDefault();
-		setResponse('');
-		if (!validateInput()) {
-			const loginResult = await utils.loginUser(email, password, locale, text);
-			resetEmail();
-			resetPassword();
-			if (loginResult) {
-				setResponse(loginResult);
-				if (loginResult.success) {
-					history.push('/');
-				}
-			}
-		}
-	};
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setResponse('');
+    if (!validateInput()) {
+      const loginResult = await utils.loginUser(email, password, locale, text);
+      resetEmail();
+      resetPassword();
+      if (loginResult) {
+        setResponse(loginResult);
+        if (loginResult.success) {
+          history.push('/');
+        }
+      }
+    }
+  };
 
-	if (userAccess) {
-		return <Redirect to="/" />;
-	}
+  if (userAccess) {
+    return <Redirect to="/" />;
+  }
 
-	return (
-		<ThemeProvider theme={{ mode: theme }}>
-			<Row>
-				<StyledForm onSubmit={handleSubmit}>
-					<Col>
-						<Input
-							id="email"
-							type="text"
-							label="Email"
-							validate={emailValidation}
-							theme={theme}
-							{...bindEmail}
-						/>
-						<Input
-							id="password"
-							type="password"
-							label="Password"
-							validate={passwordValidation}
-							theme={theme}
-							{...bindPassword}
-						/>
-						<p style={{ height: '30px', color: response.success ? 'green' : 'red' }}>
-							{response.message}
-						</p>
-					</Col>
-					<Col>
-						<Row>
-							<Button
-								text={text.login.loginButtonText[locale]}
-								type="submit"
-								theme={theme}
-								value="Submit"
-								variant="primary"
-							/>
-							<Button
-								text={text.login.homeButtonText[locale]}
-								theme={theme}
-								variant="primary"
-								handleClick={() => {
-									history.push('/');
-								}}
-							/>
-						</Row>
-					</Col>
-				</StyledForm>
-			</Row>
-		</ThemeProvider>
-	);
+  return (
+    <ThemeProvider theme={{ mode: theme }}>
+      <Row>
+        <StyledForm onSubmit={handleSubmit}>
+          <Col>
+            <Input
+              id="email"
+              type="text"
+              label="Email"
+              validate={emailValidation}
+              theme={theme}
+              {...bindEmail}
+            />
+            <Input
+              id="password"
+              type="password"
+              label="Password"
+              validate={passwordValidation}
+              theme={theme}
+              {...bindPassword}
+            />
+            <p style={{ height: '30px', color: response.success ? 'green' : 'red' }}>
+              {response.message}
+            </p>
+          </Col>
+          <Col>
+            <Row>
+              <Button
+                text={text.login.loginButtonText[locale]}
+                type="submit"
+                theme={theme}
+                value="Submit"
+                variant="primary"
+              />
+              <Button
+                text={text.login.homeButtonText[locale]}
+                theme={theme}
+                variant="primary"
+                handleClick={() => {
+                  history.push('/');
+                }}
+              />
+            </Row>
+          </Col>
+        </StyledForm>
+      </Row>
+    </ThemeProvider>
+  );
 };
 
 export default withRouter(LoginForm);
 
 LoginForm.propTypes = {
-	history: PropTypes.object.isRequired,
-	theme: PropTypes.string.isRequired,
-	locale: PropTypes.string.isRequired,
-	text: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
+  theme: PropTypes.string.isRequired,
+  locale: PropTypes.string.isRequired,
+  text: PropTypes.object.isRequired
 };

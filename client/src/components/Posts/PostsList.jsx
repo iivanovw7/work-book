@@ -12,16 +12,18 @@ import * as utils from '../../utils';
 
 const PostsWrapper = styled.div`
 	@media screen and (max-width: ${gridConfig.container.md}rem) {
-  	flex-direction: column;
+ 		flex-direction: column;
   	div:first-of-type, div:last-of-type {
-  		width: 100%;
+  	width: 100%;
   	}
   }
+  
   @media screen and (min-width: ${gridConfig.container.md}rem) {
   	flex-direction: row;
   	div:first-of-type {
   		width: 70%;
   	}
+  	
   	div:last-of-type {
   		width: 30%;
   	}
@@ -47,67 +49,67 @@ const PostsWrapper = styled.div`
 `;
 
 const PostsList = (props) => {
-	const {
-		data, history, theme, locale, text
-	} = props;
+  const {
+    data, history, theme, locale, text
+  } = props;
 
-	function handleClick(id) {
-		history.push(`/posts/${id}`);
-	}
+  function handleClick(id) {
+    history.push(`/posts/${id}`);
+  }
 
-	return (data.getPosts.map((post) => {
-		const date = post.created.toString();
-		const est = utils.calculateReadingTime(post.text.length, locale);
+  return (data.getPosts.map((post) => {
+    const date = post.created.toString();
+    const est = utils.calculateReadingTime(post.text.length, locale);
 
-		return (
-			<PostsWrapper key={post._id}>
-				<div>
-					<h2>
-						<TextLink
-							theme={theme}
-							text={post.title}
-							variant="primary"
-							link="/"
-							handleClick={(e) => {
-								e.preventDefault();
-								handleClick(post._id);
-							}}
-						/>
-					</h2>
-					<h3>{post.subject}</h3>
-					<Number
-						variant="primary"
-						value={est.minutes}
-						label={est.ending}
-						theme={theme}
-					/>
-				</div>
-				<div className="desktop">
-					<h3 className="dates">
-						{moment(date, 'x')
-							.format('MMMM DD, YYYY')}
-					</h3>
-					<Button
-						variant="primary"
-						text={text.navigation.readMore[locale]}
-						theme={theme}
-						handleClick={(e) => {
-							e.preventDefault();
-							handleClick(post._id);
-						}}
-					/>
-				</div>
-			</PostsWrapper>
-		);
-	}));
+    return (
+      <PostsWrapper key={post._id}>
+        <div>
+          <h2>
+            <TextLink
+              theme={theme}
+              text={post.title}
+              variant="primary"
+              link="/"
+              handleClick={(e) => {
+                e.preventDefault();
+                handleClick(post._id);
+              }}
+            />
+          </h2>
+          <h3>{post.subject}</h3>
+          <Number
+            variant="primary"
+            value={est.minutes}
+            label={est.ending}
+            theme={theme}
+          />
+        </div>
+        <div className="desktop">
+          <h3 className="dates">
+            {moment(date, 'x')
+              .format('MMMM DD, YYYY')}
+          </h3>
+          <Button
+            variant="primary"
+            text={text.navigation.readMore[locale]}
+            theme={theme}
+            handleClick={(e) => {
+              e.preventDefault();
+              handleClick(post._id);
+            }}
+          />
+        </div>
+      </PostsWrapper>
+    );
+  }));
 };
 
 export default PostsList;
 
 PostsList.propTypes = {
-	data: PropTypes.object.isRequired,
-	history: PropTypes.object.isRequired,
-	locale: PropTypes.string.isRequired,
-	text: PropTypes.object.isRequired,
-	theme: PropTypes.string.isRequired
+  data: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+  locale: PropTypes.string.isRequired,
+  text: PropTypes.object.isRequired,
+  theme: PropTypes.string.isRequired
 };

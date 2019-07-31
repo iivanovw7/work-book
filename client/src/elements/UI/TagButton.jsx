@@ -29,34 +29,34 @@ const Button = styled.button`
 `;
 
 const TagButton = (props) => {
-	const {
-		handleClick, text, bgColor, textColor, theme, label
-	} = props;
+  const {
+    handleClick, text, bgColor, textColor, theme, label
+  } = props;
 
-	return (
-		<ThemeProvider theme={{ mode: theme }}>
-			<StyledWrapper className="dates">
-				{label}
-				<Button
-					onClick={handleClick}
-					bgColor={bgColor}
-					textColor={textColor}
-					{...props}
-				>
-					{text}
-				</Button>
-			</StyledWrapper>
-		</ThemeProvider>
-	);
+  return (
+    <ThemeProvider theme={{ mode: theme }}>
+      <StyledWrapper className="dates">
+        {label}
+        <Button
+          onClick={handleClick}
+          bgColor={bgColor}
+          textColor={textColor}
+          {...props}
+        >
+          {text}
+        </Button>
+      </StyledWrapper>
+    </ThemeProvider>
+  );
 };
 
 TagButton.propTypes = {
-	handleClick: PropTypes.func.isRequired,
-	text: PropTypes.string.isRequired,
-	theme: PropTypes.string.isRequired,
-	label: PropTypes.string,
-	bgColor: PropTypes.string,
-	textColor: PropTypes.string
+  handleClick: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired,
+  theme: PropTypes.string.isRequired,
+  label: PropTypes.string,
+  bgColor: PropTypes.string,
+  textColor: PropTypes.string
 };
 
 export default TagButton;

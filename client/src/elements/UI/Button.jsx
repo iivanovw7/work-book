@@ -24,36 +24,36 @@ const StyledButton = styled.button`
     user-select: none;
     cursor: pointer;
   }
-   
+  
 `;
 
 const Button = (props) => {
-	const {
-		handleClick, text, theme, variant
-	} = props;
+  const {
+    handleClick, text, theme, variant
+  } = props;
 
-	return (
-		<ThemeProvider theme={{ mode: theme }}>
-			<StyledButton variant={variant} className="bold ripple" onClick={handleClick}>
-				{text}
-			</StyledButton>
-		</ThemeProvider>
-	);
+  return (
+    <ThemeProvider theme={{ mode: theme }}>
+      <StyledButton variant={variant} className="bold ripple" onClick={handleClick}>
+        {text}
+      </StyledButton>
+    </ThemeProvider>
+  );
 };
 
 StyledButton.propTypes = {
-	variant: PropTypes.oneOf(['primary', 'secondary', 'alert'])
+  variant: PropTypes.oneOf(['primary', 'secondary', 'alert'])
 };
 
 StyledButton.defaultProps = {
-	variant: 'primary'
+  variant: 'primary'
 };
 
 Button.propTypes = {
-	handleClick: PropTypes.func,
-	text: PropTypes.string.isRequired,
-	theme: PropTypes.string.isRequired,
-	variant: PropTypes.string
+  handleClick: PropTypes.func,
+  text: PropTypes.string.isRequired,
+  theme: PropTypes.string.isRequired,
+  variant: PropTypes.string
 };
 
 export default Button;

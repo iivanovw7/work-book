@@ -32,53 +32,53 @@ const StyledButtonContainer = styled.div`
 `;
 
 const UserView = (props) => {
-	const {
-		history, data, theme, locale, text
-	} = props;
-	const user = data.getUser;
-	const date = user ? String(user.created) : 'Invalid date';
+  const {
+    history, data, theme, locale, text
+  } = props;
+  const user = data.getUser;
+  const date = user ? String(user.created) : 'Invalid date';
 
-	function handleClick() {
-		history.push('/');
-	}
+  function handleClick() {
+    history.push('/');
+  }
 
-	return (
-		<StyledWrapper key={user._id}>
-			<StyledContainer>
-				<h2>User</h2>
-				<ViewElement title="Name" value={user.name} />
-				<ViewElement title="Surname" value={user.surname} />
-				<ViewElement title="Email" value={user.email} />
-				<ViewElement title="Phone" value={user.phone} />
-				<ViewElement title="Role" value={user.role} />
-				<ViewElement
-					title="Created"
-					value={
-						moment(date, 'x')
-							.format('DD MMM YYYY HH:MM A')
-					}
-				/>
-			</StyledContainer>
-			<StyledButtonContainer>
-				<Button
-					variant="primary"
-					text={text.navigation.back[locale]}
-					theme={theme}
-					handleClick={() => {
-						handleClick();
-					}}
-				/>
-			</StyledButtonContainer>
-		</StyledWrapper>
-	);
+  return (
+    <StyledWrapper key={user._id}>
+      <StyledContainer>
+        <h2>User</h2>
+        <ViewElement title="Name" value={user.name} />
+        <ViewElement title="Surname" value={user.surname} />
+        <ViewElement title="Email" value={user.email} />
+        <ViewElement title="Phone" value={user.phone} />
+        <ViewElement title="Role" value={user.role} />
+        <ViewElement
+          title="Created"
+          value={
+            moment(date, 'x')
+              .format('DD MMM YYYY HH:MM A')
+          }
+        />
+      </StyledContainer>
+      <StyledButtonContainer>
+        <Button
+          variant="primary"
+          text={text.navigation.back[locale]}
+          theme={theme}
+          handleClick={() => {
+            handleClick();
+          }}
+        />
+      </StyledButtonContainer>
+    </StyledWrapper>
+  );
 };
 
 export default UserView;
 
 UserView.propTypes = {
-	data: PropTypes.object.isRequired,
-	history: PropTypes.object.isRequired,
-	locale: PropTypes.string.isRequired,
-	text: PropTypes.object.isRequired,
-	theme: PropTypes.string.isRequired
+  data: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+  locale: PropTypes.string.isRequired,
+  text: PropTypes.object.isRequired,
+  theme: PropTypes.string.isRequired
 };

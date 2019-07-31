@@ -7,39 +7,39 @@ import * as utils from './utils';
 import ContentLayout from './layouts/contentLayout';
 
 const PageRoute = ({ component: Component, ...rest }) => {
-	const { protectedRoute } = rest;
-	const [userAccess, setUserAccess] = useState(false);
+  const { protectedRoute } = rest;
+  const [userAccess, setUserAccess] = useState(false);
 
-	// Checking current user access rights every time route has been called
-	useEffect(() => {
-		if (utils.ifTokenExists()) {
-			const getAccessRights = async () => setUserAccess(await utils.checkUser());
-			getAccessRights()
-				.catch(e => console.log(e));
-		}
-	}, []);
+  // Checking current user access rights every time route has been called
+  useEffect(() => {
+    if (utils.ifTokenExists()) {
+      const getAccessRights = async () => setUserAccess(await utils.checkUser());
+      getAccessRights()
+        .catch(e => console.log(e));
+    }
+  }, []);
 
-	return (
-		<Route
-			{...rest}
-			render={(props) => {
-				if ((protectedRoute && userAccess) || !protectedRoute) {
-					return (
-						<ApolloProvider client={client}>
-							<ContentLayout userAccess={userAccess}>
-								<Component {...props} />
-							</ContentLayout>
-						</ApolloProvider>
-					);
-				}
-				return <Redirect to="/" />;
-			}}
-		/>
-	);
+  return (
+    <Route
+      {...rest}
+      render={(props) => {
+        if ((protectedRoute && userAccess) || !protectedRoute) {
+          return (
+            <ApolloProvider client={client}>
+              <ContentLayout userAccess={userAccess}>
+                <Component {...props} />
+              </ContentLayout>
+            </ApolloProvider>
+          );
+        }
+        return <Redirect to="/" />;
+      }}
+    />
+  );
 };
 
 export default PageRoute;
 
 PageRoute.propTypes = {
-	component: PropTypes.func.isRequired
+  component: PropTypes.func.isRequired
 };

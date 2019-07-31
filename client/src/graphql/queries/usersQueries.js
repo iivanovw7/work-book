@@ -10,6 +10,6 @@ export const GET_USER = gql`
       surname,
       created,
       role
-  	}
-	}
+    }
+  }
 `;

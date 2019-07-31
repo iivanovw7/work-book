@@ -15,44 +15,42 @@ const StyledContainer = styled.div`
 `;
 
 const DeletePost = (props) => {
-	const {
-		post, text, history, theme, locale
-	} = props;
+  const {
+    post, text, history, theme, locale
+  } = props;
 
-	return (
-		<Mutation
-			mutation={DELETE_POST}
-			refetchQueries={() => [{
-				query: GET_POSTS
-			}]}
-		>
-			{(deletePost, { loading, error, data }) => (
-				<StyledContainer>
-					<Button
-						variant="alert"
-						text={text.navigation.delete[locale]}
-						theme={theme}
-						handleClick={() => {
-							deletePost({
-								variables: {
-									_id: post._id
-								}
-							});
-							return history.push('/posts');
-						}}
-					/>
-				</StyledContainer>
-			)}
-		</Mutation>
-	);
+  return (
+    <Mutation
+      mutation={DELETE_POST}
+      refetchQueries={() => [{ query: GET_POSTS }]}
+    >
+      {(deletePost, { loading, error, data }) => (
+        <StyledContainer>
+          <Button
+            variant="alert"
+            text={text.navigation.delete[locale]}
+            theme={theme}
+            handleClick={() => {
+              deletePost({
+                variables: {
+                  _id: post._id
+                }
+              });
+              return history.push('/posts');
+            }}
+          />
+        </StyledContainer>
+      )}
+    </Mutation>
+  );
 };
 
 export default withRouter(DeletePost);
 
 DeletePost.propTypes = {
-	history: PropTypes.object.isRequired,
-	post: PropTypes.object.isRequired,
-	text: PropTypes.object.isRequired,
-	theme: PropTypes.string.isRequired,
-	locale: PropTypes.string.isRequired
+  history: PropTypes.object.isRequired,
+  post: PropTypes.object.isRequired,
+  text: PropTypes.object.isRequired,
+  theme: PropTypes.string.isRequired,
+  locale: PropTypes.string.isRequired
 };

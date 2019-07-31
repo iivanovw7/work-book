@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import useStoreon from 'storeon/react';
 import { backgroundColorDarken, textColor } from '../theme';
 
-
 const StyledSection = styled.section`
 	background-color: ${backgroundColorDarken};
   color: ${textColor};
@@ -19,27 +18,27 @@ const StyledSection = styled.section`
 `;
 
 const NoMatchRoute = (props) => {
-	const { locale, localizedText } = useStoreon('locale', 'localizedText');
-	const { location } = props;
+  const { locale, localizedText } = useStoreon('locale', 'localizedText');
+  const { location } = props;
 
-	return (
-		<StyledSection locale={locale}>
-			<article>
-				<ins>{location.pathname}</ins>
-				{' | '}
-				{localizedText.pageNotFound.notification[locale]}
-				<p>
-					<a href="/">
-						{localizedText.pageNotFound.linkText[locale]}
-					</a>
-				</p>
-			</article>
-		</StyledSection>
-	);
+  return (
+    <StyledSection locale={locale}>
+      <article>
+        <ins>{location.pathname}</ins>
+        {' | '}
+        {localizedText.pageNotFound.notification[locale]}
+        <p>
+          <a href="/">
+            {localizedText.pageNotFound.linkText[locale]}
+          </a>
+        </p>
+      </article>
+    </StyledSection>
+  );
 };
 
 export default NoMatchRoute;
 
 NoMatchRoute.propTypes = {
-	location: PropTypes.object.isRequired
+  location: PropTypes.object.isRequired
 };

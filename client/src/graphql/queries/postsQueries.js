@@ -33,3 +33,17 @@ export const GET_POST = gql`
     }
   }
 `;
+
+export const FIND_POSTS_BY_TAG = gql`
+  query FindPostsByTag($tag: String!){
+    findPostsByTag(tag: $tag){
+      _id
+      text
+      title
+      subject
+      created
+      author
+      tags
+    }
+  }
+`;

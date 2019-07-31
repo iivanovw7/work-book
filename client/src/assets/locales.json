@@ -86,5 +86,31 @@
 			"eng": "Save",
 			"rus": "Сохранить"
 		}
+	},
+	"posts": {
+		"estimates": {
+			"less": {
+				"eng": "less than a minute read",
+				"rus": "меньше минуты на прочтение"
+			},
+			"many": {
+				"eng": "minutes read",
+				"rus": "минут"
+			},
+			"one": {
+				"eng": "minute read",
+				"rus": "минута"
+			},
+			"few": {
+				"eng": "minutes read",
+				"rus": "минуты"
+			}
+		}
+	},
+	"search": {
+		"query": {
+			"eng": "Found by tag: ",
+			"rus": "Найдено по тэгу: "
+		}
 	}
 }

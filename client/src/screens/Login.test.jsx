@@ -6,48 +6,41 @@ import { MemoryRouter } from 'react-router-dom';
 import * as testUtils from '../testUtils';
 import Login from './Login';
 
-jest.mock('../config/apiURL', () => () => {
-	return '/api';
-});
+jest.mock('../config/apiURL', () => () => '/api');
 
-jest.mock('storeon/react', () => () => {
-	return {
-		locale: 'eng',
-		theme: 'dark'
-	};
-});
+jest.mock('storeon/react', () => () => ({
+  locale: 'eng',
+  theme: 'dark'
+}));
 jest.mock('../components/TopBar/TopBar', () => () => (
-	<div id="topbar" />
+  <div id="topbar" />
 ));
 jest.mock('../components/Login/LoginForm', () => () => (
-	<div id="loginform" />
+  <div id="loginform" />
 ));
 
 describe('Testing LOGIN screen: ', () => {
+  afterAll(() => {
+    jest.clearAllMocks();
+  });
 
-	afterAll(() => {
-		jest.clearAllMocks();
-	});
+  const props = { localizedText: testUtils.localizedText };
 
-	const props = {
-		localizedText: testUtils.localizedText
-	};
+  const Composition = () => (
+    <MemoryRouter>
+      <Login {...props} />
+    </MemoryRouter>
+  );
 
-	const Composition = () => (
-		<MemoryRouter>
-			<Login {...props} />
-		</MemoryRouter>
-	);
+  it('Should render properly with props ', () => {
+    const component = mount(<Composition />);
+    expect(component.find('Login').length).toEqual(1);
+    expect(component.find('#topbar').length).toEqual(1);
+    expect(component.find('#loginform').length).toEqual(1);
+  });
 
-	it('Should render properly with props ', () => {
-		const component = mount(<Composition />);
-		expect(component.find('Login').length).toEqual(1);
-		expect(component.find('#topbar').length).toEqual(1);
-		expect(component.find('#loginform').length).toEqual(1);
-	});
-
-	it('Should render and match snapshot ', () => {
-		const component = mount(<Composition />);
-		expect(component).toMatchSnapshot();
-	});
+  it('Should render and match snapshot ', () => {
+    const component = mount(<Composition />);
+    expect(component).toMatchSnapshot();
+  });
 });

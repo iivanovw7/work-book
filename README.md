@@ -148,8 +148,7 @@ Should run in directory: `./work-book/client` <br />
 `npm run test` <br />
 
 ## ToDo
-1. Implement tag search
-2. Implement live search by keyword
+1. Implement live search by keyword
 
 ## License
 

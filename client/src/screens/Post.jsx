@@ -24,47 +24,52 @@ const StyledSideBar = styled.aside`
 `;
 
 const Post = (props) => {
-	const { location } = props;
-	const { theme, locale, localizedText } = useStoreon('theme', 'locale', 'localizedText');
+  const { location } = props;
+  const { theme, locale, localizedText } = useStoreon('theme', 'locale', 'localizedText');
 
-	return (
-		<ThemeProvider theme={{ mode: theme }}>
-			<StyledSection className="container">
-				<section>
-					<TopBar locale={locale} text={localizedText} {...props} />
-				</section>
-				<Grid>
-					<Row>
-						<Col xs={12} sm={12} md={3} lg={3}>
-							<StyledSideBar>
-								<SideBar theme={theme} locale={locale} text={localizedText} {...props} />
-							</StyledSideBar>
-						</Col>
-						<Col xs={12} sm={12} md={9} lg={9}>
-							<section>
-								<SwitchedPostComponent
-									location={location}
-									theme={theme}
-									locale={locale}
-									text={localizedText}
-								/>
-							</section>
-						</Col>
-					</Row>
-				</Grid>
-				<section className="mobile">
-					<MobileNavBar theme={theme} locale={locale} text={localizedText} {...props} />
-				</section>
-			</StyledSection>
-		</ThemeProvider>
-	);
+  return (
+    <ThemeProvider theme={{ mode: theme }}>
+      <StyledSection className="container">
+        <section>
+          <TopBar locale={locale} text={localizedText} {...props} />
+        </section>
+        <Grid>
+          <Row>
+            <Col xs={12} sm={12} md={3} lg={3}>
+              <StyledSideBar>
+                <SideBar
+                  theme={theme}
+                  locale={locale}
+                  text={localizedText}
+                  {...props}
+                />
+              </StyledSideBar>
+            </Col>
+            <Col xs={12} sm={12} md={9} lg={9}>
+              <section>
+                <SwitchedPostComponent
+                  location={location}
+                  theme={theme}
+                  locale={locale}
+                  text={localizedText}
+                />
+              </section>
+            </Col>
+          </Row>
+        </Grid>
+        <section className="mobile">
+          <MobileNavBar theme={theme} locale={locale} text={localizedText} {...props} />
+        </section>
+      </StyledSection>
+    </ThemeProvider>
+  );
 };
 
 Post.propTypes = {
-	history: PropTypes.object.isRequired,
-	location: PropTypes.object.isRequired,
-	user: PropTypes.object.isRequired,
-	userAccess: PropTypes.bool.isRequired
+  history: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
+  userAccess: PropTypes.bool.isRequired
 };
 
 export default withRouter(Post);

@@ -30,6 +30,9 @@ app.use(allowCrossDomain);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use('/logo.png', (req, res) => {
+  res.sendfile(path.join(__dirname, 'public/logo.png'));
+});
 
 // Setup apollo server with context
 const server = new ApolloServer({

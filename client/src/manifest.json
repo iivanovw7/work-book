@@ -1,0 +1,15 @@
+{
+  "short_name": "WORKBOOK",
+  "name": "WORKBOOK",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#f0f8ff",
+  "background_color": "#424242"
+}

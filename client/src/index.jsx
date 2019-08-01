@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import { Helmet } from 'react-helmet';
 import { BrowserRouter } from 'react-router-dom';
 import StoreContext from 'storeon/react/context';
+import registerServiceWorker from './registerServiceWorker';
 import routes from './routes';
 import { store } from './store';
 import { Global } from './styles';
@@ -28,3 +29,4 @@ ReactDOM.render(
 );
 
 module.hot.accept();
+registerServiceWorker();

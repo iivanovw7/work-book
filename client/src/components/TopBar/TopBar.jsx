@@ -14,7 +14,7 @@ const TopBarWrapper = styled.nav`
   width: 100%;
   position: fixed;
   display: flex;
-  top: 0;   
+  top: 0;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
@@ -26,28 +26,28 @@ const TopBarWrapper = styled.nav`
 `;
 
 const TopBar = (props) => {
-	const { locale, text } = props;
-	const { dispatch } = useStoreon();
+  const { locale, text } = props;
+  const { dispatch } = useStoreon();
 
-	return (
-		<TopBarWrapper>
-			<SvgButton
-				Image={text.locales[locale] === 'eng' ? IconRus : IconEng}
-				text={text.locales[locale]}
-				variant="primary"
-				width="25px"
-				height="15px"
-				handleClick={() => {
-					dispatch('changeLocale');
-				}}
-			/>
-		</TopBarWrapper>
-	);
+  return (
+    <TopBarWrapper>
+      <SvgButton
+        Image={text.locales[locale] === 'eng' ? IconRus : IconEng}
+        text={text.locales[locale]}
+        variant="primary"
+        width="25px"
+        height="15px"
+        handleClick={() => {
+          dispatch('changeLocale');
+        }}
+      />
+    </TopBarWrapper>
+  );
 };
 
 TopBar.propTypes = {
-	locale: PropTypes.string.isRequired,
-	text: PropTypes.object.isRequired
+  locale: PropTypes.string.isRequired,
+  text: PropTypes.object.isRequired
 };
 
 export default TopBar;

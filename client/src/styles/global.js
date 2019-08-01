@@ -1,16 +1,18 @@
 import { createGlobalStyle } from 'styled-components';
-import { colorScheme, gridConfig, stylesConfig, mdOffset } from '../config';
+import {
+  colorScheme, gridConfig, stylesConfig, mdOffset
+} from '../config';
 
 const typography = {
 
-	// Font weights
-	light: 100,
-	regular: 300,
-	bold: 600,
+  // Font weights
+  light: 100,
+  regular: 300,
+  bold: 600,
 
-	// Font family
-	baseFontFamily: 'Nunito Sans, sans-serif',
-	timeDatesFontFamily: 'Inconsolata, monospace'
+  // Font family
+  baseFontFamily: 'Nunito Sans, sans-serif',
+  timeDatesFontFamily: 'Inconsolata, monospace'
 
 };
 
@@ -32,7 +34,7 @@ export const Global = createGlobalStyle`
 		overflow-x: hidden;
   	scroll-behavior: smooth;
 	}
-  
+ 
 	body {
 		scroll-behavior: smooth;
   	font-family: ${typography.baseFontFamily};
@@ -43,7 +45,7 @@ export const Global = createGlobalStyle`
   	margin: 0 auto;
   	
 	}
-		
+	
 	.dates, code {
 		font-family: ${typography.timeDatesFontFamily};
 	}
@@ -86,5 +88,5 @@ export const Global = createGlobalStyle`
       margin-bottom: ${stylesConfig.appBarHeight};
     }
   }
-  	
+  
 `;

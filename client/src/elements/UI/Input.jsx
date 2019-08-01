@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { inputsBackground } from '../../theme';
 /* eslint react/require-default-props: 0 */
 
-const StyledInput = styled.input` 
+const StyledInput = styled.input`
   ${inputsBackground};
   padding: 0.5em;
   margin-top: 0.5em;
@@ -23,30 +23,30 @@ const StyledLabel = styled.label`
 `;
 
 export const Input = (props) => {
-	const inputRef = React.createRef();
-	const {
-		label, validate, id, type
-	} = props;
+  const inputRef = React.createRef();
+  const {
+    label, validate, id, type
+  } = props;
 
-	return (
-		<StyledLabel
-			ref={inputRef}
-			htmlFor={id}
-			onMouseEnter={() => {
-				inputRef.current.focus();
-			}}
-		>
-			{label}
-			{'  '}
-			<StyledSpan>{validate}</StyledSpan>
-			<StyledInput theme={{ mode: 'dark' }} type={type} id={id} {...props} />
-		</StyledLabel>
-	);
+  return (
+    <StyledLabel
+      ref={inputRef}
+      htmlFor={id}
+      onMouseEnter={() => {
+        inputRef.current.focus();
+      }}
+    >
+      {label}
+      {'  '}
+      <StyledSpan>{validate}</StyledSpan>
+      <StyledInput theme={{ mode: 'dark' }} type={type} id={id} {...props} />
+    </StyledLabel>
+  );
 };
 
 Input.propTypes = {
-	label: PropTypes.string.isRequired,
-	validate: PropTypes.string,
-	id: PropTypes.string.isRequired,
-	type: PropTypes.string.isRequired
+  label: PropTypes.string.isRequired,
+  validate: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired
 };

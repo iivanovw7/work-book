@@ -27,39 +27,39 @@ const StyledLinkIcon = styled.a`
 `;
 
 const LinkIcon = (props) => {
-	const {
-		link, text, icon, variant, handleClick, theme
-	} = props;
+  const {
+    link, text, icon, variant, handleClick, theme
+  } = props;
 
-	return (
-		<ThemeProvider theme={{ mode: theme }}>
-			<StyledLinkIcon variant={variant} href={link} onClick={handleClick}>
-				<i className="material-icons">
-					{icon}
-				</i>
-				<span>
-					{text}
-				</span>
-			</StyledLinkIcon>
-		</ThemeProvider>
-	);
+  return (
+    <ThemeProvider theme={{ mode: theme }}>
+      <StyledLinkIcon variant={variant} href={link} onClick={handleClick}>
+        <i className="material-icons">
+          {icon}
+        </i>
+        <span>
+          {text}
+        </span>
+      </StyledLinkIcon>
+    </ThemeProvider>
+  );
 };
 
 StyledLinkIcon.propTypes = {
-	variant: PropTypes.oneOf(['primary', 'secondary'])
+  variant: PropTypes.oneOf(['primary', 'secondary'])
 };
 
 StyledLinkIcon.defaultProps = {
-	variant: 'primary'
+  variant: 'primary'
 };
 
 LinkIcon.propTypes = {
-	text: PropTypes.string.isRequired,
-	icon: PropTypes.string.isRequired,
-	link: PropTypes.string.isRequired,
-	variant: PropTypes.string.isRequired,
-	theme: PropTypes.string.isRequired,
-	handleClick: PropTypes.func
+  text: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
+  variant: PropTypes.string.isRequired,
+  theme: PropTypes.string.isRequired,
+  handleClick: PropTypes.func
 };
 
 export default LinkIcon;

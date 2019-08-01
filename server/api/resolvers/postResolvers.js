@@ -5,86 +5,97 @@ import * as utils from '../utils';
 
 export const postResolvers = {
 
-	Query: {
+  Query: {
 
-		getPosts: async () => Post.find({}).exec(),
+    getPosts: async () => Post.find({})
+      .sort({ created: '-1' })
+      .exec(),
 
-		getPost: async (_, args) => Post.findOne({ _id: args._id }).exec(),
+    getPost: async (_, args) => Post.findOne({ _id: args._id })
+      .exec(),
 
-		findPostsByTag: async (_, args) => Post.find({ tags: args.tag })
-																					 .sort({ created: '-1' })
-																					 .exec(),
-		getTags: async () => {
-			const tags = [];
-			const queryTags = await Post.find({})
-																	.distinct('tags')
-																	.exec();
+    findPostsByTag: async (_, args) => {
+      // From search query parameters
+      const query = { tags: { $regex: args.tag, $options: 'i' } };
 
-			if (!queryTags) return [];
+      return Post.find(query)
+        .sort({ created: '-1' })
+        .exec();
+    },
 
-			utils.forEachCallback(queryTags, (val) => {
-				utils.forEachCallback(utils.words(val), (tag) => {
-					tags.push(tag);
-				});
-			});
+    getTags: async () => {
+      const tags = [];
+      const queryTags = await Post.find({})
+        .distinct('tags')
+        .exec();
 
-			return Array.from(new Set(tags));
-		}
-	},
+      if (!queryTags) return [];
 
-	Mutation: {
+      utils.forEachCallback(queryTags, (val) => {
+        utils.forEachCallback(utils.words(val), (tag) => {
+          tags.push(tag);
+        });
+      });
 
-		addPost: async (_, args, context) => {
-			if (!context.user) return [];
-			const newPost = {
-				subject: args.subject,
-				text: args.text,
-				title: args.title,
-				tags: args.tags,
-				author: context.user._id
-			};
-			const post = await Post.create(newPost).catch(e => e.message);
-			if (post) {
-				return post;
-			}
-			return [];
-		},
+      return Array.from(new Set(tags));
+    }
+  },
 
-		updatePost: async (_, args, context) => {
-			if (!context.user) return [];
-			const set = {
-				subject: args.subject,
-				text: args.text,
-				title: args.title,
-				tags: args.tags,
-				author: context.user._id,
-				published: args.published
-			};
-			const post = await Post.findOneAndUpdate(
-				{ _id: args._id },
-				{ $set: set },
-				{ new: true }
-			).catch(e => e.message);
+  Mutation: {
 
-			if (post) {
-				return post;
-			}
+    addPost: async (_, args, context) => {
+      if (!context.user) return [];
+      const newPost = {
+        subject: args.subject,
+        text: args.text,
+        title: args.title,
+        tags: args.tags,
+        author: context.user._id
+      };
+      const post = await Post.create(newPost).catch(e => e.message);
+      if (post) {
+        return post;
+      }
+      return [];
+    },
 
-			return [];
-		},
+    updatePost: async (_, args, context) => {
+      if (!context.user) return [];
+      const set = {
+        subject: args.subject,
+        text: args.text,
+        title: args.title,
+        tags: args.tags,
+        author: context.user._id,
+        published: args.published
+      };
+      const post = await Post.findOneAndUpdate(
+        { _id: args._id },
+        { $set: set },
+        { new: true }
+      ).catch(e => e.message);
 
-		deletePost: async (_, args, context) => {
-			if (!context.user) return [];
+      if (post) {
+        return post;
+      }
 
-			const removedPost = await Post.findByIdAndRemove(
-				{ _id: args._id }
-			).catch(e => e.message);
+      return [];
+    },
 
-			if (removedPost) {
-				return removedPost;
-			}
+    deletePost: async (_, args, context) => {
+      if (!context.user) return [];
 
-			return [];
-		}
-	}
+      const removedPost = await Post.findByIdAndRemove(
+        {
+          _id: args._id
+        }
+      ).catch(e => e.message);
+
+      if (removedPost) {
+        return removedPost;
+      }
+
+      return [];
+    }
+  }
 };

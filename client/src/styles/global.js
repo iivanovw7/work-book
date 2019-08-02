@@ -1,7 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import {
-  colorScheme, gridConfig, stylesConfig, mdOffset
-} from '../config';
+import { stylesConfig, mdOffset } from '../config';
 
 const typography = {
 
@@ -33,6 +31,8 @@ export const Global = createGlobalStyle`
 	html {
 		overflow-x: hidden;
   	scroll-behavior: smooth;
+  	scrollbar-width: none;
+  	-ms-overflow-style: none;  // Hide scrollbar on IE 10+
 	}
  
 	body {
@@ -43,8 +43,15 @@ export const Global = createGlobalStyle`
   	min-height: 100vh;
   	max-width: 100vw;
   	margin: 0 auto;
-  	
 	}
+	
+	body {
+	  -ms-overflow-style: none;  // Hide scrollbar on IE 10+
+	}
+	
+	body::-webkit-scrollbar {
+    display: none;  // Hide scrollbar on Safari and Chrome
+  }
 	
 	.dates, code {
 		font-family: ${typography.timeDatesFontFamily};

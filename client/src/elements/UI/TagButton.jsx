@@ -20,7 +20,7 @@ const Button = styled.button`
   outline: 0;
   margin: 0.2em;
   background-color: ${props => props.bgColor};
-  color: ${props => props.textColor}
+  color: ${props => props.textColor};
   
   &:hover {
     user-select: none;

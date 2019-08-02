@@ -41,6 +41,7 @@ const Post = (props) => {
                   theme={theme}
                   locale={locale}
                   text={localizedText}
+                  onlyMobile
                   {...props}
                 />
               </StyledSideBar>

@@ -7,10 +7,11 @@ export const backgroundColor = theme('mode', {
   light: `${colorScheme.light_main_bg}`
 });
 
-export const backgroundInverseOpacified = theme('mode', {
-  dark: opacify('0.001', 'rgba(255, 0, 0, 0.2)'),
-  light: opacify('0.001', 'rgba(255, 0, 0, 0.2)')
-});
+// export const backgroundInverseOpacified = theme('mode', {
+//   dark: opacify('0.001', 'rgba(255, 0, 0, 0.2)'),
+//   light: opacify('0.001', 'rgba(255, 0, 0, 0.2)')
+// });
+
 export const backgroundColorInverse = theme('mode', {
   light: `${colorScheme.dark_main_bg}`,
   dark: `${colorScheme.light_main_bg}`

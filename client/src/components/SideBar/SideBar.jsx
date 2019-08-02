@@ -34,20 +34,20 @@ const StyledContentBlock = styled.div`
   	flex-wrap: wrap;
   	
   	@media screen and (max-width: ${mdOffset}rem) {
-      display: none;
+      display: ${props => (props.mobile || props.onlyMobile ? 'none' : 'flex')};
 		}
 `;
 
 const SideBar = (props) => {
   const {
-    history, userAccess, user, text, locale
+    history, userAccess, user, text, locale, onlyMobile
   } = props;
   const { theme, dispatch } = useStoreon('theme');
 
   return (
     <ThemeProvider theme={{ mode: theme }}>
       <SideBarWrapper>
-        <StyledContentBlock className="desktop">
+        <StyledContentBlock onlyMobile={onlyMobile} mobile>
           <LinkIcon
             link="/"
             icon="home"
@@ -72,7 +72,7 @@ const SideBar = (props) => {
           />
         </StyledContentBlock>
         {userAccess && (
-          <StyledContentBlock>
+          <StyledContentBlock onlyMobile={onlyMobile} mobile>
             <Button
               variant="primary"
               text={text.navigation.profile[locale]}
@@ -100,7 +100,7 @@ const SideBar = (props) => {
             />
           </StyledContentBlock>
         )}
-        <StyledContentBlock>
+        <StyledContentBlock onlyMobile={onlyMobile}>
           <QueryTags theme={theme} history />
         </StyledContentBlock>
       </SideBarWrapper>
@@ -121,7 +121,8 @@ SideBar.propTypes = {
   locale: PropTypes.string.isRequired,
   text: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
-  userAccess: PropTypes.bool.isRequired
+  userAccess: PropTypes.bool.isRequired,
+  onlyMobile: PropTypes.bool.isRequired
 };
 
 export default SideBar;

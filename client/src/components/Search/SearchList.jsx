@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 import { opacify } from 'polished';
+import { fadeInTop } from '../../styles';
 import { gridConfig } from '../../config';
 import TextLink from '../../elements/UI/TextLink';
 import ButtonGroup from './ButtonGroup';
@@ -25,6 +26,7 @@ const SearchWrapper = styled.div`
   	}
   }
   
+  ${fadeInTop};
   display: flex;
 	flex-wrap: no-wrap;
 	justify-content: space-between;

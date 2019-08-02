@@ -16,7 +16,9 @@ module.exports = merge(common, {
     }),
     new CopyWebpackPlugin([
       { from: 'src/manifest.json', to: path.join(__dirname, 'dist') },
-      { from: 'src/assets/img/logo.png', to: path.join(__dirname, 'dist') }
+      { from: 'favicon.ico', to: path.join(__dirname, '../server/api/public') },
+      { from: 'src/assets/img/logo.png', to: path.join(__dirname, 'dist') },
+      { from: 'src/assets/img/logo.png', to: path.join(__dirname, '../server/api/public') }
     ]),
     new WebpackAssetsManifest({
       output: path.join(__dirname, 'dist/assets-manifest.json'),

@@ -11,7 +11,7 @@ import { useInput } from '../../utils/useInputHook';
 
 const StyledForm = styled.form`
 	display: flex;
-	transition: all 0.2s ease
+	transition: all 0.2s ease;
 	flex-direction: column;
 	align-items:flex-start;
 	justify-content: center;

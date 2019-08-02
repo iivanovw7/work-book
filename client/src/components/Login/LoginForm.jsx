@@ -10,6 +10,7 @@ import * as utils from '../../utils';
 import { textColor, backgroundColorDarken } from '../../theme';
 
 const StyledForm = styled.form`
+  transition: all 0.2s ease
 	position: absolute;
   margin: 0 auto;
   width: 100%;

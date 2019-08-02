@@ -17,5 +17,7 @@ export const localizedText = {
   topBar: localized.topBar,
   login: localized.login,
   navigation: localized.navigation,
-  pageNotFound: localized.pageNotFound
+  pageNotFound: localized.pageNotFound,
+  posts: localized.posts,
+  search: localized.search
 };

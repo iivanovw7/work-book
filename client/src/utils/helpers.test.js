@@ -41,6 +41,7 @@ describe('Testing helpers: ', () => {
     const numbers = [1, 41, 2, 178];
     const results = [];
 
+    // eslint-disable-next-line no-plusplus
     for (let i = 0; i <= numbers.length; i++) {
       results.push(helpers.declOfNum(numbers[i], endings));
     }

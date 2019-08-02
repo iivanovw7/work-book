@@ -3,6 +3,7 @@ import React from 'react';
 import moment from 'moment';
 import styled from 'styled-components';
 import { opacify } from 'polished';
+import { fadeInTop } from '../../styles';
 import { gridConfig } from '../../config';
 import Button from '../../elements/UI/Button';
 import Number from '../../elements/UI/Number';
@@ -29,6 +30,7 @@ const PostsWrapper = styled.div`
   	}
   }
   
+  ${fadeInTop};
   display: flex;
 	flex-wrap: no-wrap;
 	justify-content: space-between;

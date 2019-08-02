@@ -18,10 +18,11 @@ const StyledNumber = styled.span`
    color: ${btnTextColor};
    width: 1.4em;
    height: 1.4em;
-   padding: 0.1em;
+   padding: 0.15em;
    text-align: center;
    display: inline-block;
 `;
+
 const Number = (props) => {
   const {
     value, label, variant, theme

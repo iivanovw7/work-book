@@ -39,7 +39,7 @@ const Search = (props) => {
           <Row>
             <Col xs={12} sm={12} md={3} lg={3}>
               <StyledSideBar>
-                <SideBar theme={theme} locale={locale} text={localizedText} {...props} />
+                <SideBar theme={theme} locale={locale} text={localizedText} onlyMobile={false} {...props} />
               </StyledSideBar>
             </Col>
             <Col xs={12} sm={12} md={9} lg={9}>

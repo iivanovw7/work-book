@@ -17,6 +17,8 @@ export const colorScheme = {
   light_appBar_bg: '#fffaf0',
   light_navLinkHighlight: '#a8ecff',
   dark_navLinkHighlight: '#a8ecff',
+  light_linkColor: 'rgba(5,62,177,0.95)',
+  dark_linkColor: 'rgba(99,198,255,0.95)',
   tagBtnBgColors: [
     '#B565A7', '#5B5EA6', '#DD4132', '#6B5B95', '#282C34', '#00A591', '#BFD641',
     '#ECDB54', '#BC70A4', '#CE3175', '#F7786B', '#000000', '#95DEE3'

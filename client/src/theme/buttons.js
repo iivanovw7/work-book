@@ -63,3 +63,8 @@ export const btnHighlight = theme.variants('mode', 'variant', {
     dark: transparentize(0.8, colorScheme.dark_colorAlert)
   }
 });
+
+export const linkColor = theme('mode', {
+  light: colorScheme.light_linkColor,
+  dark: colorScheme.dark_linkColor
+});

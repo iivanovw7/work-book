@@ -6,7 +6,7 @@ import { opacify } from 'polished';
 import { ErrorMessage } from '../../elements/errorMessage';
 import Button from '../../elements/UI/Button';
 import * as utils from '../../utils';
-import { backgroundColorInverse, textColorInverse } from '../../theme';
+import { backgroundColorInverse, textColorInverse, linkColor } from '../../theme';
 import DeletePost from '../../queryBlocks/DeletePost';
 import TagsCloud from '../Tags/TagsCloud';
 /* eslint no-underscore-dangle: 0 */
@@ -26,6 +26,10 @@ const StyledText = styled.p`
 	padding: 0.5rem;
 	border-radius: 0.2em;
 	background-color: ${opacify('0.01', 'rgba(25, 0, 0, 0.1)')};
+	
+	a {
+	  color: ${linkColor};
+	}
 `;
 
 const StyledTimeContainer = styled.p`
@@ -46,6 +50,7 @@ const StyledButtonsContainer = styled.div`
 		display: flex;
 		flex-direction: row;
 	}
+	
 `;
 
 const StyledTagsContainer = styled.div`

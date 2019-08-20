@@ -8,9 +8,11 @@ const StyledWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
+  width: 100%;
+  height: 100%;
+  
   div {
-  	margin-top: 5rem;
+    margin-top: ${props => props.mgTop}em;
   }
 `;
 
@@ -51,11 +53,11 @@ const StyledSpinner = styled.div`
 `;
 
 const Spinner = (props) => {
-  const { theme } = props;
+  const { theme, mgTop } = props;
 
   return (
     <ThemeProvider theme={{ mode: theme }}>
-      <StyledWrapper>
+      <StyledWrapper mgTop={mgTop}>
         <StyledSpinner variant="primary" />
       </StyledWrapper>
     </ThemeProvider>
@@ -65,7 +67,8 @@ const Spinner = (props) => {
 export default Spinner;
 
 Spinner.propTypes = {
-  theme: PropTypes.string.isRequired
+  theme: PropTypes.string.isRequired,
+  mgTop: PropTypes.string
 };
 
 StyledSpinner.propTypes = {
@@ -73,5 +76,6 @@ StyledSpinner.propTypes = {
 };
 
 StyledSpinner.defaultProps = {
-  variant: 'primary'
+  variant: 'primary',
+  mgTop: 0
 };

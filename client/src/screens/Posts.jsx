@@ -41,9 +41,7 @@ const Posts = (props) => {
               </StyledSideBar>
             </Col>
             <Col xs={12} sm={12} md={9} lg={9}>
-              <section>
-                <QueryPosts locale={locale} text={localizedText} theme={theme} {...props} />
-              </section>
+              <QueryPosts locale={locale} text={localizedText} theme={theme} {...props} />
             </Col>
           </Row>
         </Grid>

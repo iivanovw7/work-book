@@ -19,7 +19,7 @@ const CreatePost = (props) => {
       {(addPost, { loading, error, data }) => (
         <div>
           <PostForm addPost={addPost} data={data} {...props} />
-          {loading && <Spinner theme={theme} />}
+          {loading && <Spinner theme={theme} mgTop={5} />}
           {error && (
             <ErrorMessage
               theme={theme}

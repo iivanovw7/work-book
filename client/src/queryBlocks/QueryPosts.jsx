@@ -10,7 +10,7 @@ import Spinner from '../elements/UI/Spinner';
 const QueryPosts = props => (
   <Query query={GET_POSTS}>
     {({ loading, error, data }) => {
-      if (loading) return <Spinner theme={props.theme} />;
+      if (loading) return <Spinner theme={props.theme} mgTop={5} />;
       if (error) {
         return (
           <ErrorMessage

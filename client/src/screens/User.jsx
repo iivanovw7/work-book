@@ -40,15 +40,13 @@ const User = (props) => {
               </StyledSideBar>
             </Col>
             <Col xs={12} sm={12} md={9} lg={9}>
-              <section>
-                <QueryUser
-                  theme={theme}
-                  locale={locale}
-                  text={localizedText}
-                  id={pathName}
-                  {...props}
-                />
-              </section>
+              <QueryUser
+                theme={theme}
+                locale={locale}
+                text={localizedText}
+                id={pathName}
+                {...props}
+              />
             </Col>
           </Row>
         </Grid>

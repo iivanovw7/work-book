@@ -43,15 +43,13 @@ const Search = (props) => {
               </StyledSideBar>
             </Col>
             <Col xs={12} sm={12} md={9} lg={9}>
-              <section>
-                <SearchPostsByTag
-                  tag={pathName}
-                  locale={locale}
-                  text={localizedText}
-                  theme={theme}
-                  {...props}
-                />
-              </section>
+              <SearchPostsByTag
+                tag={pathName}
+                locale={locale}
+                text={localizedText}
+                theme={theme}
+                {...props}
+              />
             </Col>
           </Row>
         </Grid>

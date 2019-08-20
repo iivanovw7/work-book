@@ -12,7 +12,7 @@ const QueryTags = (props) => {
   return (
     <Query query={GET_TAGS}>
       {({ loading, error, data }) => {
-        if (loading) return <Spinner theme={theme} />;
+        if (loading) return <Spinner theme={theme} mgTop={0} />;
         if (error) return <p>Error!</p>;
         return <TagsCloud data={data} history={history} postTags={false} {...props} />;
       }}

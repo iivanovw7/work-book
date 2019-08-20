@@ -19,7 +19,7 @@ const SearchPostsByTag = (props) => {
       }]}
     >
       {({ loading, error, data }) => {
-        if (loading) return <Spinner theme={theme} />;
+        if (loading) return <Spinner theme={theme} mgTop={5} />;
         if (error) {
           return (
             <ErrorMessage

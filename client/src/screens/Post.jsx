@@ -47,14 +47,12 @@ const Post = (props) => {
               </StyledSideBar>
             </Col>
             <Col xs={12} sm={12} md={9} lg={9}>
-              <section>
-                <SwitchedPostComponent
-                  location={location}
-                  theme={theme}
-                  locale={locale}
-                  text={localizedText}
-                />
-              </section>
+              <SwitchedPostComponent
+                location={location}
+                theme={theme}
+                locale={locale}
+                text={localizedText}
+              />
             </Col>
           </Row>
         </Grid>

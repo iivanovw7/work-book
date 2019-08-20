@@ -68,7 +68,7 @@ export default Spinner;
 
 Spinner.propTypes = {
   theme: PropTypes.string.isRequired,
-  mgTop: PropTypes.string
+  mgTop: PropTypes.number
 };
 
 StyledSpinner.propTypes = {

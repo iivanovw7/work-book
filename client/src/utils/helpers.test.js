@@ -48,4 +48,20 @@ describe('Testing helpers: ', () => {
 
     expect(results).toEqual(['A', 'A', 'B', 'C', 'C']);
   });
+
+  it('Should run fromEstimationEnding() with minutes numbers and verify results', () => {
+    const text = localized.posts.estimates;
+
+    expect(helpers.fromEstimationEnding(0.2, 'eng')).toBe(text.less.eng);
+    expect(helpers.fromEstimationEnding(2, 'eng')).toBe(text.few.eng);
+    expect(helpers.fromEstimationEnding(224, 'eng')).toBe(text.many.eng);
+  });
+
+  it('Should run calculateReadingTime() with 0 text length and verify results', () => {
+    expect(helpers.calculateReadingTime(0, 'eng')).toEqual({
+      minutes: 0,
+      ending: helpers.fromEstimationEnding(0, 'eng')
+    });
+  });
+
 });

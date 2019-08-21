@@ -53,8 +53,15 @@ export function setLocale() {
 
 // Returns correct word ending for numbers
 export function declOfNum(number, titles) {
+  const text = localized.posts.estimates;
   const cases = [2, 0, 1, 1, 1, 2];
-  return titles[(number % 100 > 4 && number % 100 < 20) ? 2 : cases[(number % 10 < 5) ? number % 10 : 5]];
+
+  // If no titles passed - use ENG locale endings
+  const titlesArray = Array.isArray(titles)
+    ? titles
+    : [text.one.eng, text.few.eng, text.many.eng];
+
+  return titlesArray[(number % 100 > 4 && number % 100 < 20) ? 2 : cases[(number % 10 < 5) ? number % 10 : 5]];
 }
 
 // Forms estimated read time label text
@@ -66,6 +73,12 @@ export function fromEstimationEnding(minutes = 0, locale = 'eng') {
   return declOfNum(minutes, [text.one[locale], text.few[locale], text.many[locale]]);
 }
 
+/**
+ * Returns average reading time value in minutes with label text to be used in components
+ * @param length - Text length
+ * @param locale - Browser locale
+ * @returns {{ending: *, minutes: number}}
+ */
 export function calculateReadingTime(length = 0, locale = 'eng') {
   const minutes = Math.floor(Math.abs(length) / symbolsPerMinute);
 

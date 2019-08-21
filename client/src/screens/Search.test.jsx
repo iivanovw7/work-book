@@ -29,7 +29,7 @@ describe('Testing SEARCH screen: ', () => {
   afterAll(() => {
     jest.clearAllMocks();
   });
-
+  
   const props = {
     localizedText: testUtils.localizedText,
     location: {},

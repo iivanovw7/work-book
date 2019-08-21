@@ -10,7 +10,7 @@ const TagsCloud = (props) => {
   const {
     data, postTags, history, theme
   } = props;
-  const tags = postTags ? utils.words(data.getPost.tags[0]) : data.getTags;
+  const tags = postTags ? utils.words(data.getPost.tags[0], ',') : data.getTags;
 
   return (tags.map((tag) => {
     const colorIndex = utils.getRandomInt(0, colorScheme.tagBtnBgColors.length);

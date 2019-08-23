@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 import styled, { ThemeProvider } from 'styled-components';
 import { opacify } from 'polished';
-import { ErrorMessage } from '../../elements/errorMessage';
+import ErrorMessage from '../../elements/errorMessage';
 import Button from '../../elements/UI/Button';
 import * as utils from '../../utils';
 import { backgroundColorInverse, textColorInverse, linkColor } from '../../theme';

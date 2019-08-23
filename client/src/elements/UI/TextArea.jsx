@@ -23,7 +23,7 @@ const StyledLabel = styled.label`
   margin-top: 2em;
 `;
 
-export const Textarea = (props) => {
+const TextArea = (props) => {
   const inputRef = React.createRef();
   const {
     label, validate, id, type, rows
@@ -46,10 +46,12 @@ export const Textarea = (props) => {
   );
 };
 
-Textarea.propTypes = {
+TextArea.propTypes = {
   label: PropTypes.string.isRequired,
   validate: PropTypes.string,
   id: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   rows: PropTypes.number.isRequired
 };
+
+export default TextArea;

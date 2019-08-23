@@ -3,7 +3,7 @@ import React from 'react';
 import { Query } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 import SearchList from '../components/Search/SearchList';
-import { ErrorMessage } from '../elements/errorMessage';
+import ErrorMessage from '../elements/errorMessage';
 import { FIND_POSTS_BY_TAG } from '../graphql/queries';
 import Spinner from '../elements/UI/Spinner';
 

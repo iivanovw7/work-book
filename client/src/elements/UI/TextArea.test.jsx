@@ -2,11 +2,11 @@ import 'cross-fetch/polyfill';
 import 'jsdom-global/register';
 import React from 'react';
 import { mount } from 'enzyme';
-import Input from './Input';
+import TextArea from './TextArea';
 
 jest.mock('../../config/apiURL', () => () => '/api');
 
-describe('Testing Input component', () => {
+describe('Testing TextArea component', () => {
   afterAll(() => {
     jest.clearAllMocks();
   });
@@ -15,11 +15,12 @@ describe('Testing Input component', () => {
     label: 'label',
     validate: 'validate',
     type: 'type',
-    id: '1'
+    id: '1',
+    rows: 1
   };
 
   const Composition = () => (
-    <Input userAccess {...props} />
+    <TextArea userAccess {...props} />
   );
 
   it('Should match snapshot', () => {
@@ -32,7 +33,7 @@ describe('Testing Input component', () => {
     const component = mount(<Composition />);
 
     expect(component.find('span')).toHaveLength(1);
-    expect(component.find('input')).toHaveLength(1);
+    expect(component.find('textarea')).toHaveLength(1);
     expect(component.find('label')).toHaveLength(1);
 
     expect(component.find('span').text()).toBe('validate');

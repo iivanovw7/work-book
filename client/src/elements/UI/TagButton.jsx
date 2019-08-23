@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { ripples } from '../../styles';
+/* eslint react/require-default-props: 0 */
 
 const StyledWrapper = styled.div`
 	display: flex;

@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 
 const globalConfigPath = path.join(__dirname, 'globalConfig.json');
-
+/* eslint no-underscore-dangle: 0 */
 
 class MongoEnvironment extends NodeEnvironment {
   constructor(config) {

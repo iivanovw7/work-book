@@ -4,6 +4,6 @@ module.exports = {
 	testEnvironment: 'node',
 	setupFilesAfterEnv: ['<rootDir>src/setupTests.js'],
   moduleNameMapper: {
-    '\\.svg': '@svgr/webpack'
+    '\\.svg': '<rootDir>src/__mocks__/svgrMock.jsx'
   }
 };

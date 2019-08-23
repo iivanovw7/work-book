@@ -24,12 +24,15 @@ jest.mock('../components/SideBar/SideBar', () => () => (
 jest.mock('../queryBlocks/SearchByTag', () => () => (
   <div id="SearchByTag" />
 ));
+jest.mock('../elements/UI/TagButton', () => () => (
+  <div id="TagButton" />
+));
 
 describe('Testing SEARCH screen: ', () => {
   afterAll(() => {
     jest.clearAllMocks();
   });
-  
+
   const props = {
     localizedText: testUtils.localizedText,
     location: {},

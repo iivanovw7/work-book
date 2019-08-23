@@ -1,9 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import {
-  btnBackground, btnLighten, textColor, textColorLighten
-} from '../../theme';
+import { textColor, textColorLighten } from '../../theme';
 /* eslint react/require-default-props: 0 */
 
 const StyledTextLink = styled.a`

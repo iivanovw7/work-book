@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Mutation, Query } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
-import Spinner from '../elements/UI/Spinner';
 import { UPDATE_POST } from '../graphql/mutations';
 import { GET_POST } from '../graphql/queries';
-import { ErrorMessage } from '../elements/errorMessage';
-import { PostForm } from '../components/Post/PostForm';
+import Spinner from '../elements/UI/Spinner';
+import ErrorMessage from '../elements/errorMessage';
+import PostForm from '../components/Post/PostForm';
 
 const UpdatePost = (props) => {
   const { id, history, theme } = props;

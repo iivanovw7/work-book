@@ -2,24 +2,24 @@ import 'cross-fetch/polyfill';
 import 'jsdom-global/register';
 import React from 'react';
 import { mount } from 'enzyme';
-import Input from './Input';
+import Number from './Number';
 
 jest.mock('../../config/apiURL', () => () => '/api');
 
-describe('Testing Input component', () => {
+describe('Testing Number component', () => {
   afterAll(() => {
     jest.clearAllMocks();
   });
 
   const props = {
     label: 'label',
-    validate: 'validate',
-    type: 'type',
-    id: '1'
+    theme: 'dark',
+    variant: 'primary',
+    value: 1
   };
 
   const Composition = () => (
-    <Input userAccess {...props} />
+    <Number userAccess {...props} />
   );
 
   it('Should match snapshot', () => {
@@ -32,10 +32,13 @@ describe('Testing Input component', () => {
     const component = mount(<Composition />);
 
     expect(component.find('span')).toHaveLength(1);
-    expect(component.find('input')).toHaveLength(1);
-    expect(component.find('label')).toHaveLength(1);
+    expect(component.find('span').text()).toBe('1');
+  });
 
-    expect(component.find('span').text()).toBe('validate');
-    expect(component.find('label').text()).toBe('label  validate');
+  it('Should render with correct props', () => {
+    const component = mount(<Composition />);
+
+    expect(component.find(Number).prop('value')).toBe(1);
+    expect(component.find(Number).prop('variant')).toBe('primary');
   });
 });

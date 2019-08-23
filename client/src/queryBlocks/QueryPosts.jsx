@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Query } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
-import { ErrorMessage } from '../elements/errorMessage';
+import ErrorMessage from '../elements/errorMessage';
 import { GET_POSTS } from '../graphql/queries';
 import PostsList from '../components/Posts/PostsList';
 import Spinner from '../elements/UI/Spinner';

@@ -5,7 +5,7 @@ import { Col, Row } from 'react-styled-flexboxgrid';
 import styled, { ThemeProvider } from 'styled-components';
 import validate from 'validate.js';
 import Button from '../../elements/UI/Button';
-import { Input } from '../../elements/UI/Input';
+import Input from '../../elements/UI/Input';
 import * as utils from '../../utils';
 import { textColor, backgroundColorDarken } from '../../theme';
 

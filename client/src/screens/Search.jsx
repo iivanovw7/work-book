@@ -5,8 +5,8 @@ import { Col, Grid, Row } from 'react-styled-flexboxgrid';
 import useStoreon from 'storeon/react';
 import styled, { ThemeProvider } from 'styled-components';
 import SearchPostsByTag from '../queryBlocks/SearchByTag';
-import MobileNavBar from '../components/MobileNavBar/MobileNavbar';
-import SideBar from '../components/SideBar/SideBar';
+import MobileNavBar from '../components/Navigation/MobileNavbar';
+import SideBar from '../components/Navigation/SideBar';
 import TopBar from '../components/TopBar/TopBar';
 import { backgroundColor, textColor } from '../theme';
 /* eslint react/require-default-props: 0 */
@@ -39,7 +39,14 @@ const Search = (props) => {
           <Row>
             <Col xs={12} sm={12} md={3} lg={3}>
               <StyledSideBar>
-                <SideBar theme={theme} locale={locale} text={localizedText} onlyMobile={false} {...props} />
+                <SideBar
+                  theme={theme}
+                  locale={locale}
+                  location={location}
+                  text={localizedText}
+                  onlyMobile={false}
+                  {...props}
+                />
               </StyledSideBar>
             </Col>
             <Col xs={12} sm={12} md={9} lg={9}>

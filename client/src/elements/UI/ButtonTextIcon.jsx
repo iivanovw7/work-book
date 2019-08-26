@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { ripples } from '../../styles';
-import { textColor, textColorLighten } from '../../theme';
+import { textColor, textColorLighten, btnBackground } from '../../theme';
 /* eslint react/require-default-props: 0 */
 
 const StyledIconButton = styled.button`
@@ -11,11 +11,12 @@ const StyledIconButton = styled.button`
   flex-wrap: nowrap;
   padding: ${props => props.padding};
   text-align: center;
-  flex-direction: column;
-  color: ${textColor};
+  border-radius: ${props => props.borderRadius};
+  flex-direction: ${props => props.direction};
+  color: ${btnBackground};
   align-items: center;
   border: none;
-  max-width: 48px;
+  max-width: 100%;
   width: 100%;
   background: none;
   text-decoration: none;
@@ -34,21 +35,35 @@ const StyledIconButton = styled.button`
     outline: none;
   }
   
- 
+  span:first-of-type {
+      margin-left: 0.6em;
+  }
+  
+  &.mobile {
+    max-width: 48px;
+    color: ${textColor};
+    
+    span:first-of-type {
+      margin-left: 0em;
+    }
+  }
 `;
 
 const ButtonTextIcon = (props) => {
   const {
-    icon, variant, handleClick, text, theme, padding, fontSize
+    icon, variant, handleClick, text, theme, padding, fontSize, direction, borderRadius, className
   } = props;
 
   return (
     <ThemeProvider theme={{ mode: theme }}>
       <StyledIconButton
+        className={className}
         variant={variant}
         onClick={handleClick}
         padding={padding}
         fontSize={fontSize}
+        direction={direction}
+        borderRadius={borderRadius}
       >
         <i className="material-icons">
           {icon}
@@ -76,7 +91,10 @@ ButtonTextIcon.propTypes = {
   theme: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   fontSize: PropTypes.string.isRequired,
-  padding: PropTypes.string.isRequired
+  padding: PropTypes.string.isRequired,
+  direction: PropTypes.string.isRequired,
+  borderRadius: PropTypes.string.isRequired,
+  className: PropTypes.string
 };
 
 export default ButtonTextIcon;

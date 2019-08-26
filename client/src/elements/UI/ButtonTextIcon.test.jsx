@@ -20,7 +20,9 @@ describe('Testing ButtonTextIcon component', () => {
     variant: 'primary',
     icon: 'icon',
     fontSize: '10',
-    padding: '12'
+    padding: '12',
+    borderRadius: '12',
+    direction: 'column'
   };
 
   const Composition = () => (

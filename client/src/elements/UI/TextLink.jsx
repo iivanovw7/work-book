@@ -1,15 +1,15 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import { textColor, textColorLighten } from '../../theme';
+import { textLinkColor, textLinkColorLighten } from '../../theme';
 /* eslint react/require-default-props: 0 */
 
 const StyledTextLink = styled.a`
-  color: ${textColor};
+  color: ${textLinkColor};
   text-decoration: none;
   
   &:hover {
-    color: ${textColorLighten};
+    color: ${textLinkColorLighten};
     transition: all 0.2s ease-in-out;
     user-select: none;
     cursor: pointer;

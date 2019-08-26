@@ -1,3 +1,4 @@
+// Pages list available for guest users, used in storeon
 export const PAGES = [
   {
     title: {
@@ -12,3 +13,5 @@ export const PAGES = [
     icon: 'home'
   }
 ];
+
+// Pages list available for admin, used in storeon

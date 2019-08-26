@@ -11,6 +11,12 @@ import NoMatchRoute from './components/noMatchRoute';
 jest.mock('./config/apiURL', () => () => '/api');
 jest.mock('./utils');
 jest.mock('storeon/react', () => jest.fn());
+jest.mock('./assets/img/dark.png', () => (
+  <img id="dark" alt="dark" />
+));
+jest.mock('./assets/img/light.png', () => (
+  <img id="light" alt="light" />
+));
 jest.mock('./screens/Posts', () => () => (
   <div id="Posts" />
 ));

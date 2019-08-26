@@ -1,7 +1,7 @@
-import { opacify } from 'polished';
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
+import { opacify } from 'polished';
 import Button from '../../elements/UI/Button';
 import Input from '../../elements/UI/Input';
 import TextArea from '../../elements/UI/TextArea';

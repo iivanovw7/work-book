@@ -70,7 +70,7 @@ const PostsList = (props) => {
             <TextLink
               theme={theme}
               text={post.title}
-              variant="primary"
+              variant="secondary"
               link="/"
               handleClick={(e) => {
                 e.preventDefault();
@@ -78,7 +78,7 @@ const PostsList = (props) => {
               }}
             />
           </h2>
-          <h3>{post.subject}</h3>
+          <h4>{post.subject}</h4>
           <Number
             variant="primary"
             value={est.minutes}

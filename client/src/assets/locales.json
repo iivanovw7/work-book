@@ -105,7 +105,25 @@
 				"eng": "minutes read",
 				"rus": "минуты"
 			}
-		}
+		},
+    "create": {
+      "title": {
+        "eng": "Title",
+        "rus": "Название"
+      },
+      "subject": {
+        "eng": "Subject",
+        "rus": "Тема"
+      },
+      "textArea": {
+        "eng": "Post text",
+        "rus": "Текст"
+      },
+      "tags": {
+        "eng": "Tags",
+        "rus": "Тэги"
+      }
+    }
 	},
 	"search": {
 		"query": {

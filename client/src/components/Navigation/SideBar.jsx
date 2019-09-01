@@ -5,6 +5,7 @@ import useStoreon from 'storeon/react';
 import { opacify } from 'polished';
 import styled, { ThemeProvider } from 'styled-components';
 import { mdOffset } from '../../config';
+import * as utils from '../../utils';
 import QueryTags from '../../queryBlocks/QueryTags';
 import Switch from '../../elements/UI/Switch';
 import NavigationLink from '../../elements/UI/NavigationLink';
@@ -54,7 +55,7 @@ const SideBar = (props) => {
     direction: 'row',
     variant: 'primary',
     padding: '0.5em',
-    radius: '0.5em',
+    radius: '0.3em',
     fontSize: '0.9em'
   };
 
@@ -63,30 +64,16 @@ const SideBar = (props) => {
       <SideBarWrapper>
         <StyledContentBlock onlyMobile={onlyMobile} mobile>
           {pages.map(page => (
-            <NavigationLink
-              key={page.url}
-              link={page.url}
-              icon={page.icon}
-              text={page.mobTitle[locale]}
-              {...baseConfig}
-            />
+            utils.setNavLinkAccess(page.isPublic, userAccess) && (
+              <NavigationLink
+                key={page.url}
+                link={page.localeName === 'profile' ? `/user/${user._id}` : page.url}
+                icon={page.icon}
+                text={text.navigation[page.localeName][locale]}
+                {...baseConfig}
+              />
+            )
           ))}
-          {userAccess && (
-            <NavigationLink
-              link={`/user/${user._id}`}
-              icon="account_box"
-              text={text.navigation.profile[locale]}
-              {...baseConfig}
-            />
-          )}
-          {userAccess && (
-            <NavigationLink
-              link="/posts/new"
-              icon="add_box"
-              text={text.navigation.addPost[locale]}
-              {...baseConfig}
-            />
-          )}
           {userAccess && (
             <ButtonTextIcon
               link="/"

@@ -21,7 +21,7 @@ const StyledLinkIcon = styled(NavLink)
   text-align: center;
   max-width: 100%;
   width: 100%;
-  border-radius: ${props => props.borderRadius};
+  border-radius: ${props => props.radius};
   flex-direction: ${props => props.direction};
   
   align-items: center;
@@ -34,6 +34,11 @@ const StyledLinkIcon = styled(NavLink)
     	transition: all 0.2s ease-in-out;
     	user-select: none;
     	cursor: pointer;
+    	outline: none;
+  }
+  
+  &:focus {
+    outline: none;
   }
   
   &.${activeClassName} {

@@ -87,3 +87,14 @@ export function calculateReadingTime(length = 0, locale = 'eng') {
     ending: fromEstimationEnding(minutes, locale)
   };
 }
+
+/**
+ * Returns true is page link should be displayed (page is public or user is authenticated)
+ *
+ * @param {boolean}pageIsPublic
+ * @param {boolean}userAccess
+ * @returns {boolean|*}
+ */
+export function setNavLinkAccess(pageIsPublic, userAccess) {
+  return ((!pageIsPublic && userAccess) || pageIsPublic);
+}

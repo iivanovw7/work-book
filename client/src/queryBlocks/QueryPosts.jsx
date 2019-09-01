@@ -8,7 +8,7 @@ import PostsList from '../components/Posts/PostsList';
 import Spinner from '../elements/UI/Spinner';
 
 const QueryPosts = props => (
-  <Query query={GET_POSTS}>
+  <Query query={GET_POSTS} fetchPolicy="network-only">
     {({ loading, error, data }) => {
       if (loading) return <Spinner theme={props.theme} mgTop={5} />;
       if (error) {

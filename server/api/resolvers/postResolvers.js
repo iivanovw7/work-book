@@ -71,7 +71,8 @@ export const postResolvers = {
         text: args.text,
         title: args.title,
         tags: args.tags,
-        author: context.user._id
+        author: context.user._id,
+        created: Date.now()
       };
       const post = await Post.create(newPost).catch(e => e.message);
       if (post) {
@@ -100,7 +101,8 @@ export const postResolvers = {
         title: args.title,
         tags: args.tags,
         author: context.user._id,
-        published: args.published
+        published: args.published,
+        created: Date.now()
       };
       const post = await Post.findOneAndUpdate(
         { _id: args._id },

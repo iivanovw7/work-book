@@ -12,7 +12,7 @@ jest.mock('storeon/react', () => () => ({
   locale: 'eng',
   theme: 'dark'
 }));
-jest.mock('../components/TopBar/TopBar', () => () => (
+jest.mock('../components/Navigation/TopBar', () => () => (
   <div id="topbar" />
 ));
 jest.mock('../components/Login/LoginForm', () => () => (

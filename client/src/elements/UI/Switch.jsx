@@ -67,7 +67,7 @@ const Slider = styled.div`
   }
 `;
 
-const StyledDiv = styled.div`
+export const StyledDiv = styled.div`
     z-index: 2;
     display: ${props => (props.themeSwitch ? 'block' : 'none')};
     position: absolute;
@@ -93,6 +93,7 @@ const Switch = (props) => {
         <HiddenCheckbox onChange={handleChange} checked={checked} />
         <Slider />
         <StyledDiv
+          id="switchImgContainer"
           themeSwitch={themeSwitch}
           img={checked ? ImageDark : ImageLight}
           checked={checked}

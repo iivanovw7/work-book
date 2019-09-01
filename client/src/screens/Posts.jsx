@@ -7,7 +7,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import QueryPosts from '../queryBlocks/QueryPosts';
 import MobileNavBar from '../components/Navigation/MobileNavbar';
 import SideBar from '../components/Navigation/SideBar';
-import TopBar from '../components/TopBar/TopBar';
+import TopBar from '../components/Navigation/TopBar';
 import { backgroundColor, textColor } from '../theme';
 /* eslint react/require-default-props: 0 */
 /* eslint no-underscore-dangle: 0 */

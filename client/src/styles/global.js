@@ -1,18 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
-import { stylesConfig, mdOffset } from '../config';
+import { stylesConfig, mdOffset, typography } from '../config';
 
-const typography = {
-
-  // Font weights
-  light: 100,
-  regular: 300,
-  bold: 600,
-
-  // Font family
-  baseFontFamily: 'Nunito Sans, sans-serif',
-  timeDatesFontFamily: 'Inconsolata, monospace'
-
-};
 
 /**
  * Styles applied globally, for all themes and ui variants

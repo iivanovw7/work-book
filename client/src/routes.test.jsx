@@ -25,7 +25,8 @@ jest.mock('./screens/Posts', () => () => (
 useStoreon.mockImplementation(() => ({
   locale: 'eng',
   theme: 'dark',
-  localizedText: testUtils.localizedText
+  localizedText: testUtils.localizedText,
+  tags: 'tags,tags'
 }));
 
 describe('Testing routes', () => {

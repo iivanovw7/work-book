@@ -14,6 +14,7 @@ const SearchPostsByTag = (props) => {
     <Query
       query={FIND_POSTS_BY_TAG}
       variables={{ tag }}
+      fetchPolicy="network-only"
       refetchQueries={() => [{
         query: FIND_POSTS_BY_TAG
       }]}

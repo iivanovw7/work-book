@@ -13,6 +13,11 @@ const StyledTextLink = styled.a`
     transition: all 0.2s ease-in-out;
     user-select: none;
     cursor: pointer;
+    outline: none;
+  }
+  
+  &:focus {
+    outline: none;
   }
   
 `;

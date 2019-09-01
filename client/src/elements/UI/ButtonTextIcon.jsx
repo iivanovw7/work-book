@@ -11,7 +11,7 @@ const StyledIconButton = styled.button`
   flex-wrap: nowrap;
   padding: ${props => props.padding};
   text-align: center;
-  border-radius: ${props => props.borderRadius};
+  border-radius: ${props => props.radius};
   flex-direction: ${props => props.direction};
   color: ${btnBackground};
   align-items: center;
@@ -29,6 +29,7 @@ const StyledIconButton = styled.button`
     transition: all 0.2s ease-in-out;
     user-select: none;
     cursor: pointer;
+    outline: none;
   }
   
   &:focus {
@@ -51,7 +52,7 @@ const StyledIconButton = styled.button`
 
 const ButtonTextIcon = (props) => {
   const {
-    icon, variant, handleClick, text, theme, padding, fontSize, direction, borderRadius, className
+    icon, variant, handleClick, text, theme, padding, fontSize, direction, className, radius
   } = props;
 
   return (
@@ -63,7 +64,7 @@ const ButtonTextIcon = (props) => {
         padding={padding}
         fontSize={fontSize}
         direction={direction}
-        borderRadius={borderRadius}
+        radius={radius}
       >
         <i className="material-icons">
           {icon}
@@ -93,7 +94,6 @@ ButtonTextIcon.propTypes = {
   fontSize: PropTypes.string.isRequired,
   padding: PropTypes.string.isRequired,
   direction: PropTypes.string.isRequired,
-  borderRadius: PropTypes.string.isRequired,
   className: PropTypes.string
 };
 

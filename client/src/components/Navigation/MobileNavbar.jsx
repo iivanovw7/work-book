@@ -4,6 +4,7 @@ import React from 'react';
 import useStoreon from 'storeon/react';
 import styled, { ThemeProvider } from 'styled-components';
 import { stylesConfig } from '../../config';
+import * as utils from '../../utils';
 import ButtonTextIcon from '../../elements/UI/ButtonTextIcon';
 import NavigationLink from '../../elements/UI/NavigationLink';
 import { appBarColor } from '../../theme';
@@ -36,7 +37,7 @@ const MobileNavBar = (props) => {
     direction: 'column',
     variant: 'primary',
     padding: '0.5em',
-    radius: '0.5em',
+    radius: '0.3em',
     fontSize: '0.9em'
   };
 
@@ -44,33 +45,17 @@ const MobileNavBar = (props) => {
     <ThemeProvider theme={{ mode: theme }}>
       <NavBarWrapper>
         {pages.map(page => (
-          <NavigationLink
-            className="mobile"
-            key={page.url}
-            link={page.url}
-            icon={page.icon}
-            text={page.mobTitle[locale]}
-            {...baseConfig}
-          />
+          utils.setNavLinkAccess(page.isPublic, userAccess) && (
+            <NavigationLink
+              className="mobile"
+              key={page.url}
+              link={page.localeName === 'profile' ? `/user/${user._id}` : page.url}
+              icon={page.icon}
+              text={text.navigation[page.localeName][locale]}
+              {...baseConfig}
+            />
+          )
         ))}
-        {userAccess && (
-          <NavigationLink
-            className="mobile"
-            link={`/user/${user._id}`}
-            icon="account_box"
-            text={text.navigation.profile[locale]}
-            {...baseConfig}
-          />
-        )}
-        {userAccess && (
-          <NavigationLink
-            className="mobile"
-            link="/posts/new"
-            icon="add_box"
-            text={text.navigation.addPost[locale]}
-            {...baseConfig}
-          />
-        )}
         {userAccess && (
           <ButtonTextIcon
             link="/"

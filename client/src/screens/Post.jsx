@@ -6,7 +6,7 @@ import { Col, Grid, Row } from 'react-styled-flexboxgrid';
 import styled, { ThemeProvider } from 'styled-components';
 import SwitchedPostComponent from '../utils/postHelpers';
 import MobileNavBar from '../components/Navigation/MobileNavbar';
-import TopBar from '../components/TopBar/TopBar';
+import TopBar from '../components/Navigation/TopBar';
 import { backgroundColor, textColor } from '../theme';
 import SideBar from '../components/Navigation/SideBar';
 /* eslint react/require-default-props: 0 */

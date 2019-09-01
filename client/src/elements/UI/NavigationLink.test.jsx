@@ -22,7 +22,8 @@ describe('Testing NavigationLink component', () => {
     direction: 'direction',
     padding: '10',
     fontSize: '12',
-    radius: '5'
+    radius: '5',
+    tags: 'tags,tags'
   };
 
   const Composition = () => (

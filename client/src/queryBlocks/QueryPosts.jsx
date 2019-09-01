@@ -2,13 +2,13 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Query } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
-import { ErrorMessage } from '../elements/errorMessage';
+import ErrorMessage from '../elements/errorMessage';
 import { GET_POSTS } from '../graphql/queries';
 import PostsList from '../components/Posts/PostsList';
 import Spinner from '../elements/UI/Spinner';
 
 const QueryPosts = props => (
-  <Query query={GET_POSTS}>
+  <Query query={GET_POSTS} fetchPolicy="network-only">
     {({ loading, error, data }) => {
       if (loading) return <Spinner theme={props.theme} mgTop={5} />;
       if (error) {

@@ -22,7 +22,7 @@ const StyledLabel = styled.label`
   margin-top: 2em;
 `;
 
-export const Input = (props) => {
+const Input = (props) => {
   const inputRef = React.createRef();
   const {
     label, validate, id, type
@@ -50,3 +50,5 @@ Input.propTypes = {
   id: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired
 };
+
+export default Input;

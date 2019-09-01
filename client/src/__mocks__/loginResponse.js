@@ -1,4 +1,5 @@
 export const loginResponse = {
+  // eslint-disable-next-line max-len
   jwt: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZDA1ZmY0YTMyM2ZjNDZjMmE4YWMxNzUiLCJpZCI6IjVkMDVmZjRhMzIzZmM0NmMyYThhYzE3NSIsImlhdCI6MTU2MTAzMTk4MiwiZXhwIjoxNTYzNjIzOTgyfQ.ldBlLabhjPJg3-TwvuE5MwfMnhLRk7lbBm22KNfV4ws',
   user: {
     _id: '5d05ff4a323fc46c2a8ac175',

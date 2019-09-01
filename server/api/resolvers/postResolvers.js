@@ -14,6 +14,12 @@ export const postResolvers = {
     getPost: async (_, args) => Post.findOne({ _id: args._id })
       .exec(),
 
+    /**
+     * Finds single Posts by Tag string, returns
+     *
+     * @param {string} args.tag
+     * @returns {Promise<Query>}
+     */
     findPostsByTag: async (_, args) => {
       // From search query parameters
       const query = { tags: { $regex: args.tag, $options: 'i' } };
@@ -23,6 +29,10 @@ export const postResolvers = {
         .exec();
     },
 
+    /**
+     * Collects all tags from all Posts, removes duplicates and returns new array of Tags
+     * @returns {Promise<Array|*[]>}
+     */
     getTags: async () => {
       const tags = [];
       const queryTags = await Post.find({})
@@ -43,6 +53,17 @@ export const postResolvers = {
 
   Mutation: {
 
+    /**
+     * Creates new Post object, if something was created - returns new post
+     *
+     * @param {string} args.tags
+     * @param {string} args.subject
+     * @param {string} args.title
+     * @param {string} args.text
+     * @param {object} context.user
+     *
+     * @returns {Promise<Array|any>}
+     */
     addPost: async (_, args, context) => {
       if (!context.user) return [];
       const newPost = {
@@ -50,7 +71,8 @@ export const postResolvers = {
         text: args.text,
         title: args.title,
         tags: args.tags,
-        author: context.user._id
+        author: context.user._id,
+        created: Date.now()
       };
       const post = await Post.create(newPost).catch(e => e.message);
       if (post) {
@@ -59,6 +81,18 @@ export const postResolvers = {
       return [];
     },
 
+    /**
+     * Updates certain fields in Post object, if successful - returns modified Post
+     * @param {string} args._id
+     * @param {string} args.tags
+     * @param {string} args.subject
+     * @param {string} args.title
+     * @param {string} args.text
+     * @param {string} args.published
+     * @param {object} context.user
+     *
+     * @returns {Promise<Array|any>}
+     */
     updatePost: async (_, args, context) => {
       if (!context.user) return [];
       const set = {
@@ -67,7 +101,8 @@ export const postResolvers = {
         title: args.title,
         tags: args.tags,
         author: context.user._id,
-        published: args.published
+        published: args.published,
+        created: Date.now()
       };
       const post = await Post.findOneAndUpdate(
         { _id: args._id },
@@ -82,6 +117,11 @@ export const postResolvers = {
       return [];
     },
 
+    /**
+     * Removes single post from database by id, if successful - returns removed post if not - returns empty array
+     * @param {string} args._id
+     * @returns {Promise<Array|any>}
+     */
     deletePost: async (_, args, context) => {
       if (!context.user) return [];
 

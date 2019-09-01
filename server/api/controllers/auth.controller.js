@@ -5,6 +5,15 @@ import { checkAccess } from '../utils';
 /* eslint indent:0 */
 /* eslint no-underscore-dangle: 0 */
 
+/**
+ * Login user function, finds username in db and compares hashed password provided in request.
+ * In case user was found and password is correct - returns new JWT token.
+ *
+ * @param {string} req.body.email
+ * @param {string} req.body.password
+ *
+ * @returns {Promise<*|Response|void>}
+ */
 const login = async (req, res) => {
   const user = await User.findOne({ email: req.body.email }).catch((e) => {
     res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
@@ -34,6 +43,14 @@ const login = async (req, res) => {
   });
 };
 
+/**
+ * Verifies provided user token
+ *
+ * @param {string} req.query.token
+ * @param {string} req.headers.token
+ *
+ * @returns {Promise<*>}
+ */
 const checkToken = async (req, res) => {
   const user = await checkAccess(req);
   return res.json({

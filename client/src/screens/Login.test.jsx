@@ -1,6 +1,6 @@
-import React from 'react';
 import 'cross-fetch/polyfill';
 import 'jsdom-global/register';
+import React from 'react';
 import { mount } from 'enzyme';
 import { MemoryRouter } from 'react-router-dom';
 import * as testUtils from '../testUtils';
@@ -12,7 +12,7 @@ jest.mock('storeon/react', () => () => ({
   locale: 'eng',
   theme: 'dark'
 }));
-jest.mock('../components/TopBar/TopBar', () => () => (
+jest.mock('../components/Navigation/TopBar', () => () => (
   <div id="topbar" />
 ));
 jest.mock('../components/Login/LoginForm', () => () => (

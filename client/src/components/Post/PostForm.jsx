@@ -1,11 +1,12 @@
-import { opacify } from 'polished';
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
+import { opacify } from 'polished';
 import Button from '../../elements/UI/Button';
-import { Input } from '../../elements/UI/Input';
-import { Textarea } from '../../elements/UI/Textarea';
+import Input from '../../elements/UI/Input';
+import TextArea from '../../elements/UI/TextArea';
 import { useInput } from '../../utils/useInputHook';
+import PostStyleGuide from './PostStyleGuide';
 /* eslint no-underscore-dangle: 0 */
 /* eslint react/require-default-props: 0 */
 
@@ -36,7 +37,7 @@ const ButtonsContainer = styled.div`
 `;
 
 
-export const PostForm = (props) => {
+const PostForm = (props) => {
   const {
     history, addPost, updatePost, data, theme, locale, text
   } = props;
@@ -72,15 +73,42 @@ export const PostForm = (props) => {
 
   return (
     <StyledForm onSubmit={handleSubmit}>
-      <Input id="Title" type="text" label="Title" {...bindTitle} />
-      <Input id="Subject" type="text" label="Subject" {...bindSubject} />
-      <Textarea id="Text" type="text" label="Text" rows={40} {...bindPostText} />
-      <Input id="Tags" type="text" label="Tags" {...bindTags} />
+      <Input
+        id={text.posts.create.title[locale]}
+        type="text"
+        label={text.posts.create.title[locale]}
+        {...bindTitle}
+      />
+      <Input
+        id={text.posts.create.subject[locale]}
+        type="text"
+        label={text.posts.create.subject[locale]}
+        {...bindSubject}
+      />
+      <PostStyleGuide
+        theme={theme}
+        locale={locale}
+        variant="primary"
+      />
+      <TextArea
+        id={text.posts.create.textArea[locale]}
+        type="text"
+        label={text.posts.create.textArea[locale]}
+        rows={40}
+        {...bindPostText}
+      />
+      <Input
+        id={text.posts.create.tags[locale]}
+        type="text"
+        label={text.posts.create.tags[locale]}
+        {...bindTags}
+      />
       <ButtonsContainer>
         <Button
           text={text.navigation.back[locale]}
           theme={theme}
           variant="primary"
+          maxWidth="7em"
           handleClick={() => {
             history.push('/');
           }}
@@ -89,6 +117,7 @@ export const PostForm = (props) => {
           text={text.navigation.save[locale]}
           variant="primary"
           theme={theme}
+          maxWidth="7em"
           type="submit"
           value="Submit"
         />
@@ -106,3 +135,5 @@ PostForm.propTypes = {
   locale: PropTypes.string.isRequired,
   text: PropTypes.object.isRequired
 };
+
+export default PostForm;

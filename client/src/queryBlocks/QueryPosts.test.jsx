@@ -8,13 +8,13 @@ import { MockedProvider } from 'react-apollo/test-utils';
 import * as mocks from '../__mocks__';
 import * as testUtils from '../testUtils';
 import QueryPosts from './QueryPosts';
-// import 'babel-polyfill';
 
 jest.mock('../config/apiURL', () => () => '/api');
 
 jest.mock('../elements/UI/Button', () => () => (
   <div id="Button" />
 ));
+
 
 describe('Testing QueryPosts() graphql query: ', () => {
   afterAll(() => {

@@ -30,6 +30,7 @@ const DeletePost = (props) => {
             variant="alert"
             text={text.navigation.delete[locale]}
             theme={theme}
+            maxWidth="7em"
             handleClick={() => {
               deletePost({
                 variables: {

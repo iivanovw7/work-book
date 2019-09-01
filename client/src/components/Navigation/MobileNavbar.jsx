@@ -4,6 +4,7 @@ import React from 'react';
 import useStoreon from 'storeon/react';
 import styled, { ThemeProvider } from 'styled-components';
 import { stylesConfig } from '../../config';
+import * as utils from '../../utils';
 import ButtonTextIcon from '../../elements/UI/ButtonTextIcon';
 import NavigationLink from '../../elements/UI/NavigationLink';
 import { appBarColor } from '../../theme';
@@ -26,16 +27,17 @@ const NavBarWrapper = styled.nav`
 
 const MobileNavBar = (props) => {
   const {
-    history, userAccess, user, location, text, locale, theme
+    history, userAccess, user, text, locale, theme
   } = props;
   const { dispatch, pages } = useStoreon('pages');
 
   // Base NavBar UI configuration
   const baseConfig = {
+    theme,
     direction: 'column',
     variant: 'primary',
     padding: '0.5em',
-    radius: '0.5em',
+    radius: '0.3em',
     fontSize: '0.9em'
   };
 
@@ -43,41 +45,22 @@ const MobileNavBar = (props) => {
     <ThemeProvider theme={{ mode: theme }}>
       <NavBarWrapper>
         {pages.map(page => (
-          <NavigationLink
-            key={page.url}
-            link={page.url}
-            icon={page.icon}
-            text={page.mobTitle[locale]}
-            highlight={location.pathname === page.url}
-            theme={theme}
-            {...baseConfig}
-          />
+          utils.setNavLinkAccess(page.isPublic, userAccess) && (
+            <NavigationLink
+              className="mobile"
+              key={page.url}
+              link={page.localeName === 'profile' ? `/user/${user._id}` : page.url}
+              icon={page.icon}
+              text={text.navigation[page.localeName][locale]}
+              {...baseConfig}
+            />
+          )
         ))}
         {userAccess && (
-          <NavigationLink
-            link={`/user/${user._id}`}
-            icon="account_box"
-            text={text.navigation.profile[locale]}
-            theme={theme}
-            highlight={location.pathname === `/user/${user._id}`}
-            {...baseConfig}
-          />
-        )}
-        {userAccess && (
-          <NavigationLink
-            link="/posts/new"
-            icon="add_box"
-            text={text.navigation.addPost[locale]}
-            theme={theme}
-            highlight={location.pathname === '/posts/new'}
-            {...baseConfig}
-          />
-        )}
-        {userAccess && (
           <ButtonTextIcon
-            theme={theme}
             link="/"
             icon="exit_to_app"
+            className="mobile"
             text={text.login.logoutButtonText[locale]}
             handleClick={(e) => {
               e.preventDefault();
@@ -88,23 +71,13 @@ const MobileNavBar = (props) => {
           />
         )}
         <ButtonTextIcon
-          theme={theme}
           link="/"
           icon="invert_colors"
+          className="mobile"
           text={text.navigation.theme[locale]}
           handleClick={(e) => {
             e.preventDefault();
             dispatch('switch');
-          }}
-          {...baseConfig}
-        />
-        <ButtonTextIcon
-          theme={theme}
-          icon="language"
-          text={text.locales[locale]}
-          handleClick={(e) => {
-            e.preventDefault();
-            dispatch('changeLocale');
           }}
           {...baseConfig}
         />

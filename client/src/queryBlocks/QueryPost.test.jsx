@@ -15,6 +15,7 @@ jest.mock('../elements/UI/Button', () => () => (
   <div id="Button" />
 ));
 
+
 describe('Testing QueryPost() graphql query: ', () => {
   afterAll(() => {
     jest.clearAllMocks();

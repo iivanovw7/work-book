@@ -5,9 +5,11 @@ import useStoreon from 'storeon/react';
 import { opacify } from 'polished';
 import styled, { ThemeProvider } from 'styled-components';
 import { mdOffset } from '../../config';
+import * as utils from '../../utils';
 import QueryTags from '../../queryBlocks/QueryTags';
-import Button from '../../elements/UI/Button';
-import LinkIcon from '../../elements/UI/LinkIcon';
+import Switch from '../../elements/UI/Switch';
+import NavigationLink from '../../elements/UI/NavigationLink';
+import ButtonTextIcon from '../../elements/UI/ButtonTextIcon';
 /* eslint react/require-default-props: 0 */
 /* eslint no-underscore-dangle: 0 */
 
@@ -18,6 +20,7 @@ const SideBarWrapper = styled.nav`
   	width: 19.5vw;
   	display: flex;
   	flex-direction: column;
+  	transition: all 0.2s ease-in-out;
   	
   	>div: first-of-type {
   		flex-direction: column
@@ -32,6 +35,7 @@ const StyledContentBlock = styled.div`
   	background-color: ${opacify('0.01', 'rgba(25, 0, 0, 0.1)')};
   	display: flex;
   	flex-wrap: wrap;
+  	transition: all 0.2s ease-in-out;
   	
   	@media screen and (max-width: ${mdOffset}rem) {
       display: ${props => (props.mobile || props.onlyMobile ? 'none' : 'flex')};
@@ -43,63 +47,55 @@ const SideBar = (props) => {
     history, userAccess, user, text, locale, onlyMobile
   } = props;
   const { theme, dispatch } = useStoreon('theme');
+  const { pages } = useStoreon('pages');
+
+  // Base NavBar UI configuration
+  const baseConfig = {
+    theme,
+    direction: 'row',
+    variant: 'primary',
+    padding: '0.5em',
+    radius: '0.3em',
+    fontSize: '0.9em'
+  };
 
   return (
     <ThemeProvider theme={{ mode: theme }}>
       <SideBarWrapper>
         <StyledContentBlock onlyMobile={onlyMobile} mobile>
-          <LinkIcon
-            link="/"
-            icon="home"
-            text={text.navigation.home[locale]}
-            variant="primary"
+          {pages.map(page => (
+            utils.setNavLinkAccess(page.isPublic, userAccess) && (
+              <NavigationLink
+                key={page.url}
+                link={page.localeName === 'profile' ? `/user/${user._id}` : page.url}
+                icon={page.icon}
+                text={text.navigation[page.localeName][locale]}
+                {...baseConfig}
+              />
+            )
+          ))}
+          {userAccess && (
+            <ButtonTextIcon
+              link="/"
+              icon="exit_to_app"
+              text={text.login.logoutButtonText[locale]}
+              handleClick={(e) => {
+                e.preventDefault();
+                Cookies.remove('token');
+                history.push('/login');
+              }}
+              {...baseConfig}
+            />
+          )}
+          <Switch
+            themeSwitch
             theme={theme}
-            handleClick={(e) => {
-              e.preventDefault();
-              history.push('/');
-            }}
-          />
-          <LinkIcon
-            theme={theme}
-            link="/"
-            icon="invert_colors"
-            text={text.navigation.theme[locale]}
-            variant="primary"
-            handleClick={(e) => {
-              e.preventDefault();
+            checked={theme === 'dark'}
+            handleChange={() => {
               dispatch('switch');
             }}
           />
         </StyledContentBlock>
-        {userAccess && (
-          <StyledContentBlock onlyMobile={onlyMobile} mobile>
-            <Button
-              variant="primary"
-              text={text.navigation.profile[locale]}
-              theme={theme}
-              handleClick={() => {
-                history.push(`/user/${user._id}`);
-              }}
-            />
-            <Button
-              variant="primary"
-              text={text.navigation.addPost[locale]}
-              theme={theme}
-              handleClick={() => {
-                history.push('/posts/new');
-              }}
-            />
-            <Button
-              variant="primary"
-              text={text.login.logoutButtonText[locale]}
-              theme={theme}
-              handleClick={() => {
-                Cookies.remove('token');
-                history.push('/');
-              }}
-            />
-          </StyledContentBlock>
-        )}
         <StyledContentBlock onlyMobile={onlyMobile}>
           <QueryTags theme={theme} history />
         </StyledContentBlock>
@@ -121,6 +117,7 @@ SideBar.propTypes = {
   locale: PropTypes.string.isRequired,
   text: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
   userAccess: PropTypes.bool.isRequired,
   onlyMobile: PropTypes.bool.isRequired
 };

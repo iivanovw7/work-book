@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { btnBackground } from '../../theme';
+/* eslint react/require-default-props: 0 */
 
 const StyledWrapper = styled.div`
 	display: flex;
@@ -66,11 +67,6 @@ const Spinner = (props) => {
 
 export default Spinner;
 
-Spinner.propTypes = {
-  theme: PropTypes.string.isRequired,
-  mgTop: PropTypes.number
-};
-
 StyledSpinner.propTypes = {
   variant: PropTypes.oneOf(['primary', 'secondary'])
 };
@@ -78,4 +74,9 @@ StyledSpinner.propTypes = {
 StyledSpinner.defaultProps = {
   variant: 'primary',
   mgTop: 0
+};
+
+Spinner.propTypes = {
+  theme: PropTypes.string.isRequired,
+  mgTop: PropTypes.number
 };

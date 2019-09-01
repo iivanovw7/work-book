@@ -3,12 +3,13 @@ import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 import styled, { ThemeProvider } from 'styled-components';
 import { opacify } from 'polished';
-import { ErrorMessage } from '../../elements/errorMessage';
+import ErrorMessage from '../../elements/errorMessage';
 import Button from '../../elements/UI/Button';
 import * as utils from '../../utils';
 import { backgroundColorInverse, textColorInverse, linkColor } from '../../theme';
 import DeletePost from '../../queryBlocks/DeletePost';
 import TagsCloud from '../Tags/TagsCloud';
+import TextLink from '../../elements/UI/TextLink';
 /* eslint no-underscore-dangle: 0 */
 
 const StyledPostContainer = styled.div`
@@ -73,6 +74,10 @@ const PostView = (props) => {
       .catch(e => console.log(e));
   }, []);
 
+  function handleClick(id) {
+    history.push(`/posts/${id}`);
+  }
+
   if (!data.getPost) {
     return (
       <ErrorMessage
@@ -90,7 +95,16 @@ const PostView = (props) => {
     <ThemeProvider theme={{ mode: theme }} key={post._id}>
       <StyledPostContainer>
         <h2>
-          {post.title}
+          <TextLink
+            theme={theme}
+            text={post.title}
+            variant="secondary"
+            link="/"
+            handleClick={(e) => {
+              e.preventDefault();
+              handleClick(post._id);
+            }}
+          />
         </h2>
         <h3>
           {post.subject}
@@ -105,7 +119,7 @@ const PostView = (props) => {
           {est.ending}
         </StyledTimeContainer>
         <StyledTagsContainer>
-          <TagsCloud data={post.tags} history={history} theme={theme} postTags {...props} />
+          <TagsCloud data={post.tags} tags={data.getPost.tags[0]} history={history} theme={theme} postTags {...props} />
         </StyledTagsContainer>
         <StyledText dangerouslySetInnerHTML={utils.sanitize(post.text)} />
         <StyledButtonsContainer>
@@ -113,6 +127,7 @@ const PostView = (props) => {
             variant="primary"
             text={text.navigation.back[locale]}
             theme={theme}
+            maxWidth="7em"
             handleClick={() => {
               history.push('/');
             }}
@@ -123,6 +138,7 @@ const PostView = (props) => {
                 variant="primary"
                 text={text.navigation.update[locale]}
                 theme={theme}
+                maxWidth="10em"
                 handleClick={() => {
                   history.push(`/posts/update/${post._id}`);
                 }}

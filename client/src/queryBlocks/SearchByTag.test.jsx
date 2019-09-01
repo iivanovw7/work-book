@@ -8,13 +8,16 @@ import { MockedProvider } from 'react-apollo/test-utils';
 import * as mocks from '../__mocks__';
 import * as testUtils from '../testUtils';
 import SearchPostsByTag from './SearchByTag';
-// import 'babel-polyfill';
 
 jest.mock('../config/apiURL', () => () => '/api');
 
 jest.mock('../elements/UI/Button', () => () => (
   <div id="Button" />
 ));
+jest.mock('../elements/UI/TagButton', () => () => (
+  <div id="TagButton" />
+));
+
 
 describe('Testing SearchPostsByTag() graphql query: ', () => {
   afterAll(() => {

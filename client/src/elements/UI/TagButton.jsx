@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { ripples } from '../../styles';
+/* eslint react/require-default-props: 0 */
 
 const StyledWrapper = styled.div`
 	display: flex;
@@ -18,7 +19,7 @@ const Button = styled.button`
   border-radius: 0.2em;
   border: 0;
   outline: 0;
-  margin: 0.2em;
+  margin: ${props => (props.margin ? props.margin : '0.2em')};
   background-color: ${props => props.bgColor};
   color: ${props => props.textColor};
   
@@ -30,7 +31,7 @@ const Button = styled.button`
 
 const TagButton = (props) => {
   const {
-    handleClick, text, bgColor, textColor, theme, label
+    handleClick, text, bgColor, textColor, theme, label, margin
   } = props;
 
   return (
@@ -38,6 +39,7 @@ const TagButton = (props) => {
       <StyledWrapper className="dates">
         {label}
         <Button
+          margin={margin}
           onClick={handleClick}
           bgColor={bgColor}
           textColor={textColor}
@@ -56,7 +58,8 @@ TagButton.propTypes = {
   theme: PropTypes.string.isRequired,
   label: PropTypes.string,
   bgColor: PropTypes.string,
-  textColor: PropTypes.string
+  textColor: PropTypes.string,
+  margin: PropTypes.string
 };
 
 export default TagButton;

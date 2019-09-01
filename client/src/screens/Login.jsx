@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import useStoreon from 'storeon/react';
 import LoginForm from '../components/Login/LoginForm';
-import TopBar from '../components/TopBar/TopBar';
+import TopBar from '../components/Navigation/TopBar';
 
 const Login = (props) => {
   const { theme, locale, localizedText } = useStoreon('theme', 'locale', 'localizedText');

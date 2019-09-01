@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Button from './UI/Button';
 
-export const ErrorMessage = (props) => {
+const ErrorMessage = (props) => {
   const {
     handleClick, text, message, theme
   } = props;
@@ -26,3 +26,5 @@ ErrorMessage.propTypes = {
   text: PropTypes.string.isRequired,
   theme: PropTypes.string.isRequired
 };
+
+export default ErrorMessage;

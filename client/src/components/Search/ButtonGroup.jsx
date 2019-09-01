@@ -39,6 +39,7 @@ const ButtonGroup = (props) => {
           variant="primary"
           text={text.navigation.readMore[locale]}
           theme={theme}
+          maxWidth="10em"
           handleClick={(e) => {
             e.preventDefault();
             handlePostClick(post._id);

@@ -66,7 +66,7 @@ const SearchList = (props) => {
           <TextLink
             theme={theme}
             text={post.title}
-            variant="primary"
+            variant="secondary"
             link="/"
             handleClick={(e) => {
               e.preventDefault();

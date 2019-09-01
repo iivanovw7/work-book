@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 import { ripples } from '../../styles';
 import {
-  btnHighlight, textColor, textColorActive, textColorLighten
+  btnHighlight, textColor, textColorActive, textColorLighten, btnBackground, btnLighten
 } from '../../theme';
 /* eslint react/require-default-props: 0 */
 
@@ -16,23 +16,29 @@ const StyledLinkIcon = styled(NavLink)
 	${ripples};
   display: flex;
   flex-wrap: nowrap;
+  color: ${btnBackground};
   padding: ${props => props.padding};
   text-align: center;
-  max-width: 48px;
+  max-width: 100%;
   width: 100%;
-  border-radius: ${props => props.borderRadius};
+  border-radius: ${props => props.radius};
   flex-direction: ${props => props.direction};
-  color: ${textColor};
+  
   align-items: center;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
   font-size: ${props => props.fontSize};
   
   &:hover {
-    	color: ${textColorLighten};
+    	color: ${btnLighten};
     	transition: all 0.2s ease-in-out;
     	user-select: none;
     	cursor: pointer;
+    	outline: none;
+  }
+  
+  &:focus {
+    outline: none;
   }
   
   &.${activeClassName} {
@@ -41,19 +47,36 @@ const StyledLinkIcon = styled(NavLink)
     transition: all 0.2s ease-in-out;
   }
   
+  span:first-of-type {
+      margin-left: 0.6em;
+  }
+  
+  &.mobile {
+    max-width: 48px;
+    color: ${textColor};
+    
+    span:first-of-type {
+      margin-left: 0em;
+    }
+    
+    :hover {
+      color: ${textColorLighten};
+    }
+  }
+  
 `;
 
 const NavigationLink = (props) => {
   const {
-    link, text, variant, theme, highlight, icon, direction, padding, fontSize, radius
+    link, text, variant, theme, icon, direction, padding, fontSize, radius, className
   } = props;
 
   return (
     <ThemeProvider theme={{ mode: theme }}>
       <StyledLinkIcon
-        variant={variant}
-        selected={highlight}
         exact
+        className={className}
+        variant={variant}
         to={link}
         direction={direction}
         padding={padding}
@@ -88,7 +111,7 @@ NavigationLink.propTypes = {
   theme: PropTypes.string.isRequired,
   fontSize: PropTypes.string.isRequired,
   radius: PropTypes.string.isRequired,
-  highlight: PropTypes.bool.isRequired,
+  className: PropTypes.string,
   icon: PropTypes.string
 };
 

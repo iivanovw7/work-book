@@ -4,7 +4,7 @@ import { Query } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 import Spinner from '../elements/UI/Spinner';
 import { GET_USER } from '../graphql/queries';
-import { ErrorMessage } from '../elements/errorMessage';
+import ErrorMessage from '../elements/errorMessage';
 import UserView from '../components/User/UserView';
 
 const QueryUser = (props) => {

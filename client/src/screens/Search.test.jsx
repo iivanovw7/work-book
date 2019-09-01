@@ -12,17 +12,20 @@ jest.mock('storeon/react', () => () => ({
   locale: 'eng',
   theme: 'dark'
 }));
-jest.mock('../components/MobileNavBar/MobileNavbar', () => () => (
+jest.mock('../components/Navigation/MobileNavbar', () => () => (
   <div id="MobileNavbar" />
 ));
-jest.mock('../components/TopBar/TopBar', () => () => (
+jest.mock('../components/Navigation/TopBar', () => () => (
   <div id="TopBar" />
 ));
-jest.mock('../components/SideBar/SideBar', () => () => (
+jest.mock('../components/Navigation/SideBar', () => () => (
   <div id="SideBar" />
 ));
 jest.mock('../queryBlocks/SearchByTag', () => () => (
   <div id="SearchByTag" />
+));
+jest.mock('../elements/UI/TagButton', () => () => (
+  <div id="TagButton" />
 ));
 
 describe('Testing SEARCH screen: ', () => {

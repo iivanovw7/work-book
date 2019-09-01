@@ -3,7 +3,7 @@ import React from 'react';
 import { Query } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 import { GET_POST } from '../graphql/queries';
-import { ErrorMessage } from '../elements/errorMessage';
+import ErrorMessage from '../elements/errorMessage';
 import PostView from '../components/Post/PostView';
 import Spinner from '../elements/UI/Spinner';
 

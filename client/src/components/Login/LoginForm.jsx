@@ -5,7 +5,7 @@ import { Col, Row } from 'react-styled-flexboxgrid';
 import styled, { ThemeProvider } from 'styled-components';
 import validate from 'validate.js';
 import Button from '../../elements/UI/Button';
-import { Input } from '../../elements/UI/Input';
+import Input from '../../elements/UI/Input';
 import * as utils from '../../utils';
 import { textColor, backgroundColorDarken } from '../../theme';
 
@@ -47,6 +47,10 @@ const StyledForm = styled.form`
     bottom: 0;
     max-width: 100%;
     max-height: 100%;
+  }
+  
+  div {
+    width: 100%;
   }
   
 `;
@@ -148,12 +152,14 @@ const LoginForm = (props) => {
                 type="submit"
                 theme={theme}
                 value="Submit"
+                maxWidth="7em"
                 variant="primary"
               />
               <Button
                 text={text.login.homeButtonText[locale]}
                 theme={theme}
                 variant="primary"
+                maxWidth="7em"
                 handleClick={() => {
                   history.push('/');
                 }}

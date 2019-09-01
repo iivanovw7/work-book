@@ -64,6 +64,7 @@ const UserView = (props) => {
           variant="primary"
           text={text.navigation.back[locale]}
           theme={theme}
+          maxWidth="7em"
           handleClick={() => {
             handleClick();
           }}

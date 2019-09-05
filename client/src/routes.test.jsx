@@ -3,7 +3,6 @@ import 'jsdom-global/register';
 import React from 'react';
 import useStoreon from 'storeon/react';
 import { MemoryRouter } from 'react-router-dom';
-import { mount } from 'enzyme';
 import * as testUtils from './testUtils';
 import routes from './routes';
 import NoMatchRoute from './components/noMatchRoute';
@@ -39,10 +38,12 @@ describe('Testing routes', () => {
   });
 
   it('Should open invalid path and redirect to 404', () => {
-    const component = mount(
+    const component = testUtils.suppressConsoleWarnings(
       <MemoryRouter initialEntries={['/random']}>
         { routes }
-      </MemoryRouter>
+      </MemoryRouter>,
+      'mount',
+      console
     );
 
     expect(component.find('#Posts')).toHaveLength(0);
@@ -50,10 +51,12 @@ describe('Testing routes', () => {
   });
 
   it('Should open "Home" path and check the result', () => {
-    const component = mount(
+    const component = testUtils.suppressConsoleWarnings(
       <MemoryRouter initialEntries={['/']}>
         { routes }
-      </MemoryRouter>
+      </MemoryRouter>,
+      'mount',
+      console
     );
 
     expect(component.find('#Posts')).toHaveLength(1);

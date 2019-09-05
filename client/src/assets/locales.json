@@ -127,8 +127,22 @@
 	},
 	"search": {
 		"query": {
-			"eng": "Found by tag: ",
-			"rus": "Найдено по тэгу: "
-		}
+			"eng": "Found by: ",
+			"rus": "Найдено по: "
+		},
+    "bar": {
+      "tooltip": {
+        "eng": "Search",
+        "rus": "Поиск"
+      },
+      "placeholder": {
+        "eng": "Enter post title",
+        "rus": "Название поста"
+      }
+    },
+    "notFound": {
+      "eng": "Oops! Nothing found =(",
+      "rus": "Ничего не найдено =("
+    }
 	}
 }

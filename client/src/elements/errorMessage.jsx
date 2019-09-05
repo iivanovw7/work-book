@@ -14,6 +14,7 @@ const ErrorMessage = (props) => {
         variant="primary"
         text={text}
         theme={theme}
+        maxWidth="7em"
         handleClick={handleClick}
       />
     </div>

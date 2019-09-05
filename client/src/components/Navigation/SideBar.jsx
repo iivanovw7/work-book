@@ -10,6 +10,7 @@ import QueryTags from '../../queryBlocks/QueryTags';
 import Switch from '../../elements/UI/Switch';
 import NavigationLink from '../../elements/UI/NavigationLink';
 import ButtonTextIcon from '../../elements/UI/ButtonTextIcon';
+import SearchBar from '../Search/SearchBar';
 /* eslint react/require-default-props: 0 */
 /* eslint no-underscore-dangle: 0 */
 
@@ -94,6 +95,14 @@ const SideBar = (props) => {
             handleChange={() => {
               dispatch('switch');
             }}
+          />
+        </StyledContentBlock>
+        <StyledContentBlock onlyMobile={onlyMobile}>
+          <SearchBar
+            theme={theme}
+            text={text}
+            locale={locale}
+            history={history}
           />
         </StyledContentBlock>
         <StyledContentBlock onlyMobile={onlyMobile}>

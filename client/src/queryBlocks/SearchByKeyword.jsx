@@ -4,19 +4,19 @@ import { Query } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 import SearchList from '../components/Search/SearchList';
 import ErrorMessage from '../elements/errorMessage';
-import { FIND_POSTS_BY_TAG } from '../graphql/queries';
+import { FIND_POSTS_BY_KEYWORD } from '../graphql/queries';
 import Spinner from '../elements/UI/Spinner';
 
-const SearchPostsByTag = (props) => {
-  const { history, tag, theme } = props;
+const SearchPostsByKeyword = (props) => {
+  const { history, keyword, theme } = props;
 
   return (
     <Query
-      query={FIND_POSTS_BY_TAG}
-      variables={{ tag }}
+      query={FIND_POSTS_BY_KEYWORD}
+      variables={{ keyword }}
       fetchPolicy="network-only"
       refetchQueries={() => [{
-        query: FIND_POSTS_BY_TAG
+        query: FIND_POSTS_BY_KEYWORD
       }]}
     >
       {({ loading, error, data }) => {
@@ -33,16 +33,16 @@ const SearchPostsByTag = (props) => {
             />
           );
         }
-        return <SearchList data={data.findPostsByTag} query={tag} {...props} />;
+        return <SearchList data={data.findPostsByKeyword} query={keyword} {...props} />;
       }}
     </Query>
   );
 };
 
-export default withRouter(SearchPostsByTag);
+export default withRouter(SearchPostsByKeyword);
 
-SearchPostsByTag.propTypes = {
+SearchPostsByKeyword.propTypes = {
   history: PropTypes.object.isRequired,
   theme: PropTypes.string.isRequired,
-  tag: PropTypes.string.isRequired
+  keyword: PropTypes.string.isRequired
 };

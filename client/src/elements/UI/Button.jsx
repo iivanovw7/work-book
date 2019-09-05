@@ -32,6 +32,10 @@ const StyledButton = styled.button`
     outline: none;
   }
   
+  &::-moz-focus-inner {
+    border: 0;
+  }
+  
 `;
 
 const Button = (props) => {

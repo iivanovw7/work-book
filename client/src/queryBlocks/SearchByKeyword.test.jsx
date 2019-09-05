@@ -6,7 +6,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { MockedProvider } from 'react-apollo/test-utils';
 import * as mocks from '../__mocks__';
 import * as testUtils from '../testUtils';
-import QueryTags from './QueryTags';
+import SearchPostsByKeyword from './SearchByKeyword';
 
 jest.mock('../config/apiURL', () => () => '/api');
 jest.mock('storeon/react', () => () => ({
@@ -17,8 +17,12 @@ jest.mock('storeon/react', () => () => ({
 jest.mock('../elements/UI/Button', () => () => (
   <div id="Button" />
 ));
+jest.mock('../elements/UI/TagButton', () => () => (
+  <div id="KeywordButton" />
+));
 
-describe('Testing QueryTags() graphql query: ', () => {
+
+describe('Testing SearchPostsByKeyword() graphql query: ', () => {
   afterAll(() => {
     jest.clearAllMocks();
   });
@@ -35,7 +39,7 @@ describe('Testing QueryTags() graphql query: ', () => {
     return (
       <MemoryRouter>
         <MockedProvider mocks={mocks} addTypename={false} removeTypename>
-          <QueryTags {...queryProps} />
+          <SearchPostsByKeyword keyword="Custom" {...queryProps} />
         </MockedProvider>
       </MemoryRouter>
     );
@@ -43,7 +47,7 @@ describe('Testing QueryTags() graphql query: ', () => {
 
   it('Should render Component and match snapshot', async () => {
     const component = testUtils.suppressConsoleWarnings(
-      <Composition mocks={[mocks.gqlMocks[8]]} />,
+      <Composition mocks={[mocks.gqlMocks[16]]} />,
       'mount',
       console
     );
@@ -55,14 +59,14 @@ describe('Testing QueryTags() graphql query: ', () => {
 
   it('Should render ErrorMessage', async () => {
     const component = testUtils.suppressConsoleWarnings(
-      <Composition mocks={[mocks.gqlMocks[11]]} />,
+      <Composition mocks={[mocks.gqlMocks[17]]} />,
       'mount',
       console
     );
 
     await wait(0);
     await component.update();
-    expect(component.find('p').text()).toBe('Error!');
+    expect(component.find('ErrorMessage').length).toEqual(1);
   });
 
   it('Should render Spinner', async () => {
@@ -78,14 +82,15 @@ describe('Testing QueryTags() graphql query: ', () => {
 
   it('Should render Component with correct data', async () => {
     const component = testUtils.suppressConsoleWarnings(
-      <Composition mocks={[mocks.gqlMocks[10]]} />,
+      <Composition mocks={[mocks.gqlMocks[16]]} />,
       'mount',
       console
     );
 
     await wait(0);
     await component.update();
-    expect(component.find('button').length).toEqual(3);
-    expect(component.find('button').first().text()).toEqual('1');
+
+    expect(component.find('SearchList').length).toEqual(1);
+    expect(component.find('a').text()).toEqual('Custom Angular mouseWheel scroll directive');
   });
 });

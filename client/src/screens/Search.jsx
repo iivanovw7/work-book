@@ -5,6 +5,7 @@ import { Col, Grid, Row } from 'react-styled-flexboxgrid';
 import useStoreon from 'storeon/react';
 import styled, { ThemeProvider } from 'styled-components';
 import SearchPostsByTag from '../queryBlocks/SearchByTag';
+import SearchPostsByKeyword from '../queryBlocks/SearchByKeyword';
 import MobileNavBar from '../components/Navigation/MobileNavbar';
 import SideBar from '../components/Navigation/SideBar';
 import TopBar from '../components/Navigation/TopBar';
@@ -26,7 +27,9 @@ const StyledSideBar = styled.aside`
 
 const Search = (props) => {
   const { location } = props;
-  const { theme, locale, localizedText } = useStoreon('theme', 'locale', 'localizedText');
+  const {
+    theme, locale, localizedText, search
+  } = useStoreon('theme', 'locale', 'localizedText', 'search');
   const pathName = location.pathname.split('/')[2];
 
   return (
@@ -50,13 +53,24 @@ const Search = (props) => {
               </StyledSideBar>
             </Col>
             <Col xs={12} sm={12} md={9} lg={9}>
-              <SearchPostsByTag
-                tag={pathName}
-                locale={locale}
-                text={localizedText}
-                theme={theme}
-                {...props}
-              />
+              { search !== '' && (
+                <SearchPostsByKeyword
+                  keyword={search}
+                  locale={locale}
+                  text={localizedText}
+                  theme={theme}
+                  {...props}
+                />
+              )}
+              { search === '' && (
+                <SearchPostsByTag
+                  tag={pathName}
+                  locale={locale}
+                  text={localizedText}
+                  theme={theme}
+                  {...props}
+                />
+              )}
             </Col>
           </Row>
         </Grid>

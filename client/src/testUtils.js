@@ -26,6 +26,7 @@ export const localizedText = {
   search: localized.search
 };
 
+// Suppresses console warnings until component is mounted
 export function suppressConsoleWarnings(component, mountType, consoleObject) {
   const originalError = consoleObject.error;
   // eslint-disable-next-line no-param-reassign

@@ -17,7 +17,7 @@ const TagsCloud = (props) => {
   const slittedTags = postTags ? utils.words(tags, ',') : data.getTags;
 
   return (slittedTags.map((tag) => {
-    const colorIndex = utils.getRandomInt(0, colorScheme.tagBtnBgColors.length);
+    const colorIndex = utils.getRandomInt(0, colorScheme.tagBtnBgColors.length - 1);
 
     function handleClick() {
       dispatch('search', '');

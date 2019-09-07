@@ -8,7 +8,7 @@ import * as utils from '../../utils';
 /* eslint react/require-default-props: 0 */
 
 const SearchBarContainer = styled.div`
-
+  width: 100%;
 `;
 
 const SearchBar = (props) => {

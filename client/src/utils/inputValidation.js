@@ -36,3 +36,7 @@ export const constraintsSearch = {
     }
   }
 };
+
+export function validateInput(constraints) {
+
+};

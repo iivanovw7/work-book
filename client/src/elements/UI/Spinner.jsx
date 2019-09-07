@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import { btnBackground } from '../../theme';
+import { spinnerBackground, textLinkColorLighten } from '../../theme';
 /* eslint react/require-default-props: 0 */
 
 const StyledWrapper = styled.div`
@@ -21,9 +21,9 @@ const StyledSpinner = styled.div`
   display: inline-block;
   width: 50px;
   height: 50px;
-  border: 3px solid rgba(0, 0, 0, 0.3);
   border-radius: 50%;
-  border-top-color: ${btnBackground};
+  border: 3px solid ${spinnerBackground};
+  border-top-color: ${textLinkColorLighten};
   animation: spin 1s ease-in-out infinite;
   -webkit-animation: spin 1s ease-in-out infinite;
 
@@ -59,7 +59,7 @@ const Spinner = (props) => {
   return (
     <ThemeProvider theme={{ mode: theme }}>
       <StyledWrapper mgTop={mgTop}>
-        <StyledSpinner variant="primary" />
+        <StyledSpinner variant="secondary" />
       </StyledWrapper>
     </ThemeProvider>
   );

@@ -1,5 +1,5 @@
 import {
-  GET_POST, GET_POSTS, GET_TAGS, GET_USER, FIND_POSTS_BY_TAG
+  GET_POST, GET_POSTS, GET_TAGS, GET_USER, FIND_POSTS_BY_TAG, FIND_POSTS_BY_KEYWORD
 } from '../graphql/queries';
 import { DELETE_POST, ADD_POST, UPDATE_POST } from '../graphql/mutations';
 
@@ -276,6 +276,44 @@ export const gqlMocks = [
       query: FIND_POSTS_BY_TAG,
       variables: {
         tag: '1'
+      }
+    },
+    error: new Error('aw shucks')
+  },
+  /**
+   *  [16] Returned after FIND_POSTS_BY_KEYWORD query
+   */
+  {
+    request: {
+      query: FIND_POSTS_BY_KEYWORD,
+      variables: {
+        keyword: 'Custom'
+      }
+    },
+    result: {
+      data: {
+        findPostsByKeyword: [
+          {
+            _id: '5d283694ddc2cb244f84bdca',
+            author: '5cbeba32fb6fc0265f273c94',
+            created: '1562915551933',
+            subject: 'Cross browser solution for handling mouse wheel events in Angular with Rx.js for',
+            tags: ['1', '2', '3'],
+            text: 'Post text',
+            title: 'Custom Angular mouseWheel scroll directive'
+          }
+        ]
+      }
+    }
+  },
+  /**
+   * [17] Returned after errored FIND_POSTS_BY_KEYWORD query
+   */
+  {
+    request: {
+      query: FIND_POSTS_BY_KEYWORD,
+      variables: {
+        keyword: 'Custom'
       }
     },
     error: new Error('aw shucks')

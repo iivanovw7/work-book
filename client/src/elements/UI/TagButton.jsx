@@ -10,6 +10,7 @@ const StyledWrapper = styled.div`
 	align-items: center;
 	flex-wrap: wrap;
 	font-size: 0.8em;
+	outline: none;
 `;
 
 const Button = styled.button`
@@ -18,15 +19,28 @@ const Button = styled.button`
   display: inline-block;
   border-radius: 0.2em;
   border: 0;
-  outline: 0;
+  outline: none;
   margin: ${props => (props.margin ? props.margin : '0.2em')};
   background-color: ${props => props.bgColor};
   color: ${props => props.textColor};
+  text-decoration: none;
   
   &:hover {
     user-select: none;
     cursor: pointer;
+    outline: none;
+    border: 0;
   }
+  
+  &:focus {
+    outline: none;
+    border: 0;
+  }
+  
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
 `;
 
 const TagButton = (props) => {

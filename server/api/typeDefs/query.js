@@ -8,6 +8,7 @@ export const query = gql`
     getTags: [String],
     tag: String,
     getPost(_id: String!): Post ,
-    findPostsByTag(tag: String!): [Post]
+    findPostsByTag(tag: String!): [Post],
+    findPostsByKeyword(keyword: String!): [Post]
   }
 `;

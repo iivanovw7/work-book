@@ -16,6 +16,7 @@ const StyledIconButton = styled.button`
   align-items: center;
   border: none;
   background: none;
+  outline: none;
   
   &:hover {
     color: ${btnLighten};
@@ -27,7 +28,11 @@ const StyledIconButton = styled.button`
   &:focus {
     outline: none;
   }
-}
+  
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
 `;
 
 const SvgButton = (props) => {

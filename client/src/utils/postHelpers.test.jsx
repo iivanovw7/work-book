@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import SwitchedPostComponent from './postHelpers';
 import 'jsdom-global/register';
+import * as testUtils from '../testUtils';
 
 jest.mock('../config/apiURL', () => () => '/api');
 
@@ -34,8 +35,10 @@ describe('SwitchedPostComponent testing: ', () => {
     const location = {
       pathname: 'string1/string2/string3'
     };
-    const component = shallow(
-      <SwitchedPostComponent debug location={location} {...props} />
+    const component = testUtils.suppressConsoleWarnings(
+      <SwitchedPostComponent debug location={location} {...props} />,
+      'shallow',
+      console
     );
 
     expect(component).toMatchSnapshot();
@@ -45,8 +48,10 @@ describe('SwitchedPostComponent testing: ', () => {
     const location = {
       pathname: 'string1/string2/string3'
     };
-    const wrapper = mount(
-      <SwitchedPostComponent location={location} {...props} />
+    const wrapper = testUtils.suppressConsoleWarnings(
+      <SwitchedPostComponent location={location} {...props} />,
+      'mount',
+      console
     );
 
     expect(wrapper.find('div').length).toEqual(1);
@@ -57,8 +62,10 @@ describe('SwitchedPostComponent testing: ', () => {
     const location = {
       pathname: 'string1/string2/new'
     };
-    const wrapper = mount(
-      <SwitchedPostComponent location={location} {...props} />
+    const wrapper = testUtils.suppressConsoleWarnings(
+      <SwitchedPostComponent location={location} {...props} />,
+      'mount',
+      console
     );
 
     expect(wrapper.find('div').length).toEqual(1);
@@ -69,8 +76,10 @@ describe('SwitchedPostComponent testing: ', () => {
     const location = {
       pathname: 'string1/string2/update'
     };
-    const wrapper = mount(
-      <SwitchedPostComponent location={location} {...props} />
+    const wrapper = testUtils.suppressConsoleWarnings(
+      <SwitchedPostComponent location={location} {...props} />,
+      'mount',
+      console
     );
 
     expect(wrapper.find('div').length).toEqual(1);

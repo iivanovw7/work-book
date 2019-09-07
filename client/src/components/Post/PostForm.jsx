@@ -74,12 +74,14 @@ const PostForm = (props) => {
   return (
     <StyledForm onSubmit={handleSubmit}>
       <Input
+        theme={theme}
         id={text.posts.create.title[locale]}
         type="text"
         label={text.posts.create.title[locale]}
         {...bindTitle}
       />
       <Input
+        theme={theme}
         id={text.posts.create.subject[locale]}
         type="text"
         label={text.posts.create.subject[locale]}
@@ -98,6 +100,7 @@ const PostForm = (props) => {
         {...bindPostText}
       />
       <Input
+        theme={theme}
         id={text.posts.create.tags[locale]}
         type="text"
         label={text.posts.create.tags[locale]}

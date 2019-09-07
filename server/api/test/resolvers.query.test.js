@@ -56,6 +56,7 @@ afterAll(async (done) => {
       throw e;
     }); // Clearing mock database
   await db.close();
+
   done();
 });
 
@@ -67,21 +68,16 @@ describe('Testing [Queries] and [Mutations]', () => {
       { user: testQueriesUser }
     );
 
-    expect(response)
-      .not
-      .toBe(null);
-    expect(response.text)
-      .toBe('TEXT');
+    expect(response).not.toBe(null);
+    expect(response.text).toBe('TEXT');
     post = response;
   });
 
   it('Should run getPosts query and receive mock posts array', async () => {
     const response = await postResolvers.Query.getPosts();
-    expect(response)
-      .not
-      .toBe(null);
-    expect(response[0].subject)
-      .toBe(post.subject);
+
+    expect(response).not.toBe(null);
+    expect(response[0].subject).toBe(post.subject);
   });
 
   it('Should run getPost query and receive mock post', async () => {
@@ -89,11 +85,9 @@ describe('Testing [Queries] and [Mutations]', () => {
       null,
       { _id: post._id }
     );
-    expect(response)
-      .not
-      .toBe(null);
-    expect(response.subject)
-      .toBe(post.subject);
+
+    expect(response).not.toBe(null);
+    expect(response.subject).toBe(post.subject);
   });
 
   it('Should run findPostsByTag and return mock post', async () => {
@@ -101,11 +95,19 @@ describe('Testing [Queries] and [Mutations]', () => {
       null,
       { tag: testPost.tags[0] }
     );
-    expect(response)
-      .not
-      .toBe(null);
-    expect(response[0].subject)
-      .toBe(post.subject);
+
+    expect(response).not.toBe(null);
+    expect(response[0].subject).toBe(post.subject);
+  });
+
+  it('Should run findPostsByKeyword and return mock post', async () => {
+    const response = await postResolvers.Query.findPostsByKeyword(
+      null,
+      { keyword: testPost.title }
+    );
+
+    expect(response).not.toBe(null);
+    expect(response[0].subject).toBe(post.subject);
   });
 
   it('Should run getTags and and receive correct list of tags', async () => {
@@ -117,11 +119,9 @@ describe('Testing [Queries] and [Mutations]', () => {
     );
 
     const response = await postResolvers.Query.getTags();
-    expect(response)
-      .not
-      .toBe(null);
-    expect(response)
-      .toEqual(['tag1', 'tag2', 'tag3', 'tag4', 'tag5', 'tag6']);
+
+    expect(response).not.toBe(null);
+    expect(response).toEqual(['tag1', 'tag2', 'tag3', 'tag4', 'tag5', 'tag6']);
   });
 
   it('Should run updatePost and return modified post', async () => {
@@ -135,11 +135,9 @@ describe('Testing [Queries] and [Mutations]', () => {
         tags: ['tag4', 'tag5', 'tag6']
       }, { user: testQueriesUser }
     );
-    expect(response)
-      .not
-      .toBe(null);
-    expect(response.text)
-      .toBe('TEST2');
+
+    expect(response).not.toBe(null);
+    expect(response.text).toBe('TEST2');
   });
 
   it('Should run deletePost and remove mock post from db', async () => {
@@ -148,10 +146,8 @@ describe('Testing [Queries] and [Mutations]', () => {
       { _id: post._id },
       { user: testQueriesUser }
     );
-    expect(response)
-      .not
-      .toBe(null);
-    expect(response.text)
-      .toBe('TEST2');
+
+    expect(response).not.toBe(null);
+    expect(response.text).toBe('TEST2');
   });
 });

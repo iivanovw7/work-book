@@ -1,16 +1,17 @@
 import 'cross-fetch/polyfill';
 import 'jsdom-global/register';
 import React from 'react';
-import { mount } from 'enzyme';
 import { MemoryRouter } from 'react-router-dom';
 import * as testUtils from '../testUtils';
 import Login from './Login';
+
 
 jest.mock('../config/apiURL', () => () => '/api');
 
 jest.mock('storeon/react', () => () => ({
   locale: 'eng',
-  theme: 'dark'
+  theme: 'dark',
+  search: ''
 }));
 jest.mock('../components/Navigation/TopBar', () => () => (
   <div id="topbar" />
@@ -33,14 +34,24 @@ describe('Testing LOGIN screen: ', () => {
   );
 
   it('Should render properly with props ', () => {
-    const component = mount(<Composition />);
+    const component = testUtils.suppressConsoleWarnings(
+      <Composition />,
+      'mount',
+      console
+    );
+
     expect(component.find('Login').length).toEqual(1);
     expect(component.find('#topbar').length).toEqual(1);
     expect(component.find('#loginform').length).toEqual(1);
   });
 
   it('Should render and match snapshot ', () => {
-    const component = mount(<Composition />);
+    const component = testUtils.suppressConsoleWarnings(
+      <Composition />,
+      'mount',
+      console
+    );
+
     expect(component).toMatchSnapshot();
   });
 });

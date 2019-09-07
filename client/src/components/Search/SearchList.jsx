@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
+import useStoreon from 'storeon/react';
 import { opacify } from 'polished';
 import { fadeInTop } from '../../styles';
 import { gridConfig } from '../../config';
@@ -50,16 +51,26 @@ const SearchList = (props) => {
   const {
     data, history, theme, locale, text, query
   } = props;
+  const { dispatch } = useStoreon('search');
 
   function handlePostClick(id) {
     history.push(`/posts/${id}`);
   }
 
   function handleTagClick() {
+    dispatch('search', '');
     history.push(`/search/${query}`);
   }
 
-  return (data.findPostsByTag.map(post => (
+  if (!data.length) {
+    return (
+      <div>
+        <h3>{text.search.notFound[locale]}</h3>
+      </div>
+    );
+  }
+
+  return (data.map(post => (
     <SearchWrapper key={post._id}>
       <div>
         <h2>
@@ -101,7 +112,7 @@ const SearchList = (props) => {
 export default SearchList;
 
 SearchList.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.array.isRequired,
   history: PropTypes.object.isRequired,
   locale: PropTypes.string.isRequired,
   text: PropTypes.object.isRequired,

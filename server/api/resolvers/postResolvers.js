@@ -15,7 +15,7 @@ export const postResolvers = {
       .exec(),
 
     /**
-     * Finds single Posts by Tag string, returns
+     * Finds Posts by Tag string, returns
      *
      * @param {string} args.tag
      * @returns {Promise<Query>}
@@ -23,6 +23,32 @@ export const postResolvers = {
     findPostsByTag: async (_, args) => {
       // From search query parameters
       const query = { tags: { $regex: args.tag, $options: 'i' } };
+
+      return Post.find(query)
+        .sort({ created: '-1' })
+        .exec();
+    },
+
+    /**
+     * Finds Posts by keyword string, returns
+     * searches through post titles and subjects
+     *
+     * @param {string} args.keyword
+     * @returns {Promise<Query>}
+     */
+    findPostsByKeyword: async (_, args) => {
+      const query = {
+        $or: [{
+          subject: {
+            $regex: args.keyword, $options: 'i'
+          }
+          }, {
+          title: {
+            $regex: args.keyword,
+            $options: 'i'
+          }
+        }]
+      };
 
       return Post.find(query)
         .sort({ created: '-1' })

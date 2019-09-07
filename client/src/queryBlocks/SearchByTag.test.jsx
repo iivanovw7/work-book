@@ -10,7 +10,11 @@ import * as testUtils from '../testUtils';
 import SearchPostsByTag from './SearchByTag';
 
 jest.mock('../config/apiURL', () => () => '/api');
-
+jest.mock('storeon/react', () => () => ({
+  locale: 'eng',
+  theme: 'dark',
+  search: ''
+}));
 jest.mock('../elements/UI/Button', () => () => (
   <div id="Button" />
 ));
@@ -43,7 +47,11 @@ describe('Testing SearchPostsByTag() graphql query: ', () => {
   };
 
   it('Should render Component and match snapshot', async () => {
-    const component = mount(<Composition mocks={[mocks.gqlMocks[14]]} />);
+    const component = testUtils.suppressConsoleWarnings(
+      <Composition mocks={[mocks.gqlMocks[14]]} />,
+      'mount',
+      console
+    );
 
     await wait(0);
     await component.update();
@@ -51,7 +59,11 @@ describe('Testing SearchPostsByTag() graphql query: ', () => {
   });
 
   it('Should render ErrorMessage', async () => {
-    const component = mount(<Composition mocks={[mocks.gqlMocks[15]]} />);
+    const component = testUtils.suppressConsoleWarnings(
+      <Composition mocks={[mocks.gqlMocks[15]]} />,
+      'mount',
+      console
+    );
 
     await wait(0);
     await component.update();
@@ -59,14 +71,22 @@ describe('Testing SearchPostsByTag() graphql query: ', () => {
   });
 
   it('Should render Spinner', async () => {
-    const component = mount(<Composition mocks={[]} />);
+    const component = testUtils.suppressConsoleWarnings(
+      <Composition mocks={[]} />,
+      'mount',
+      console
+    );
 
     await wait(0);
     expect(component.find('Spinner').length).toEqual(1);
   });
 
   it('Should render Component with correct data', async () => {
-    const component = mount(<Composition mocks={[mocks.gqlMocks[14]]} />);
+    const component = testUtils.suppressConsoleWarnings(
+      <Composition mocks={[mocks.gqlMocks[14]]} />,
+      'mount',
+      console
+    );
 
     await wait(0);
     await component.update();

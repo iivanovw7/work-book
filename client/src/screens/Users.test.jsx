@@ -1,7 +1,6 @@
 import React from 'react';
 import 'cross-fetch/polyfill';
 import 'jsdom-global/register';
-import { mount } from 'enzyme';
 import { MemoryRouter } from 'react-router-dom';
 import * as testUtils from '../testUtils';
 import User from './User';
@@ -10,7 +9,8 @@ jest.mock('../config/apiURL', () => () => '/api');
 
 jest.mock('storeon/react', () => () => ({
   locale: 'eng',
-  theme: 'dark'
+  theme: 'dark',
+  search: ''
 }));
 jest.mock('../components/Navigation/MobileNavbar', () => () => (
   <div id="MobileNavbar" />
@@ -44,7 +44,12 @@ describe('Testing USER screen: ', () => {
   );
 
   it('Should render properly with props ', () => {
-    const component = mount(<Composition />);
+    const component = testUtils.suppressConsoleWarnings(
+      <Composition />,
+      'mount',
+      console
+    );
+
     expect(component.find('User').length).toEqual(1);
     expect(component.find('#MobileNavbar').length).toEqual(1);
     expect(component.find('#TopBar').length).toEqual(1);
@@ -52,7 +57,12 @@ describe('Testing USER screen: ', () => {
   });
 
   it('Should render and match snapshot ', () => {
-    const component = mount(<Composition />);
+    const component = testUtils.suppressConsoleWarnings(
+      <Composition />,
+      'mount',
+      console
+    );
+
     expect(component).toMatchSnapshot();
   });
 });

@@ -3,14 +3,17 @@ import wait from 'waait';
 import 'cross-fetch/polyfill';
 import 'jsdom-global/register';
 import { MemoryRouter } from 'react-router-dom';
-import { mount } from 'enzyme';
 import { MockedProvider } from 'react-apollo/test-utils';
 import * as mocks from '../__mocks__';
 import * as testUtils from '../testUtils';
 import QueryPosts from './QueryPosts';
 
 jest.mock('../config/apiURL', () => () => '/api');
-
+jest.mock('storeon/react', () => () => ({
+  locale: 'eng',
+  theme: 'dark',
+  search: ''
+}));
 jest.mock('../elements/UI/Button', () => () => (
   <div id="Button" />
 ));
@@ -40,7 +43,11 @@ describe('Testing QueryPosts() graphql query: ', () => {
   };
 
   it('Should render Component and match snapshot', async () => {
-    const component = mount(<Composition mocks={[mocks.gqlMocks[8]]} />);
+    const component = testUtils.suppressConsoleWarnings(
+      <Composition mocks={[mocks.gqlMocks[8]]} />,
+      'mount',
+      console
+    );
 
     await wait(0);
     await component.update();
@@ -48,7 +55,11 @@ describe('Testing QueryPosts() graphql query: ', () => {
   });
 
   it('Should render ErrorMessage', async () => {
-    const component = mount(<Composition mocks={[mocks.gqlMocks[9]]} />);
+    const component = testUtils.suppressConsoleWarnings(
+      <Composition mocks={[mocks.gqlMocks[9]]} />,
+      'mount',
+      console
+    );
 
     await wait(0);
     await component.update();
@@ -56,17 +67,26 @@ describe('Testing QueryPosts() graphql query: ', () => {
   });
 
   it('Should render Spinner', async () => {
-    const component = mount(<Composition mocks={[]} />);
+    const component = testUtils.suppressConsoleWarnings(
+      <Composition mocks={[]} />,
+      'mount',
+      console
+    );
 
     await wait(0);
     expect(component.find('Spinner').length).toEqual(1);
   });
 
   it('Should render Component with correct data', async () => {
-    const component = mount(<Composition mocks={[mocks.gqlMocks[8]]} />);
+    const component = testUtils.suppressConsoleWarnings(
+      <Composition mocks={[mocks.gqlMocks[8]]} />,
+      'mount',
+      console
+    );
 
     await wait(0);
     await component.update();
+
     expect(component.find('PostsList').length).toEqual(1);
     expect(component.find('a').text()).toEqual('Custom Angular mouseWheel scroll directive');
   });

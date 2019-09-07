@@ -79,7 +79,7 @@ const LoginForm = (props) => {
     const validationResult = validate({
       email,
       password
-    }, utils.constraints);
+    }, utils.constraintsLogin);
 
     if (validationResult) {
       if (validationResult.email) {

@@ -47,3 +47,17 @@ export const FIND_POSTS_BY_TAG = gql`
     }
   }
 `;
+
+export const FIND_POSTS_BY_KEYWORD = gql`
+  query FindPostsByKeyword($keyword: String!){
+    findPostsByKeyword(keyword: $keyword){
+      _id
+      text
+      title
+      subject
+      created
+      author
+      tags
+    }
+  }
+`;

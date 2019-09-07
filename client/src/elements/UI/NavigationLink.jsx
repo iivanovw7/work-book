@@ -29,6 +29,10 @@ const StyledLinkIcon = styled(NavLink)
   transition: all 0.2s ease-in-out;
   font-size: ${props => props.fontSize};
   
+  &::-moz-focus-inner {
+    border: 0;
+  }
+  
   &:hover {
     	color: ${btnLighten};
     	transition: all 0.2s ease-in-out;

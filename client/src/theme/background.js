@@ -1,4 +1,4 @@
-import { darken, lighten, opacify } from 'polished';
+import { darken, lighten } from 'polished';
 import theme from 'styled-theming';
 import { colorScheme } from '../config';
 
@@ -7,10 +7,10 @@ export const backgroundColor = theme('mode', {
   light: `${colorScheme.light.main_bg}`
 });
 
-// export const backgroundInverseOpacified = theme('mode', {
-//   dark: opacify('0.001', 'rgba(255, 0, 0, 0.2)'),
-//   light: opacify('0.001', 'rgba(255, 0, 0, 0.2)')
-// });
+export const spinnerBackground = theme('mode', {
+  dark: lighten(0.2, colorScheme.dark.main_bg),
+  light: darken(0.2, colorScheme.light.main_bg)
+});
 
 export const backgroundColorInverse = theme('mode', {
   light: `${colorScheme.dark.main_bg}`,

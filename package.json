@@ -4,7 +4,7 @@
 	"description": "Blog SPA",
 	"main": "index.js",
 	"scripts": {
-		"start": "concurrently 'npm run server' 'http-server -s ./client/dist -P 4789'",
+		"start": "concurrently 'npm run server' 'http-server ./client/dist -P 4789'",
 		"server": "cd server && npm run prod",
 		"install:all": "concurrently \"npm run install:client\" \"npm run install:server\" ",
 		"test": "concurrently \"npm run test:client\" \"npm run test:server\" ",

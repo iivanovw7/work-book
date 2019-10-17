@@ -2,12 +2,13 @@ import 'cross-fetch/polyfill';
 import 'jsdom-global/register';
 import React from 'react';
 import { mount } from 'enzyme';
+import chalk from 'chalk';
 import { MemoryRouter, NavLink } from 'react-router-dom';
 import NavigationLink from './NavigationLink';
 
 jest.mock('../../config/apiURL', () => () => '/api');
 
-describe('Testing NavigationLink component', () => {
+describe(`Testing [${chalk.yellow('NavigationLink')}] component`, () => {
   afterAll(() => {
     jest.clearAllMocks();
   });

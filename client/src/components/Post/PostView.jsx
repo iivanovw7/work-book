@@ -7,7 +7,7 @@ import ErrorMessage from '../../elements/errorMessage';
 import Button from '../../elements/UI/Button';
 import * as utils from '../../utils';
 import { backgroundColorInverse, textColorInverse, linkColor } from '../../theme';
-import DeletePost from '../../queryBlocks/DeletePost';
+import DeletePost from '../../graphql/DeletePost';
 import TagsCloud from '../Tags/TagsCloud';
 import TextLink from '../../elements/UI/TextLink';
 /* eslint no-underscore-dangle: 0 */

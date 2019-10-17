@@ -6,7 +6,7 @@ import { opacify } from 'polished';
 import styled, { ThemeProvider } from 'styled-components';
 import { mdOffset } from '../../config';
 import * as utils from '../../utils';
-import QueryTags from '../../queryBlocks/QueryTags';
+import QueryTags from '../../graphql/QueryTags';
 import Switch from '../../elements/UI/Switch';
 import NavigationLink from '../../elements/UI/NavigationLink';
 import ButtonTextIcon from '../../elements/UI/ButtonTextIcon';

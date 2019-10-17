@@ -2,11 +2,12 @@ import 'cross-fetch/polyfill';
 import 'jsdom-global/register';
 import React from 'react';
 import { mount } from 'enzyme';
+import chalk from 'chalk';
 import TagButton from './TagButton';
 
 jest.mock('../../config/apiURL', () => () => '/api');
 
-describe('Testing TagButton component', () => {
+describe(`Testing [${chalk.yellow('TagButton')}] component`, () => {
   afterAll(() => {
     jest.clearAllMocks();
   });

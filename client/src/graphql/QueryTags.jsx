@@ -4,7 +4,7 @@ import { Query } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 import TagsCloud from '../components/Tags/TagsCloud';
 import Spinner from '../elements/UI/Spinner';
-import { GET_TAGS } from '../graphql/queries';
+import { GET_TAGS } from './queries';
 
 const QueryTags = (props) => {
   const { history, theme } = props;

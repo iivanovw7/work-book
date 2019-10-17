@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import CreatePost from '../queryBlocks/CreatePost';
-import QueryPost from '../queryBlocks/QueryPost';
-import UpdatePost from '../queryBlocks/UpdatePost';
+import CreatePost from '../graphql/CreatePost';
+import QueryPost from '../graphql/QueryPost';
+import UpdatePost from '../graphql/UpdatePost';
 
 // Returns selected queryBlock according to location (pathName) prop
 const SwitchedPostComponent = (props) => {

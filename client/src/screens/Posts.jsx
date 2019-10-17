@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { Col, Grid, Row } from 'react-styled-flexboxgrid';
 import useStoreon from 'storeon/react';
 import styled, { ThemeProvider } from 'styled-components';
-import QueryPosts from '../queryBlocks/QueryPosts';
+import QueryPosts from '../graphql/QueryPosts';
 import MobileNavBar from '../components/Navigation/MobileNavbar';
 import SideBar from '../components/Navigation/SideBar';
 import TopBar from '../components/Navigation/TopBar';

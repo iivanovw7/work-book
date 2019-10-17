@@ -2,12 +2,13 @@ import 'cross-fetch/polyfill';
 import 'jsdom-global/register';
 import React from 'react';
 import { mount } from 'enzyme';
+import chalk from 'chalk';
 import * as testUtils from '../../testUtils';
 import ButtonTextIcon from './ButtonTextIcon';
 
 jest.mock('../../config/apiURL', () => () => '/api');
 
-describe('Testing ButtonTextIcon component', () => {
+describe(`Testing [${chalk.yellow('ButtonTextIcon')}] component`, () => {
   afterAll(() => {
     jest.clearAllMocks();
   });

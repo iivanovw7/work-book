@@ -5,8 +5,8 @@ import { Redirect, withRouter } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 import Button from '../elements/UI/Button';
 import Spinner from '../elements/UI/Spinner';
-import { DELETE_POST } from '../graphql/mutations';
-import { GET_POSTS } from '../graphql/queries';
+import { DELETE_POST } from './mutations';
+import { GET_POSTS } from './queries';
 /* eslint no-underscore-dangle: 0 */
 
 const StyledContainer = styled.div`

@@ -22,7 +22,7 @@ jest.mock('../components/Navigation/TopBar', () => () => (
 jest.mock('../components/Navigation/SideBar', () => () => (
   <div id="SideBar" />
 ));
-jest.mock('../queryBlocks/SearchByTag', () => () => (
+jest.mock('../graphql/SearchByTag', () => () => (
   <div id="SearchByTag" />
 ));
 jest.mock('../elements/UI/TagButton', () => () => (

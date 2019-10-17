@@ -2,16 +2,16 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Query } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
-import Spinner from '../elements/UI/Spinner';
-import { GET_USER } from '../graphql/queries';
+import { GET_POST } from './queries';
 import ErrorMessage from '../elements/errorMessage';
-import UserView from '../components/User/UserView';
+import PostView from '../components/Post/PostView';
+import Spinner from '../elements/UI/Spinner';
 
-const QueryUser = (props) => {
+const QueryPost = (props) => {
   const { history, id, theme } = props;
 
   return (
-    <Query query={GET_USER} variables={{ _id: id }}>
+    <Query query={GET_POST} variables={{ _id: id }}>
       {({ loading, error, data }) => {
         if (loading) return <Spinner theme={theme} mgTop={5} />;
         if (error) {
@@ -19,22 +19,22 @@ const QueryUser = (props) => {
             <ErrorMessage
               theme={theme}
               text="Back"
-              message="User not found!"
+              message="Post not found!"
               handleClick={() => {
-                history.push('/posts');
+                history.push('/');
               }}
             />
           );
         }
-        return <UserView data={data} history={history} {...props} />;
+        return <PostView data={data} history={history} theme={theme} {...props} />;
       }}
     </Query>
   );
 };
 
-export default withRouter(QueryUser);
+export default withRouter(QueryPost);
 
-QueryUser.propTypes = {
+QueryPost.propTypes = {
   history: PropTypes.object.isRequired,
   id: PropTypes.string.isRequired,
   theme: PropTypes.string.isRequired

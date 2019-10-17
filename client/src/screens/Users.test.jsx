@@ -21,7 +21,7 @@ jest.mock('../components/Navigation/TopBar', () => () => (
 jest.mock('../components/Navigation/SideBar', () => () => (
   <div id="SideBar" />
 ));
-jest.mock('../queryBlocks/QueryUser', () => () => (
+jest.mock('../graphql/QueryUser', () => () => (
   <div id="QueryUser" />
 ));
 

@@ -2,6 +2,7 @@ import 'cross-fetch/polyfill';
 import 'jsdom-global/register';
 import React from 'react';
 import { mount } from 'enzyme';
+import chalk from 'chalk';
 import Switch from './Switch';
 import 'jest-styled-components';
 
@@ -13,7 +14,7 @@ jest.mock('../../assets/img/light.png', () => (
   <img id="ImageLight" alt="ImageLight" />
 ));
 
-describe('Testing Switch component', () => {
+describe(`Testing [${chalk.yellow('Switch')}] component`, () => {
   afterAll(() => {
     jest.clearAllMocks();
   });

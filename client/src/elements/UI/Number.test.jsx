@@ -2,11 +2,12 @@ import 'cross-fetch/polyfill';
 import 'jsdom-global/register';
 import React from 'react';
 import { mount } from 'enzyme';
+import chalk from 'chalk';
 import Number from './Number';
 
 jest.mock('../../config/apiURL', () => () => '/api');
 
-describe('Testing Number component', () => {
+describe(`Testing [${chalk.yellow('Number')}] component`, () => {
   afterAll(() => {
     jest.clearAllMocks();
   });

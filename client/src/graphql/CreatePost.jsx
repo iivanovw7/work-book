@@ -5,8 +5,8 @@ import { withRouter } from 'react-router-dom';
 import PostForm from '../components/Post/PostForm';
 import ErrorMessage from '../elements/errorMessage';
 import Spinner from '../elements/UI/Spinner';
-import { ADD_POST } from '../graphql/mutations';
-import { GET_POSTS } from '../graphql/queries';
+import { ADD_POST } from './mutations';
+import { GET_POSTS } from './queries';
 
 const CreatePost = (props) => {
   const { theme, history } = props;

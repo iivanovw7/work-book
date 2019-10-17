@@ -1,6 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 import { stylesConfig, mdOffset, typography } from '../config';
 
+const { baseFontFamily, timeDatesFontFamily } = typography;
+const { topBarHeight, appBarHeight } = stylesConfig;
 
 /**
  * Styles applied globally, for all themes and ui variants
@@ -25,7 +27,7 @@ export const Global = createGlobalStyle`
  
 	body {
 		scroll-behavior: smooth;
-  	font-family: ${typography.baseFontFamily};
+  	font-family: ${baseFontFamily};
   	overflow-x: hidden;
   	padding: 0;
   	min-height: 100vh;
@@ -42,7 +44,7 @@ export const Global = createGlobalStyle`
   }
 	
 	.dates, code {
-		font-family: ${typography.timeDatesFontFamily};
+		font-family: ${timeDatesFontFamily};
 	}
 	
 	.prettyprint {
@@ -61,8 +63,8 @@ export const Global = createGlobalStyle`
     }
     
     .container {
-    	min-height: calc(100vh - ${stylesConfig.topBarHeight});
-    	margin-top: calc(${stylesConfig.topBarHeight});
+    	min-height: calc(100vh - ${topBarHeight});
+    	margin-top: calc(${topBarHeight});
     }
    
   }
@@ -78,9 +80,9 @@ export const Global = createGlobalStyle`
       display: none;
     }
      .container {
-    	min-height: calc(100vh - ${stylesConfig.appBarHeight} - ${stylesConfig.topBarHeight});
-    	margin-top: ${stylesConfig.topBarHeight};
-      margin-bottom: ${stylesConfig.appBarHeight};
+    	min-height: calc(100vh - ${appBarHeight} - ${topBarHeight});
+    	margin-top: ${topBarHeight};
+      margin-bottom: ${appBarHeight};
     }
   }
   

@@ -6,19 +6,19 @@ import * as testUtils from '../testUtils';
 
 jest.mock('../config/apiURL', () => () => '/api');
 
-jest.mock('../queryBlocks/CreatePost', () => () => (
+jest.mock('../graphql/CreatePost', () => () => (
   <div id="CreatePost">
     CreatePost
   </div>
 ));
 
-jest.mock('../queryBlocks/QueryPost', () => () => (
+jest.mock('../graphql/QueryPost', () => () => (
   <div id="QueryPost">
     QueryPost
   </div>
 ));
 
-jest.mock('../queryBlocks/UpdatePost', () => () => (
+jest.mock('../graphql/UpdatePost', () => () => (
   <div id="UpdatePost">
     UpdatePost
   </div>

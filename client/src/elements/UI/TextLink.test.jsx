@@ -2,11 +2,12 @@ import 'cross-fetch/polyfill';
 import 'jsdom-global/register';
 import React from 'react';
 import { mount } from 'enzyme';
+import chalk from 'chalk';
 import TextLink from './TextLink';
 
 jest.mock('../../config/apiURL', () => () => '/api');
 
-describe('Testing TextLink component', () => {
+describe(`Testing [${chalk.yellow('TextLink')}] component`, () => {
   afterAll(() => {
     jest.clearAllMocks();
   });

@@ -4,7 +4,7 @@ import { Query } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 import SearchList from '../components/Search/SearchList';
 import ErrorMessage from '../elements/errorMessage';
-import { FIND_POSTS_BY_KEYWORD } from '../graphql/queries';
+import { FIND_POSTS_BY_KEYWORD } from './queries';
 import Spinner from '../elements/UI/Spinner';
 
 const SearchPostsByKeyword = (props) => {

@@ -2,13 +2,14 @@ import 'cross-fetch/polyfill';
 import 'jsdom-global/register';
 import React from 'react';
 import { mount } from 'enzyme';
+import chalk from 'chalk';
 import * as testUtils from '../testUtils';
 import ErrorMessage from './errorMessage';
 import Button from './UI/Button';
 
 jest.mock('../config/apiURL', () => () => '/api');
 
-describe('Testing errorMessage component', () => {
+describe(`Testing [${chalk.yellow('errorMessage')}] component`, () => {
   afterAll(() => {
     jest.clearAllMocks();
   });

@@ -2,12 +2,13 @@ import 'cross-fetch/polyfill';
 import 'jsdom-global/register';
 import React from 'react';
 import { mount } from 'enzyme';
+import chalk from 'chalk';
 import Input from './Input';
 import * as testUtils from '../../testUtils';
 
 jest.mock('../../config/apiURL', () => () => '/api');
 
-describe('Testing Input component', () => {
+describe(`Testing [${chalk.yellow('Input')}] component`, () => {
   afterAll(() => {
     jest.clearAllMocks();
   });

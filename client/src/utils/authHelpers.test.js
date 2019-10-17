@@ -1,4 +1,5 @@
 import '@babel/polyfill/noConflict';
+import chalk from 'chalk';
 import mockAxios from 'jest-mock-axios';
 import * as mocks from '../__mocks__';
 import { checkUser, ifTokenExists, loginUser } from './authHelpers';
@@ -8,16 +9,16 @@ import { URL } from '../config/apiURL';
 jest.mock('js-cookie', () => ({ get: () => 'token' }));
 jest.mock('../config/apiURL', () => () => '/api');
 
-describe('Testing authHelpers: ', () => {
+describe(`Testing [${chalk.yellow('authHelpers')}]: `, () => {
   afterEach(() => {
     mockAxios.reset();
   });
 
-  it('Should check if mocked token exists in Cookies', () => {
+  it(`Should check if mocked token exists in [${chalk.yellow('Cookies')}]`, () => {
     expect(ifTokenExists()).toEqual(true);
   });
 
-  it('Should run loginUser() and verify results', async () => {
+  it(`Should run [${chalk.yellow('loginUser')}] and verify results`, async () => {
     const reqURL = `${URL}/auth/login`;
     const mockResponse = mocks.loginResponse;
     const catchFn = jest.fn();
@@ -39,7 +40,7 @@ describe('Testing authHelpers: ', () => {
     expect(catchFn).not.toHaveBeenCalled();
   });
 
-  it('Should run checkUser() and verify results', async () => {
+  it(`Should run [${chalk.yellow('checkUser')}] and verify results`, async () => {
     const reqURL = `${URL}/auth/login?token=token`;
     const mockResponse = mocks.loginResponse;
     const catchFn = jest.fn();

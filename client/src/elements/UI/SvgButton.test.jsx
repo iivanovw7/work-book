@@ -2,6 +2,7 @@ import 'cross-fetch/polyfill';
 import 'jsdom-global/register';
 import React from 'react';
 import { mount } from 'enzyme';
+import chalk from 'chalk';
 import SvgButton from './SvgButton';
 
 // In order to make webpack svgr loader with jest
@@ -10,7 +11,7 @@ import { ReactComponent as IconEng } from '../../assets/img/eng.svg';
 
 jest.mock('../../config/apiURL', () => () => '/api');
 
-describe('Testing SVG Button component', () => {
+describe(`Testing [${chalk.yellow('SVG Button')}] component`, () => {
   afterAll(() => {
     jest.clearAllMocks();
   });

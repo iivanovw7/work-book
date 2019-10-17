@@ -2,11 +2,12 @@ import 'cross-fetch/polyfill';
 import 'jsdom-global/register';
 import React from 'react';
 import { mount } from 'enzyme';
+import chalk from 'chalk';
 import TextArea from './TextArea';
 
 jest.mock('../../config/apiURL', () => () => '/api');
 
-describe('Testing TextArea component', () => {
+describe(`Testing [${chalk.yellow('TextArea')}] component`, () => {
   afterAll(() => {
     jest.clearAllMocks();
   });

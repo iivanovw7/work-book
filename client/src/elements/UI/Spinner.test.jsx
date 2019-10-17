@@ -2,11 +2,12 @@ import 'cross-fetch/polyfill';
 import 'jsdom-global/register';
 import React from 'react';
 import { mount } from 'enzyme';
+import chalk from 'chalk';
 import Spinner from './Spinner';
 
 jest.mock('../../config/apiURL', () => () => '/api');
 
-describe('Testing Spinner component', () => {
+describe(`Testing [${chalk.yellow('Spinner')}] component`, () => {
   afterAll(() => {
     jest.clearAllMocks();
   });

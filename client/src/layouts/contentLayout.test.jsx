@@ -2,6 +2,7 @@ import React from 'react';
 import 'cross-fetch/polyfill';
 import 'jsdom-global/register';
 import { mount } from 'enzyme';
+import chalk from 'chalk';
 import { MemoryRouter } from 'react-router-dom';
 import ContentLayout from './contentLayout';
 
@@ -11,7 +12,7 @@ jest.mock('../config/apiURL', () => () => '/api');
 
 jest.mock('../utils');
 
-describe('Testing content layout component: ', () => {
+describe(`Testing [${chalk.yellow('content layout')}] component: `, () => {
   afterAll(() => {
     jest.clearAllMocks();
   });

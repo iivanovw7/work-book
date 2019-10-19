@@ -11,4 +11,5 @@ router.get('/login', validate(paramValidation.checkToken), catchErrors(auth.chec
 // Check if server application is alive
 router.get('/check', (req, res) => res.send('OK'));
 
+// eslint-disable-next-line import/prefer-default-export
 export { router as authRoutes };

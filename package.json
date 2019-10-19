@@ -4,8 +4,9 @@
 	"description": "Blog SPA",
 	"main": "index.js",
 	"scripts": {
-		"start": "concurrently 'npm run server' 'http-server ./client/dist -p 4789'",
+		"start": "concurrently 'npm run server' 'npm run server:dist'",
 		"server": "cd server && npm run prod",
+		"server:dist": "cd server && npm run prod:dist",
 		"install:all": "concurrently \"npm run install:client\" \"npm run install:server\" ",
 		"test": "concurrently \"npm run test:client\" \"npm run test:server\" ",
 		"build": "cd client && npm run build",
@@ -18,7 +19,6 @@
 	"license": "ISC",
 	"dependencies": {
 		"concurrently": "^4.1.1",
-		"http-server": "^0.11.1",
 		"serve": "^11.1.0"
 	},
 	"husky": {

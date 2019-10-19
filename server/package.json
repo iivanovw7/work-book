@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest --passWithNoTests --config ./api/test/jest.config.js",
     "start": "nodemon",
-    "prod": "babel-node -- ./api/index.js --debug"
+    "prod": "babel-node -- ./api/index.js --debug",
+    "prod:dist": "babel-node -- ./server.js --debug"
   },
   "keywords": [
     "server",

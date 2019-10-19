@@ -17,7 +17,7 @@ export default (
   <Switch>
     <PageRoute exact path="/" component={Posts} privateRoute={false} />
     <PageRoute exact path="/posts" component={Posts} privateRoute={false} />
-    <Route path="/login" component={Login} />
+    <Route exect path="/login" component={Login} />
     <PageRoute path="/user/:id" component={User} privateRoute />
     <PageRoute path="/posts/update/:id" component={Post} privateRoute />
     <PageRoute path="/posts/new" component={Post} privateRoute />

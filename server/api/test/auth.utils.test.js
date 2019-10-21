@@ -1,5 +1,6 @@
 import '@babel/polyfill/noConflict';
 import dotenv from 'dotenv';
+import chalk from 'chalk';
 import mongoose from 'mongoose';
 import request from 'supertest';
 import Post from '../../models/Post';
@@ -60,7 +61,7 @@ afterAll(async (done) => {
   done();
 });
 
-describe('Checking auth functions: ', () => {
+describe(`Checking [${chalk.yellow('auth')}] functions: `, () => {
   it('Check expect to receive OK', async (done) => {
     request(app)
       .get('/auth/check')
@@ -73,7 +74,7 @@ describe('Checking auth functions: ', () => {
       });
   });
 
-  it('Checking LOGIN route, expect code 200', async (done) => {
+  it(`Checking [${chalk.yellow('LOGIN')}] route, expect code 200`, async (done) => {
     request(app)
       .post('/auth/login')
       .set('Accept', 'application/json')
@@ -91,7 +92,7 @@ describe('Checking auth functions: ', () => {
       });
   });
 
-  it('checkAccess(req) expect to receive correct user object', async (done) => {
+  it(`[${chalk.yellow('checkAccess')}] expect to receive correct user object`, async (done) => {
     const req = {
       user: testAuthUser,
       headers: { token }
@@ -104,7 +105,7 @@ describe('Checking auth functions: ', () => {
     done();
   });
 
-  it('checkToken(req) expect to receive correct user object', async (done) => {
+  it(`[${chalk.yellow('checkToken')}] expect to receive correct user object`, async (done) => {
     request(app)
       .get('/auth/login')
       .set('Accept', 'application/json')
@@ -118,12 +119,12 @@ describe('Checking auth functions: ', () => {
       });
   });
 
-  it('Should run  words() and verify result', () => {
+  it(`Should run [${chalk.yellow('words')}] and verify result`, () => {
     const testString = 'Sentence1 with word,testing';
     expect(words(testString)).toEqual(['Sentence1', 'with', 'word', 'testing']);
   });
 
-  it('Should run forEachCallback() and verify result', () => {
+  it(`Should run [${chalk.yellow('forEachCallback')}] and verify result`, () => {
     const testArray = ['Sentence1', 'with', 'word', 'testing'];
     const result = [];
     forEachCallback(testArray, val => result.push(val));

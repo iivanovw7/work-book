@@ -1,6 +1,7 @@
 import '@babel/polyfill/noConflict';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import chalk from 'chalk';
 import Post from '../../models/Post';
 import User from '../../models/User';
 import { postResolvers } from '../resolvers/postResolvers';
@@ -60,7 +61,7 @@ afterAll(async (done) => {
   done();
 });
 
-describe('Testing [Queries] and [Mutations]', () => {
+describe(`Testing [${chalk.yellow('Queries')}] and [${chalk.yellow('Mutations')}]`, () => {
   it('Should run addPost and return new post', async () => {
     const response = await postResolvers.Mutation.addPost(
       null,
@@ -73,14 +74,14 @@ describe('Testing [Queries] and [Mutations]', () => {
     post = response;
   });
 
-  it('Should run getPosts query and receive mock posts array', async () => {
+  it(`Should run [${chalk.yellow('getPosts')}] query and receive mock posts array`, async () => {
     const response = await postResolvers.Query.getPosts();
 
     expect(response).not.toBe(null);
     expect(response[0].subject).toBe(post.subject);
   });
 
-  it('Should run getPost query and receive mock post', async () => {
+  it(`Should run [${chalk.yellow('getPost')}] query and receive mock post`, async () => {
     const response = await postResolvers.Query.getPost(
       null,
       { _id: post._id }
@@ -90,7 +91,7 @@ describe('Testing [Queries] and [Mutations]', () => {
     expect(response.subject).toBe(post.subject);
   });
 
-  it('Should run findPostsByTag and return mock post', async () => {
+  it(`Should run [${chalk.yellow('findPostsByTag')}] and return mock post`, async () => {
     const response = await postResolvers.Query.findPostsByTag(
       null,
       { tag: testPost.tags[0] }
@@ -100,7 +101,7 @@ describe('Testing [Queries] and [Mutations]', () => {
     expect(response[0].subject).toBe(post.subject);
   });
 
-  it('Should run findPostsByKeyword and return mock post', async () => {
+  it(`Should run [${chalk.yellow('findPostsByKeyword')}] and return mock post`, async () => {
     const response = await postResolvers.Query.findPostsByKeyword(
       null,
       { keyword: testPost.title }
@@ -110,7 +111,7 @@ describe('Testing [Queries] and [Mutations]', () => {
     expect(response[0].subject).toBe(post.subject);
   });
 
-  it('Should run getTags and and receive correct list of tags', async () => {
+  it(`Should run [${chalk.yellow('getTags')}] and and receive correct list of tags`, async () => {
     // Add one more post, to verify query
     await postResolvers.Mutation.addPost(
       null,
@@ -124,7 +125,7 @@ describe('Testing [Queries] and [Mutations]', () => {
     expect(response).toEqual(['tag1', 'tag2', 'tag3', 'tag4', 'tag5', 'tag6']);
   });
 
-  it('Should run updatePost and return modified post', async () => {
+  it(`Should run [${chalk.yellow('updatePost')}] and return modified post`, async () => {
     const response = await postResolvers.Mutation.updatePost(
       null,
       {
@@ -140,7 +141,7 @@ describe('Testing [Queries] and [Mutations]', () => {
     expect(response.text).toBe('TEST2');
   });
 
-  it('Should run deletePost and remove mock post from db', async () => {
+  it(`Should run [${chalk.yellow('deletePost')}] and remove mock post from db`, async () => {
     const response = await postResolvers.Mutation.deletePost(
       null,
       { _id: post._id },

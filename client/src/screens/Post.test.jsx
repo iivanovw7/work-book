@@ -1,9 +1,10 @@
 import React from 'react';
 import 'cross-fetch/polyfill';
 import 'jsdom-global/register';
+import chalk from 'chalk';
 import { MemoryRouter } from 'react-router-dom';
-import * as testUtils from '../testUtils';
 import Post from './Post';
+import * as testUtils from '../testUtils';
 
 jest.mock('../config/apiURL', () => () => '/api');
 
@@ -25,7 +26,7 @@ jest.mock('../utils/postHelpers', () => () => (
   <div id="SwitchedComponent" />
 ));
 
-describe('Testing POST screen: ', () => {
+describe(`Testing [${chalk.yellow('POST')}] screen: `, () => {
   afterAll(() => {
     jest.clearAllMocks();
   });

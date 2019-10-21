@@ -3,9 +3,9 @@ import 'jsdom-global/register';
 import React from 'react';
 import { mount } from 'enzyme';
 import chalk from 'chalk';
-import * as testUtils from '../testUtils';
 import ErrorMessage from './errorMessage';
 import Button from './UI/Button';
+import * as testUtils from '../testUtils';
 
 jest.mock('../config/apiURL', () => () => '/api');
 

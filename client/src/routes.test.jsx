@@ -3,9 +3,10 @@ import 'jsdom-global/register';
 import React from 'react';
 import useStoreon from 'storeon/react';
 import { MemoryRouter } from 'react-router-dom';
-import * as testUtils from './testUtils';
+import chalk from 'chalk';
 import routes from './routes';
 import NoMatchRoute from './components/noMatchRoute';
+import * as testUtils from './testUtils';
 
 jest.mock('./config/apiURL', () => () => '/api');
 jest.mock('./utils');
@@ -28,7 +29,7 @@ useStoreon.mockImplementation(() => ({
   tags: 'tags,tags'
 }));
 
-describe('Testing routes', () => {
+describe(`Testing [${chalk.yellow('routes')}]`, () => {
   afterAll(() => {
     jest.clearAllMocks();
   });
@@ -37,7 +38,7 @@ describe('Testing routes', () => {
     jest.resetModules();
   });
 
-  it('Should open invalid path and redirect to 404', () => {
+  it(`Should open invalid path and redirect to [${chalk.yellow('404')}]`, () => {
     const component = testUtils.suppressConsoleWarnings(
       <MemoryRouter initialEntries={['/random']}>
         { routes }
@@ -50,7 +51,7 @@ describe('Testing routes', () => {
     expect(component.find(NoMatchRoute)).toHaveLength(1);
   });
 
-  it('Should open "Home" path and check the result', () => {
+  it(`Should open [${chalk.yellow('"Home"')}] path and check the result`, () => {
     const component = testUtils.suppressConsoleWarnings(
       <MemoryRouter initialEntries={['/']}>
         { routes }

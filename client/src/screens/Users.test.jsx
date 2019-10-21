@@ -1,9 +1,10 @@
 import React from 'react';
 import 'cross-fetch/polyfill';
 import 'jsdom-global/register';
+import chalk from 'chalk';
 import { MemoryRouter } from 'react-router-dom';
-import * as testUtils from '../testUtils';
 import User from './User';
+import * as testUtils from '../testUtils';
 
 jest.mock('../config/apiURL', () => () => '/api');
 
@@ -25,7 +26,7 @@ jest.mock('../graphql/QueryUser', () => () => (
   <div id="QueryUser" />
 ));
 
-describe('Testing USER screen: ', () => {
+describe(`Testing [${chalk.yellow('USER')}] screen: `, () => {
   afterAll(() => {
     jest.clearAllMocks();
   });

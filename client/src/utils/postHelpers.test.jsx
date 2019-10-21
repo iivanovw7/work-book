@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import chalk from 'chalk';
 import SwitchedPostComponent from './postHelpers';
 import 'jsdom-global/register';
 import * as testUtils from '../testUtils';
@@ -31,7 +31,7 @@ describe('SwitchedPostComponent testing: ', () => {
     theme: 'dark'
   };
 
-  it('Should render correctly in "debug" mode and to match snapshot', () => {
+  it(`Should render correctly in [${chalk.yellow('"debug"')}] mode and to match snapshot`, () => {
     const location = {
       pathname: 'string1/string2/string3'
     };
@@ -44,7 +44,7 @@ describe('SwitchedPostComponent testing: ', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('Should return correct mocked component: QueryPost', () => {
+  it(`Should return correct mocked component: [${chalk.yellow('QueryPost')}]`, () => {
     const location = {
       pathname: 'string1/string2/string3'
     };
@@ -58,7 +58,7 @@ describe('SwitchedPostComponent testing: ', () => {
     expect(wrapper.find('#QueryPost').length).toEqual(1);
   });
 
-  it('Should return correct mocked component: CreatePost', () => {
+  it(`Should return correct mocked component: [${chalk.yellow('CreatePost')}]`, () => {
     const location = {
       pathname: 'string1/string2/new'
     };
@@ -72,7 +72,7 @@ describe('SwitchedPostComponent testing: ', () => {
     expect(wrapper.find('#CreatePost').length).toEqual(1);
   });
 
-  it('Should return correct mocked component: UpdatePost', () => {
+  it(`Should return correct mocked component: [${chalk.yellow('UpdatePost')}]`, () => {
     const location = {
       pathname: 'string1/string2/update'
     };

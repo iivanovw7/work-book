@@ -2,11 +2,12 @@ import React from 'react';
 import wait from 'waait';
 import 'cross-fetch/polyfill';
 import 'jsdom-global/register';
+import chalk from 'chalk';
 import { MemoryRouter } from 'react-router-dom';
 import { MockedProvider } from 'react-apollo/test-utils';
+import CreatePost from './CreatePost';
 import * as mocks from '../__mocks__';
 import * as testUtils from '../testUtils';
-import CreatePost from './CreatePost';
 
 jest.mock('../config/apiURL', () => () => '/api');
 jest.mock('storeon/react', () => () => ({
@@ -14,7 +15,7 @@ jest.mock('storeon/react', () => () => ({
   theme: 'dark',
   search: ''
 }));
-describe('Testing CreatePost() graphql query: ', () => {
+describe(`Testing [${chalk.yellow('CreatePost')}] graphql query: `, () => {
   afterAll(() => {
     jest.clearAllMocks();
   });

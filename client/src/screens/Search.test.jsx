@@ -2,9 +2,10 @@ import React from 'react';
 import wait from 'waait';
 import 'cross-fetch/polyfill';
 import 'jsdom-global/register';
+import chalk from 'chalk';
 import { MemoryRouter } from 'react-router-dom';
-import * as testUtils from '../testUtils';
 import Search from './Search';
+import * as testUtils from '../testUtils';
 
 jest.mock('../config/apiURL', () => () => '/api');
 
@@ -29,7 +30,7 @@ jest.mock('../elements/UI/TagButton', () => () => (
   <div id="TagButton" />
 ));
 
-describe('Testing SEARCH screen: ', () => {
+describe(`Testing [${chalk.yellow('SEARCH')}] screen: `, () => {
   afterAll(() => {
     jest.clearAllMocks();
   });

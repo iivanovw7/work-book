@@ -2,12 +2,12 @@ import React from 'react';
 import wait from 'waait';
 import 'cross-fetch/polyfill';
 import 'jsdom-global/register';
+import chalk from 'chalk';
 import { MemoryRouter } from 'react-router-dom';
-import { mount } from 'enzyme';
 import { MockedProvider } from 'react-apollo/test-utils';
+import SearchPostsByTag from './SearchByTag';
 import * as mocks from '../__mocks__';
 import * as testUtils from '../testUtils';
-import SearchPostsByTag from './SearchByTag';
 
 jest.mock('../config/apiURL', () => () => '/api');
 jest.mock('storeon/react', () => () => ({
@@ -23,7 +23,7 @@ jest.mock('../elements/UI/TagButton', () => () => (
 ));
 
 
-describe('Testing SearchPostsByTag() graphql query: ', () => {
+describe(`Testing [${chalk.yellow('SearchPostsByTag')}] graphql query: `, () => {
   afterAll(() => {
     jest.clearAllMocks();
   });

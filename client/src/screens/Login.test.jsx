@@ -1,10 +1,10 @@
 import 'cross-fetch/polyfill';
 import 'jsdom-global/register';
 import React from 'react';
+import chalk from 'chalk';
 import { MemoryRouter } from 'react-router-dom';
-import * as testUtils from '../testUtils';
 import Login from './Login';
-
+import * as testUtils from '../testUtils';
 
 jest.mock('../config/apiURL', () => () => '/api');
 
@@ -20,7 +20,7 @@ jest.mock('../components/Login/LoginForm', () => () => (
   <div id="loginform" />
 ));
 
-describe('Testing LOGIN screen: ', () => {
+describe(`Testing [${chalk.yellow('LOGIN')}] screen: `, () => {
   afterAll(() => {
     jest.clearAllMocks();
   });

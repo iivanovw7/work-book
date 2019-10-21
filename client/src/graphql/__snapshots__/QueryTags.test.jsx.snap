@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Testing QueryTags() graphql query:  Should render Component and match snapshot 1`] = `ReactWrapper {}`;
+exports[`Testing [[33mQueryTags[39m] graphql query:  Should render Component and match snapshot 1`] = `ReactWrapper {}`;

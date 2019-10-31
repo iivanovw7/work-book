@@ -11,7 +11,7 @@ removeDockerContainerById () {
    then # Removes container
     echo "Found Container ID: ${1}"
     echo "Stopping and removing it"
-    return docker container stop ${1} && docker container rm ${1}
+    docker container stop ${1} && docker container rm ${1}
    fi
     return 0
 }
@@ -27,7 +27,7 @@ findContainerByPortNumber () {
       docker container ls --format="{{.ID}}\t{{.Ports}}" |\
       grep ${1} |\
       awk '{print $1}')
-    return removeDockerContainerById ${ID}
+    removeDockerContainerById "${ID}"
   fi
     return 0
 }

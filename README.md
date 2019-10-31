@@ -153,8 +153,8 @@ Should run in directory: `./work-book/client` <br />
 ## ToDo
 1. ~~Implement live search by keyword~~ <br/>
 2. Implement posts pagination <br/>
-3. Add Docker support <br/>
-4. Add Stylelint <br/>
+3. Add Docker readme section <br/>
+4. ~~Add Stylelint~~ <br/>
 
 ## License
 

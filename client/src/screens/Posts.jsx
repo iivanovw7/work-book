@@ -13,15 +13,14 @@ import { backgroundColor, textColor } from '../theme';
 /* eslint no-underscore-dangle: 0 */
 
 const StyledSection = styled.section`
-	color: ${textColor};
+  color: ${textColor};
   background-color: ${backgroundColor};
-  min-width: 100%
-  
+  min-width: 100%;
   box-sizing: content-box;
 `;
 
 const StyledSideBar = styled.aside`
-	max-width: inherit;
+  max-width: inherit;
 `;
 
 const Posts = (props) => {

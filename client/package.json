@@ -7,7 +7,8 @@
 		"start": "webpack-dev-server --mode development --config webpack.dev.js --open",
 		"dev": "webpack-dashboard -- webpack-dev-server --mode development -d --hot --config webpack.dev.js --watch --open",
 		"build": "webpack --mode production --config webpack.prod.js",
-		"test": "jest --passWithNoTests --verbose"
+		"test": "jest --passWithNoTests --verbose",
+    "stylelint": "stylelint ./src/**/*.jsx"
 	},
 	"keywords": [],
 	"author": "",
@@ -55,6 +56,9 @@
 		"raw-loader": "^3.0.0",
 		"react-hot-loader": "^4.11.1",
 		"stylelint": "^10.1.0",
+		"stylelint-config-recommended": "^3.0.0",
+		"stylelint-config-styled-components": "^0.1.1",
+		"stylelint-processor-styled-components": "^1.8.0",
 		"svg-inline-loader": "^0.8.0",
 		"sw-precache-webpack-plugin": "^0.11.5",
 		"url-loader": "^2.1.0",

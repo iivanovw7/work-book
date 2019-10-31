@@ -10,8 +10,8 @@ import { GET_POSTS } from './queries';
 /* eslint no-underscore-dangle: 0 */
 
 const StyledContainer = styled.div`
-	float: right;
-	max-height: 60px;
+  float: right;
+  max-height: 60px;
 `;
 
 const DeletePost = (props) => {

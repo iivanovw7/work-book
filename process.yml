@@ -1,0 +1,9 @@
+apps:
+  - script : 'npm'
+    args   : 'run prod'
+    name   : 'prod'
+    cwd    : './server'
+  - script : 'npm'
+    args   : 'run prod:dist'
+    name   : 'prod:dist'
+    cwd    : './server'

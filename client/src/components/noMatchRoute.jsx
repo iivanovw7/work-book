@@ -5,7 +5,7 @@ import useStoreon from 'storeon/react';
 import { backgroundColorDarken, textColor } from '../theme';
 
 const StyledSection = styled.section`
-	background-color: ${backgroundColorDarken};
+  background-color: ${backgroundColorDarken};
   color: ${textColor};
   min-height: 100vh;
   min-width: 100vw;

@@ -13,12 +13,12 @@ import SideBar from '../components/Navigation/SideBar';
 /* eslint no-underscore-dangle: 0 */
 
 const StyledSection = styled.section`
-	color: ${textColor};
+  color: ${textColor};
   background-color: ${backgroundColor};
 `;
 
 const StyledSideBar = styled.aside`
-	max-width: inherit;
+  max-width: inherit;
 `;
 
 const User = (props) => {

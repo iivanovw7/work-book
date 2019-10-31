@@ -13,9 +13,9 @@ import SideBar from '../components/Navigation/SideBar';
 /* eslint no-underscore-dangle: 0 */
 
 const StyledSection = styled.div`
-	color: ${textColor};
+  color: ${textColor};
   background-color: ${backgroundColor};
-  min-width: 100%
+  min-width: 100%;
   box-sizing: content-box;
 `;
 

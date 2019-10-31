@@ -27,6 +27,7 @@ See more details in [Features](#features) section.
 - [Requirements](#requirements)
 - [Clone](#clone)
 - [Installation](#installation)
+- [Docker](#docker)
 - [Features](#features)
 - [Testing](#testing)
 - [License](#license)
@@ -113,6 +114,8 @@ Configure value `API_URL` according to you production server URL and PORT
 `cd` <br />
 `npm run start` <br />
 
+## Docker
+
 ## Features
 
 ##### Authorisation
@@ -148,7 +151,10 @@ Should run in directory: `./work-book/client` <br />
 `npm run test` <br />
 
 ## ToDo
-1. Implement live search by keyword
+1. ~~Implement live search by keyword~~ <br/>
+2. Implement posts pagination <br/>
+3. Add Docker support <br/>
+4. Add Stylelint <br/>
 
 ## License
 

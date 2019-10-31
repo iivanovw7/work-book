@@ -62,7 +62,7 @@ afterAll(async (done) => {
 });
 
 describe(`Testing [${chalk.yellow('Queries')}] and [${chalk.yellow('Mutations')}]`, () => {
-  it('Should run addPost and return new post', async () => {
+  it(`Should run [${chalk.yellow('addPost')}] and return new post`, async () => {
     const response = await postResolvers.Mutation.addPost(
       null,
       testPost,

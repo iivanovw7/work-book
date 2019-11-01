@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Application port
+# Application ports
 PORT_PRIVATE=8439
 DIST_PORT=4789
 
@@ -21,8 +21,7 @@ removeDockerContainerById () {
 findContainerByPortNumber () {
   if [[ "$1" ]]
   echo "Searching containers by port: $1"
-  then
-    # Lists containers and finds one which listening application port
+  then # Lists containers and finds one which is listening application port
     ID=$(\
       docker container ls --format="{{.ID}}\t{{.Ports}}" |\
       grep ${1} |\

@@ -49,7 +49,7 @@ See more details in [Features](#features) section.
 ## Installation
 
 For Ubuntu or Debian-based Linux distributions. <br />
-Tested on: Ubuntu 16.04.6 LTS (Xenial Xerus), Ubuntu 18.04.2 LTS (Bionic Beaver)
+Tested on: Ubuntu 16.04.6 LTS (Xenial Xerus), Ubuntu 18.04.2 LTS (Bionic Beaver) <br />
 
 -------
 
@@ -75,16 +75,18 @@ Create `.env` file: <br />
 `nano .env` <br />
 
 Fill it with configuration data:
-1. `PORT` application will run on
+1. `DIST_PORT` application will run on
 2. Any `SECRET` String 
 3. `DATABASE` credentials
 4. `ROOT` Domain name
+5. `PORT_PRIVATE` Port address
 
-```
+```dotenv
 PORT_PRIVATE=XXX
 JWT_SECRET=XXXX
 DATABASE=mongodb://LOGIN:PASSWORD
 ROOT=XXXX
+DIST_PORT=XXXX
 ```
 
 Save and close `.env` <br />
@@ -114,7 +116,99 @@ Configure value `API_URL` according to you production server URL and PORT
 `cd` <br />
 `npm run start` <br />
 
+-------
+
+### Nginx 
+Example Nginx config could be used to run application: <br />
+(`letsencrypt` service is used in example in order to run application on `https` ) <br />
+```
+server {
+    listen 80;
+    listen [::]:80;
+    server_name DOMAIN.com www.DOMAIN.com;
+    return 301 https://DOMAIN.com$request_uri;
+}
+
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+    server_name DOMAIN.com www.DOMAIN.com;
+    access_log /var/log/nginx/DOMAIN.com;
+    ssl on;
+    ssl_certificate /etc/letsencrypt/live/DOMAIN.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/DOMAIN.com/privkey.pem;
+    include snippets/ssl-params.conf;
+    ...
+    CONFIGURATION
+    ...    
+    # text/html is always compressed by gzip module return 302
+    # https://$server_name$request_uri;
+
+   location / {
+        proxy_pass http://localhost:DIST_PORT;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+
+    location /api/graphql {
+        proxy_pass http://localhost:PORT_PRIVATE/graphql;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Ho $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+
+    location /api/auth {  
+        proxy_pass http://localhost:PORT_PRIVATE/auth;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+```
+
 ## Docker
+
+#### Description
+Application could also be executed inside Docker container <br />
+During build it will automatically pull `Node 12` Docker image and `pm2` <br />
+Install all packets inside, run tests and execute container <br />
+`pm2` scripts are configured inside `process.yml` file and are going to be executed during build 
+
+#### Requirements
+1. Docker should be installed and configured on the hosting system <br />
+2. Application PORTS should be configured inside `Dockerfile` and `scripts.sh` <br />
+
+#### Configuration
+Sets up `PORT_PRIVATE` and `DIST_PORT` (same as in `.env` file): <br />
+`nano Dockerfile` <br />
+Both ports should be listed as follows in any order: <br />
+```dockerfile
+ # Exposing application ports
+ EXPOSE 8439
+ EXPOSE 4789
+```
+`Ctrl + X` and Save changes <br />
+`nano scripts.sh` <br />
+Both ports should be listed as follows at the top: <br />
+```bash
+# Application ports
+PORT_PRIVATE=8439
+DIST_PORT=4789
+```     
+`Ctrl + X` and Save changes <br />
+Then you probably will need to set up execution rights: <br />
+`sudo chmod +x ./scripts.sh` <br />
+To run container: <br />
+`./scripts.sh` <br />
+In that case script will find containers listening to configured ports, <br />
+remove them, then build new one and execute it. <br />
 
 ## Features
 
@@ -142,7 +236,7 @@ Should run in directory: `./work-book/server` <br />
 
 #### Frontend SPA testing
 
-Tests cover application components, qraphQL queries, actions, utils, and helper functions.
+Tests cover application components, GraphQL queries, actions, utils, and helper functions.
 
 > How to run unit tests
 
@@ -153,7 +247,7 @@ Should run in directory: `./work-book/client` <br />
 ## ToDo
 1. ~~Implement live search by keyword~~ <br/>
 2. Implement posts pagination <br/>
-3. Add Docker readme section <br/>
+3. ~~Add Docker readme section~~ <br/>
 4. ~~Add Stylelint~~ <br/>
 
 ## License

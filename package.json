@@ -24,7 +24,7 @@
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "npm run test",
+			"pre-commit": "run-s \"stylelint\" \"test\"",
 			"pre-push": "npm run test"
 		}
 	},

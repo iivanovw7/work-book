@@ -51,7 +51,7 @@ describe(`Testing [${chalk.yellow('routes')}]`, () => {
     expect(component.find(NoMatchRoute)).toHaveLength(1);
   });
 
-  it(`Should open [${chalk.yellow('"Home"')}] path and check the result`, () => {
+  it(`Should open [${chalk.yellow('Home')}] path and check the result`, () => {
     const component = testUtils.suppressConsoleWarnings(
       <MemoryRouter initialEntries={['/']}>
         { routes }

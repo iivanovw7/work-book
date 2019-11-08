@@ -30,16 +30,22 @@ module.exports = {
         use: ['@svgr/webpack']
       },
       {
-        test: /\.png$/,
-        loader: 'url-loader?mimetype=image/png'
+        test: /\.(png|jpg|jpeg|gif|ico)$/i,
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 1000, // if less than 10 kb, adds base64 encoded image to css
+            name: 'assets/images/[hash].[ext]' // if more than 10 kb falls to file-loader
+          }
+        }]
       },
       {
         test: /\.(woff|eot|ttf)$/,
         use: {
           loader: 'url-loader',
           options: {
-            limit: 1000, // if less than 10 kb, add base64 encoded image to css
-            name: '[hash].[ext]' // if more than 10 kb move to this folder in build using file-loader
+            limit: 1000, // if less than 10 kb, adds base64 encoded image to css
+            name: 'assets/fonts/[hash].[ext]' // if more than 10 kb falls to file-loader
           }
         }
       }
@@ -59,9 +65,9 @@ module.exports = {
     }),
     new webpack.HotModuleReplacementPlugin(),
     new DashboardPlugin(),
-    new StatsWriterPlugin({
-      fields: ['assets', 'modules']
-    }),
+    // new StatsWriterPlugin({
+    //   fields: ['assets', 'modules']
+    // }),
     new Dotenv(),
     new HtmlWebPackPlugin({
       template: './src/index.html',
@@ -73,7 +79,7 @@ module.exports = {
     })
   ],
   output: {
-    filename: '[name].bundle.js',
+    filename: 'assets/js/[name].bundle.js',
     path: path.resolve(__dirname, '../dist')
   }
 };

@@ -53,6 +53,7 @@ module.exports = merge(common, {
       chunks: 'all',
       maxInitialRequests: Infinity,
       minSize: 0,
+      maxSize: 244000,
       cacheGroups: {
         vendor: {
           test: /[\\/]node_modules[\\/]/,

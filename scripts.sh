@@ -9,11 +9,8 @@ PORTS_STRING=''
 PORTS_CONFIG=''
 
 for PORT in "${PORTS[@]}"; do
-      prefBlanc=" ";
-      prefP=" -p ";
-      postPort=":";
-      PORTS_STRING+="${prefBlanc}${PORT}";
-      PORTS_CONFIG+="${prefP}${PORT}${postPort}${PORT}";
+   PORTS_STRING+=" ${PORT}";
+   PORTS_CONFIG+=" -p ${PORT}:${PORT}";
 done
 
 # Stops and removes docker container by ID
@@ -72,7 +69,8 @@ createUserDialog() {
     # Run through ports array
     for PORT in "${PORTS[@]}"; do
       findContainerByPortNumber ${PORT};
-  done
+    done
+
     createNewContainer
   else
     createNewContainer

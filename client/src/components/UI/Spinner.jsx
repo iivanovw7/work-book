@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
+import { spin } from '../../styles';
 import { spinnerBackground, textLinkColorLighten } from '../../theme';
 /* eslint react/require-default-props: 0 */
 
@@ -13,52 +14,28 @@ const StyledWrapper = styled.div`
   height: 100%;
   
   div {
-    margin-top: ${props => props.mgTop}em;
+    margin: ${props => props.margin};
+    padding: ${props => props.padding};
   }
 `;
 
 const StyledSpinner = styled.div`
+  ${spin}
   display: inline-block;
   width: 50px;
   height: 50px;
   border-radius: 50%;
   border: 3px solid ${spinnerBackground};
   border-top-color: ${textLinkColorLighten};
-  animation: spin 1s ease-in-out infinite;
-  -webkit-animation: spin 1s ease-in-out infinite;
 
-	@keyframes spin {
-		0% {
-			transform: rotate(0deg);
-    	-webkit-transform: rotate(0deg);
-		}
-		
-		100% {
-			transform: rotate(360deg);
-    	-webkit-transform: rotate(360deg);
-		}
-	}
- 
-
-	@-webkit-keyframes spin {
-		0% {
-			transform: rotate(0deg);
-    	-webkit-transform: rotate(0deg);
-		}
-		
-		100% {
-			transform: rotate(360deg);
-    	-webkit-transform: rotate(360deg);
-    }
-  }
 `;
 
 const Spinner = (props) => {
-  const { theme, mgTop } = props;
+  const { theme, margin, padding } = props;
 
   return (
     <ThemeProvider theme={{ mode: theme }}>
-      <StyledWrapper mgTop={mgTop}>
+      <StyledWrapper margin={margin} padding={padding}>
         <StyledSpinner variant="secondary" />
       </StyledWrapper>
     </ThemeProvider>
@@ -73,10 +50,12 @@ StyledSpinner.propTypes = {
 
 StyledSpinner.defaultProps = {
   variant: 'primary',
-  mgTop: 0
+  mgTop: '0',
+  padding: '0'
 };
 
 Spinner.propTypes = {
   theme: PropTypes.string.isRequired,
-  mgTop: PropTypes.number
+  padding: PropTypes.string,
+  margin: PropTypes.string
 };

@@ -8,8 +8,8 @@ import routes from './routes';
 import NoMatchRoute from './components/noMatchRoute';
 import * as testUtils from './testUtils';
 
-jest.mock('./config/apiURL', () => () => '/api');
 jest.mock('./utils');
+jest.mock('./config/apiURL', () => () => '/api');
 jest.mock('storeon/react', () => jest.fn());
 jest.mock('./assets/img/dark.png', () => (
   <img id="dark" alt="dark" />

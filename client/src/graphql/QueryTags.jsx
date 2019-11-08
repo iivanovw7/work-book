@@ -3,7 +3,7 @@ import React from 'react';
 import { Query } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 import TagsCloud from '../components/Tags/TagsCloud';
-import Spinner from '../elements/UI/Spinner';
+import Spinner from '../components/UI/Spinner';
 import { GET_TAGS } from './queries';
 
 const QueryTags = (props) => {
@@ -12,7 +12,7 @@ const QueryTags = (props) => {
   return (
     <Query query={GET_TAGS}>
       {({ loading, error, data }) => {
-        if (loading) return <Spinner theme={theme} mgTop={0} />;
+        if (loading) return <Spinner theme={theme} />;
         if (error) return <p>Error!</p>;
         return <TagsCloud data={data} history={history} postTags={false} {...props} />;
       }}

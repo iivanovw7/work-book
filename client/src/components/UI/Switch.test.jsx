@@ -7,6 +7,7 @@ import Switch from './Switch';
 import 'jest-styled-components';
 
 jest.mock('../../config/apiURL', () => () => '/api');
+
 jest.mock('../../assets/img/dark.png', () => (
   <img id="ImageDark" alt="ImageDark" />
 ));

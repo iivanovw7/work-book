@@ -11,4 +11,11 @@ export const postTypes = gql`
     tags: [String],
     published: Boolean
   }
+  
+  type Posts {
+    skip: Int!,
+    limit: Int!,
+    count: Int!,
+    posts: [Post]!
+  }
 `;

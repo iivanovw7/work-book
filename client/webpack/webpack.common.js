@@ -26,27 +26,22 @@ module.exports = {
         ]
       },
       {
-        test: /\.(sa|sc|c)ss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true
-            }
-          },
-          {
-            loader: 'postcss-loader'
-          }
-        ]
-      },
-      {
         test: /\.svg$/,
         use: ['@svgr/webpack']
       },
       {
         test: /\.png$/,
         loader: 'url-loader?mimetype=image/png'
+      },
+      {
+        test: /\.(woff|eot|ttf)$/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 1000, // if less than 10 kb, add base64 encoded image to css
+            name: '[hash].[ext]' // if more than 10 kb move to this folder in build using file-loader
+          }
+        }
       }
     ]
   },
@@ -79,6 +74,6 @@ module.exports = {
   ],
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, '../dist')
   }
 };

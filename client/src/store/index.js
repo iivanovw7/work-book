@@ -8,8 +8,8 @@ import localizedText from './localizedText';
 import search from './search';
 
 // export const store = createStore([theme, pages, locale, localizedText]);
-
 export const store = createStore([
-  search, theme, pages, locale, localizedText, persistState(['search']), process.env.NODE_ENV !== 'production'
+  search, theme, pages, locale, localizedText,
+  persistState(['search']), process.env.NODE_ENV !== 'production'
     && require('storeon/devtools')
 ]);

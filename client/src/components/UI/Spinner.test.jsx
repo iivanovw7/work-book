@@ -14,7 +14,7 @@ describe(`Testing [${chalk.yellow('Spinner')}] component`, () => {
 
   const props = {
     theme: 'dark',
-    mgTop: 1
+    margin: '1em'
   };
 
   const Composition = () => (
@@ -35,7 +35,7 @@ describe(`Testing [${chalk.yellow('Spinner')}] component`, () => {
   it('Should render with correct props', () => {
     const component = mount(<Composition />);
 
-    expect(component.find(Spinner).prop('mgTop')).toBe(1);
+    expect(component.find(Spinner).prop('margin')).toBe('1em');
     expect(component.find(Spinner).prop('theme')).toBe('dark');
   });
 });

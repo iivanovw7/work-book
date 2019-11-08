@@ -199,11 +199,11 @@ Both ports should be listed as follows in any order: <br />
 Both ports should be listed as follows at the top: <br />
 ```bash
 # Application ports
-PORT_PRIVATE=8439
-DIST_PORT=4789
+PORTS=(8439 4789) # Ports list to be exposed
+CONTAINER_NAME='work-book'
 ```     
 `Ctrl + X` and Save changes <br />
-Then you probably will need to set up execution rights: <br />
+Then you probably will need to make it executable: <br />
 `sudo chmod +x ./scripts.sh` <br />
 To run container: <br />
 `./scripts.sh` <br />
@@ -246,9 +246,10 @@ Should run in directory: `./work-book/client` <br />
 
 ## ToDo
 1. ~~Implement live search by keyword~~ <br/>
-2. Implement posts pagination <br/>
+2. ~~Implement posts pagination~~ <br/>
 3. ~~Add Docker readme section~~ <br/>
 4. ~~Add Stylelint~~ <br/>
+5. Remove moment, use lightweight lib instead (dayjs?) <br />
 
 ## License
 

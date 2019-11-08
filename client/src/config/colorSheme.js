@@ -1,4 +1,5 @@
 export const colorScheme = {
+  bodyBg: '#2e2e2e',
   dark: {
     textInputBgColor: '#fffaf0',
     textInputColor: '#1e2227',
@@ -16,9 +17,9 @@ export const colorScheme = {
     textInputColor: '#fffaf0',
     colorPrimary: '#053eb1',
     colorSecondary: '#d2c323',
-    colorAlert: 'rgba(216,62,56, 0.95)',
+    colorAlert: 'rgba(216,62,56,0.95)',
     text_color: '#1e2227',
-    main_bg: '#eceef1',
+    main_bg: 'rgba(217,217,217,0.95)',
     appBar_bg: '#fffaf0',
     navLinkHighlight: '#a8ecff',
     linkColor: 'rgba(5,62,177,0.95)'

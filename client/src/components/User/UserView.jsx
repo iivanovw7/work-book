@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { opacify } from 'polished';
 import styled from 'styled-components';
-import Button from '../../elements/UI/Button';
+import Button from '../UI/Button';
 import ViewElement from './UserViewElement';
 /* eslint react/require-default-props: 0 */
 /* eslint no-underscore-dangle: 0 */

@@ -7,6 +7,9 @@ import theme from './theme';
 jest.mock('../utils/helpers');
 jest.mock('js-cookie');
 jest.mock('../config/apiURL', () => () => '/api');
+jest.mock('../assets/fonts/inconsolatalgc.ttf');
+jest.mock('../assets/fonts/Nunito-Regular.ttf');
+jest.mock('../assets/fonts/Nunito-Regular.woff');
 
 describe('Testing theme store: ', () => {
   it(`Should check current [${chalk.yellow('theme')}] switch it and check again`, async () => {

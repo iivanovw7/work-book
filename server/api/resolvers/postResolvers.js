@@ -7,12 +7,38 @@ export const postResolvers = {
 
   Query: {
 
-    getPosts: async () => Post.find({})
-      .sort({ created: '-1' })
-      .exec(),
-
     getPost: async (_, args) => Post.findOne({ _id: args._id })
-      .exec(),
+                                    .exec(),
+    /**
+     * Returns posts query with limit and skip params
+     * @param {Number} args.skip - Results to skip
+     * @param {Number} args.limit - Results limit for single page
+     * @return {Promise<{skip: number, limit: number, count: number, posts: Array}>}
+     */
+    getPosts: async (_, args) => {
+      const skip = args.skip || 0;
+      const limit = args.limit || 5;
+      const findPromise = Post.find({})
+                              .sort({ created: '-1' })
+                              .skip(skip)
+                              .limit(limit);
+
+      const countPromise = Post.countDocuments();
+      const [output, count] = await Promise.all([findPromise, countPromise])
+                                           .catch(() => ({
+                                               skip,
+                                               limit,
+                                               count: 0,
+                                               posts: []
+                                             }));
+
+      return {
+        skip,
+        limit,
+        count,
+        posts: output
+      };
+    },
 
     /**
      * Finds Posts by Tag string, returns
@@ -25,8 +51,8 @@ export const postResolvers = {
       const query = { tags: { $regex: args.tag, $options: 'i' } };
 
       return Post.find(query)
-        .sort({ created: '-1' })
-        .exec();
+                 .sort({ created: '-1' })
+                 .exec();
     },
 
     /**
@@ -42,7 +68,7 @@ export const postResolvers = {
           subject: {
             $regex: args.keyword, $options: 'i'
           }
-          }, {
+        }, {
           title: {
             $regex: args.keyword,
             $options: 'i'
@@ -51,8 +77,8 @@ export const postResolvers = {
       };
 
       return Post.find(query)
-        .sort({ created: '-1' })
-        .exec();
+                 .sort({ created: '-1' })
+                 .exec();
     },
 
     /**
@@ -62,8 +88,8 @@ export const postResolvers = {
     getTags: async () => {
       const tags = [];
       const queryTags = await Post.find({})
-        .distinct('tags')
-        .exec();
+                                  .distinct('tags')
+                                  .exec();
 
       if (!queryTags) return [];
 
@@ -100,7 +126,8 @@ export const postResolvers = {
         author: context.user._id,
         created: Date.now()
       };
-      const post = await Post.create(newPost).catch(e => e.message);
+      const post = await Post.create(newPost)
+                             .catch(e => e.message);
       if (post) {
         return post;
       }
@@ -130,16 +157,13 @@ export const postResolvers = {
         published: args.published,
         created: Date.now()
       };
-      const post = await Post.findOneAndUpdate(
-        { _id: args._id },
-        { $set: set },
-        { new: true }
-      ).catch(e => e.message);
+
+      const post = await Post.findOneAndUpdate({ _id: args._id }, { $set: set }, { new: true })
+                             .catch(e => e.message);
 
       if (post) {
         return post;
       }
-
       return [];
     },
 
@@ -151,16 +175,12 @@ export const postResolvers = {
     deletePost: async (_, args, context) => {
       if (!context.user) return [];
 
-      const removedPost = await Post.findByIdAndRemove(
-        {
-          _id: args._id
-        }
-      ).catch(e => e.message);
+      const removedPost = await Post.findByIdAndRemove({ _id: args._id })
+                                    .catch(e => e.message);
 
       if (removedPost) {
         return removedPost;
       }
-
       return [];
     }
   }

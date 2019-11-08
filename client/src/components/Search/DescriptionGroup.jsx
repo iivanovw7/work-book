@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 import { colorScheme } from '../../config';
-import Number from '../../elements/UI/Number';
-import TagButton from '../../elements/UI/TagButton';
+import Number from '../UI/Number';
+import TagButton from '../UI/TagButton';
 import * as utils from '../../utils';
 
 const StyledBottomContainer = styled.div`
@@ -18,7 +18,7 @@ const DescriptionGroup = (props) => {
   } = props;
 
   const est = utils.calculateReadingTime(post.text.length, locale);
-  const colorIndex = utils.getRandomInt(0, colorScheme.tagBtnBgColors.length);
+  const colorIndex = utils.setColorIndex(query.length, colorScheme.tagBtnBgColors.length - 1);
 
   return (
     <StyledBottomContainer>

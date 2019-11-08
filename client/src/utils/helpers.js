@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie';
-import * as localized from '../assets/locales.json';
+import * as localized from '../assets/locales/locales.json';
 import { symbolsPerMinute } from '../config';
 
 // Converts string in array of words
@@ -90,11 +90,14 @@ export function calculateReadingTime(length = 0, locale = 'eng') {
 
 /**
  * Returns true is page link should be displayed (page is public or user is authenticated)
- *
  * @param {boolean}pageIsPublic
  * @param {boolean}userAccess
  * @returns {boolean|*}
  */
 export function setNavLinkAccess(pageIsPublic, userAccess) {
   return ((!pageIsPublic && userAccess) || pageIsPublic);
+}
+
+export function setColorIndex(key, colorsPallet) {
+  return key <= colorsPallet.length ? key : 5;
 }

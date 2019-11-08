@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 import { opacify } from 'polished';
-import Button from '../../elements/UI/Button';
-import Input from '../../elements/UI/Input';
-import TextArea from '../../elements/UI/TextArea';
-import { useInput } from '../../utils/useInputHook';
+import Button from '../UI/Button';
+import Input from '../UI/Input';
+import TextArea from '../UI/TextArea';
+import { useInput } from '../../utils/hooks';
 import PostStyleGuide from './PostStyleGuide';
 /* eslint no-underscore-dangle: 0 */
 /* eslint react/require-default-props: 0 */
@@ -16,6 +16,7 @@ const StyledForm = styled.form`
 	flex-direction: column;
 	align-items:flex-start;
 	justify-content: center;
+	width: 100%;
 	
 	code {
 		color: red;

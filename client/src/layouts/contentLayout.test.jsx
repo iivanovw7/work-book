@@ -9,7 +9,6 @@ import ContentLayout from './contentLayout';
 import * as testUtils from '../testUtils';
 
 jest.mock('../config/apiURL', () => () => '/api');
-
 jest.mock('../utils');
 
 describe(`Testing [${chalk.yellow('content layout')}] component: `, () => {

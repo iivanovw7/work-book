@@ -15,6 +15,7 @@ jest.mock('storeon/react', () => () => ({
   theme: 'dark',
   search: ''
 }));
+
 describe(`Testing [${chalk.yellow('CreatePost')}] graphql query: `, () => {
   afterAll(() => {
     jest.clearAllMocks();

@@ -1,13 +1,22 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { Redirect, withRouter } from 'react-router-dom';
-import { Col, Row } from 'react-styled-flexboxgrid';
 import styled, { ThemeProvider } from 'styled-components';
 import validate from 'validate.js';
-import Button from '../../elements/UI/Button';
-import Input from '../../elements/UI/Input';
+import Button from '../UI/Button';
+import Input from '../UI/Input';
 import * as utils from '../../utils';
 import { textColor, backgroundColorDarken } from '../../theme';
+
+const Col = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+`;
 
 const StyledForm = styled.form`
   transition: all 0.2s ease;

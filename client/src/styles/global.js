@@ -1,17 +1,33 @@
 import { createGlobalStyle } from 'styled-components';
-import { stylesConfig, mdOffset, typography } from '../config';
+import * as Config from '../config';
 
-const { baseFontFamily, timeDatesFontFamily } = typography;
-const { topBarHeight, appBarHeight } = stylesConfig;
+import datesFont from '../assets/fonts/inconsolatalgc.ttf';
+import baseFontPrimary from '../assets/fonts/Nunito-Regular.ttf';
+import baseFontBackup from '../assets/fonts/Nunito-Regular.woff';
+
+const { baseFontFamily, datesFontFamily } = Config.typography;
+const { topBarHeight, appBarHeight } = Config.stylesConfig;
+const { colorScheme, gridConfig } = Config;
 
 /**
  * Styles applied globally, for all themes and ui variants
  */
 
 export const Global = createGlobalStyle`
+ 
+  @font-face {
+    font-family: ${datesFontFamily};
+    src: local(${baseFontPrimary}),
+         local(${baseFontBackup}),
+         url('https://fonts.googleapis.com/css?family=Nunito+Sans');
+  }
+  
+  @font-face {
+    font-family: ${datesFontFamily};
+    src: local(${datesFont}),
+         url('https://fonts.googleapis.com/css?family=Inconsolata');
+  }
 
-	@import url('https://fonts.googleapis.com/css?family=Inconsolata|Nunito+Sans');
-	
 	*, *:before, *:after {
 		-moz-box-sizing: border-box;
   	-webkit-box-sizing: border-box;
@@ -27,12 +43,13 @@ export const Global = createGlobalStyle`
  
 	body {
 		scroll-behavior: smooth;
-  	font-family: ${baseFontFamily};
+  	font-family: ${baseFontFamily}, Fallback, sans-serif;
   	overflow-x: hidden;
   	padding: 0;
   	min-height: 100vh;
   	max-width: 100vw;
   	margin: 0 auto;
+  	background-color: ${colorScheme.bodyBg};
 	}
 	
 	body {
@@ -44,32 +61,34 @@ export const Global = createGlobalStyle`
   }
 	
 	.dates, code {
-		font-family: ${timeDatesFontFamily};
+		font-family: ${datesFontFamily}, Fallback, sans-serif;
 	}
 	
 	.prettyprint {
 		font-size: .7em;
 	}
   
-  @media screen and (min-width: ${mdOffset}rem) {
+  @media screen and (min-width: ${gridConfig.breakpoints.md}em) {
   	html {
   		font-size: calc(11px + .5vw);
   	}
+  	
     .container--controls {
       flex-direction: column;
     }
+    
     .mobile {
       display: none;
     }
     
     .container {
-    	min-height: calc(100vh - ${topBarHeight});
-    	margin-top: calc(${topBarHeight});
+    	min-height: calc(100vh - ${topBarHeight}px);
+    	margin-top: calc(${topBarHeight}px);
     }
    
   }
 
-  @media screen and (max-width: ${mdOffset}rem) {
+  @media screen and (max-width: ${gridConfig.breakpoints.md}em) {
   	html {
   		font-size: calc(8px + .5vw);
   	}
@@ -80,9 +99,9 @@ export const Global = createGlobalStyle`
       display: none;
     }
      .container {
-    	min-height: calc(100vh - ${appBarHeight} - ${topBarHeight});
-    	margin-top: ${topBarHeight};
-      margin-bottom: ${appBarHeight};
+    	min-height: calc(100vh - ${appBarHeight}px - ${topBarHeight}px);
+    	margin-top: ${topBarHeight}px;
+      margin-bottom: ${appBarHeight}px;
     }
   }
   

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import useStoreon from 'storeon/react';
 import validate from 'validate.js';
-import Input from '../../elements/UI/Input';
+import Input from '../UI/Input';
 import * as utils from '../../utils';
 /* eslint react/require-default-props: 0 */
 
@@ -61,11 +61,11 @@ const SearchBar = (props) => {
   );
 };
 
-export default SearchBar;
-
 SearchBar.propTypes = {
   history: PropTypes.object.isRequired,
   locale: PropTypes.string.isRequired,
   theme: PropTypes.string.isRequired,
   text: PropTypes.object.isRequired
 };
+
+export default SearchBar;

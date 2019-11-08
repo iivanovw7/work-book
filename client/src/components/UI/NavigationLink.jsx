@@ -72,7 +72,7 @@ const StyledLinkIcon = styled(NavLink)
 
 const NavigationLink = (props) => {
   const {
-    link, text, variant, theme, icon, direction, padding, fontSize, radius, className
+    link, text, variant, theme, icon, direction, padding, fontSize, radius, className, maxWidth
   } = props;
 
   return (

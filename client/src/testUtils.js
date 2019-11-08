@@ -3,7 +3,7 @@ import 'jsdom-global/register';
 import { mount, shallow } from 'enzyme';
 
 import { createMemoryHistory } from 'history';
-import * as localized from './assets/locales.json';
+import * as localized from './assets/locales/locales.json';
 
 // Mock browser history
 export const history = createMemoryHistory('/dashboard');
@@ -32,11 +32,15 @@ export function suppressConsoleWarnings(component, mountType, consoleObject) {
   // eslint-disable-next-line no-param-reassign
   consoleObject.error = jest.fn();
 
-  const createdComponent = mountType === 'mount'
-    ? mount(component)
-    : shallow(component);
+  const createdComponent = mountType === 'mount' ? mount(component) : shallow(component);
   // eslint-disable-next-line no-param-reassign
   consoleObject.error = originalError;
 
   return createdComponent;
 }
+
+export const state = {
+  locale: 'eng',
+  theme: 'dark',
+  search: ''
+};

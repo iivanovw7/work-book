@@ -5,7 +5,7 @@ import useStoreon from 'storeon/react';
 import { opacify } from 'polished';
 import { fadeInTop } from '../../styles';
 import { gridConfig } from '../../config';
-import TextLink from '../../elements/UI/TextLink';
+import TextLink from '../UI/TextLink';
 import ButtonGroup from './ButtonGroup';
 import DescriptionGroup from './DescriptionGroup';
 /* eslint no-underscore-dangle: 0 */

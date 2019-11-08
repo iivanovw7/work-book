@@ -15,13 +15,13 @@ module.exports = merge(common, {
       API_URL: JSON.stringify('https://xn--r38h.tk/api')
     }),
     new CopyWebpackPlugin([
-      { from: 'src/manifest.json', to: path.join(__dirname, 'dist') },
-      { from: 'favicon.ico', to: path.join(__dirname, '../server/api/public') },
-      { from: 'src/assets/img/logo.png', to: path.join(__dirname, 'dist') },
-      { from: 'src/assets/img/logo.png', to: path.join(__dirname, '../server/api/public') }
+      { from: 'src/manifest.json', to: path.join(__dirname, '../dist') },
+      { from: 'favicon.ico', to: path.join(__dirname, '../../server/api/public') },
+      { from: 'src/assets/img/logo.png', to: path.join(__dirname, '../dist') },
+      { from: 'src/assets/img/logo.png', to: path.join(__dirname, '../../server/api/public') }
     ]),
     new WebpackAssetsManifest({
-      output: path.join(__dirname, 'dist/assets-manifest.json'),
+      output: path.join(__dirname, '../dist/assets-manifest.json'),
       merge: true
     }),
     new ImageminPlugin(),

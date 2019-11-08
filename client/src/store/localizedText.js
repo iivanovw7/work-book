@@ -1,4 +1,4 @@
-import * as localized from '../assets/locales.json';
+import * as localized from '../assets/locales/locales.json';
 
 // Returns localised text for UI elements
 const localizedText = {

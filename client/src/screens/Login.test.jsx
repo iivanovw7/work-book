@@ -7,7 +7,6 @@ import Login from './Login';
 import * as testUtils from '../testUtils';
 
 jest.mock('../config/apiURL', () => () => '/api');
-
 jest.mock('storeon/react', () => () => ({
   locale: 'eng',
   theme: 'dark',

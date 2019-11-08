@@ -15,7 +15,7 @@ jest.mock('storeon/react', () => () => ({
   theme: 'dark',
   search: ''
 }));
-jest.mock('../elements/UI/Button', () => () => (
+jest.mock('../components/UI/Button', () => () => (
   <div id="Button" />
 ));
 

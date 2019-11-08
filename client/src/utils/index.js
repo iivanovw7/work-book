@@ -1,4 +1,4 @@
-export * from './useInputHook';
+export * from './hooks';
 export * from './inputValidation';
 export * from './authHelpers';
 export * from './math';

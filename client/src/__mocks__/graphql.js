@@ -157,21 +157,30 @@ export const gqlMocks = [
 	 */
   {
     request: {
-      query: GET_POSTS
+      query: GET_POSTS,
+      variables: {
+        skip: 0,
+        limit: 10
+      }
     },
     result: {
       data: {
-        getPosts: [
-          {
-            _id: '5d283694ddc2cb244f84bdca',
-            author: '5cbeba32fb6fc0265f273c94',
-            created: '1562915551933',
-            subject: 'Cross browser solution for handling mouse wheel events in Angular with Rx.js for',
-            tags: ['1', '2', '3'],
-            text: 'Post text',
-            title: 'Custom Angular mouseWheel scroll directive'
-          }
-        ]
+        getPosts: {
+          skip: 0,
+          limit: 10,
+          count: 17,
+          posts: [
+            {
+              _id: '5d283694ddc2cb244f84bdca',
+              author: '5cbeba32fb6fc0265f273c94',
+              created: '1562915551933',
+              subject: 'Cross browser solution for handling mouse wheel events in Angular with Rx.js for',
+              tags: ['1', '2', '3'],
+              text: 'Post text',
+              title: 'Custom Angular mouseWheel scroll directive'
+            }
+          ]
+        }
       }
     }
   },
@@ -180,7 +189,11 @@ export const gqlMocks = [
 	 */
   {
     request: {
-      query: GET_POSTS
+      query: GET_POSTS,
+      variables: {
+        skip: 0,
+        limit: 10
+      }
     },
     error: new Error('aw shucks')
   },

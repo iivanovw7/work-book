@@ -8,7 +8,6 @@ import Search from './Search';
 import * as testUtils from '../testUtils';
 
 jest.mock('../config/apiURL', () => () => '/api');
-
 jest.mock('storeon/react', () => () => ({
   locale: 'eng',
   theme: 'dark',
@@ -26,7 +25,7 @@ jest.mock('../components/Navigation/SideBar', () => () => (
 jest.mock('../graphql/SearchByTag', () => () => (
   <div id="SearchByTag" />
 ));
-jest.mock('../elements/UI/TagButton', () => () => (
+jest.mock('../components/UI/TagButton', () => () => (
   <div id="TagButton" />
 ));
 

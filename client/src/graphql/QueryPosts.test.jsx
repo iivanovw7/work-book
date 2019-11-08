@@ -1,12 +1,10 @@
 import React from 'react';
 import wait from 'waait';
-import 'cross-fetch/polyfill';
-import 'jsdom-global/register';
 import chalk from 'chalk';
 import { MemoryRouter } from 'react-router-dom';
 import { MockedProvider } from 'react-apollo/test-utils';
 import QueryPosts from './QueryPosts';
-import * as mocks from '../__mocks__';
+import * as testMocks from '../__mocks__';
 import * as testUtils from '../testUtils';
 
 jest.mock('../config/apiURL', () => () => '/api');
@@ -15,7 +13,7 @@ jest.mock('storeon/react', () => () => ({
   theme: 'dark',
   search: ''
 }));
-jest.mock('../elements/UI/Button', () => () => (
+jest.mock('../components/UI/Button', () => () => (
   <div id="Button" />
 ));
 
@@ -29,14 +27,17 @@ describe(`Testing [${chalk.yellow('QueryPosts')}] graphql query: `, () => {
     locale: 'eng',
     text: testUtils.localizedText,
     theme: 'dark',
-    history: testUtils.history
+    history: testUtils.history,
+    skip: 0,
+    limit: 10
   };
 
   const Composition = (props) => {
-    const { mocks } = props;
+    // eslint-disable-next-line react/prop-types
+    const { componentMocks } = props;
     return (
       <MemoryRouter>
-        <MockedProvider mocks={mocks} addTypename={false} removeTypename>
+        <MockedProvider mocks={componentMocks} addTypename={false} removeTypename>
           <QueryPosts {...queryProps} />
         </MockedProvider>
       </MemoryRouter>
@@ -45,7 +46,7 @@ describe(`Testing [${chalk.yellow('QueryPosts')}] graphql query: `, () => {
 
   it('Should render Component and match snapshot', async () => {
     const component = testUtils.suppressConsoleWarnings(
-      <Composition mocks={[mocks.gqlMocks[8]]} />,
+      <Composition componentMocks={[testMocks.gqlMocks[8]]} />,
       'mount',
       console
     );
@@ -57,7 +58,7 @@ describe(`Testing [${chalk.yellow('QueryPosts')}] graphql query: `, () => {
 
   it('Should render ErrorMessage', async () => {
     const component = testUtils.suppressConsoleWarnings(
-      <Composition mocks={[mocks.gqlMocks[9]]} />,
+      <Composition componentMocks={[testMocks.gqlMocks[9]]} />,
       'mount',
       console
     );
@@ -69,7 +70,7 @@ describe(`Testing [${chalk.yellow('QueryPosts')}] graphql query: `, () => {
 
   it('Should render Spinner', async () => {
     const component = testUtils.suppressConsoleWarnings(
-      <Composition mocks={[]} />,
+      <Composition componentMocks={[]} />,
       'mount',
       console
     );
@@ -80,7 +81,7 @@ describe(`Testing [${chalk.yellow('QueryPosts')}] graphql query: `, () => {
 
   it('Should render Component with correct data', async () => {
     const component = testUtils.suppressConsoleWarnings(
-      <Composition mocks={[mocks.gqlMocks[8]]} />,
+      <Composition componentMocks={[testMocks.gqlMocks[8]]} />,
       'mount',
       console
     );

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
-import ListItem from '../../elements/UI/LIstElement';
+import ListItem from '../UI/LIstElement';
 /* eslint no-underscore-dangle: 0 */
 /* eslint react/require-default-props: 0 */
 
@@ -13,41 +13,38 @@ const List = styled.ul`
 
 const PostStyleGuide = (props) => {
   const { theme, variant, locale } = props;
+  const elements = [
+    {
+      text: '<a target=\\"_blank\\" href="https://URL">Link</a>',
+      description: 'to insert link in post.'
+    },
+    {
+      text: '<code>text</code>',
+      description: 'to set background for text.'
+    },
+    {
+      text: '<pre class="prettyprint">code</pre>',
+      description: 'to create a code sample.'
+    },
+    {
+      text: '&lt; or &gt;',
+      description: 'to set < or > in code sample'
+    }
+  ];
 
   return (
     <List>
-      <ListItem
-        theme={theme}
-        variant={variant}
-        fontSize="0.6em"
-        text={'<a target=\\"_blank\\" href="https://URL">Link</a>'}
-        description="to insert link in post."
-        locale={locale}
-      />
-      <ListItem
-        theme={theme}
-        variant={variant}
-        fontSize="0.6em"
-        text={'<code>text</code>'}
-        description="to set background for text."
-        locale={locale}
-      />
-      <ListItem
-        theme={theme}
-        variant={variant}
-        fontSize="0.6em"
-        text={'<pre class="prettyprint">code</pre>'}
-        description="to create a code sample."
-        locale={locale}
-      />
-      <ListItem
-        theme={theme}
-        variant={variant}
-        fontSize="0.6em"
-        text={'&lt; or &gt;'}
-        description="to set < or > in code sample"
-        locale={locale}
-      />
+      {elements.map(element => (
+        <ListItem
+          key={element.text}
+          theme={theme}
+          variant={variant}
+          fontSize="0.6em"
+          text={element.text}
+          description={element.description}
+          locale={locale}
+        />
+      ))}
     </List>
   );
 };

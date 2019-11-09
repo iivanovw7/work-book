@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Query } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
-import Spinner from '../elements/UI/Spinner';
+import Spinner from '../components/UI/Spinner';
 import { GET_USER } from './queries';
-import ErrorMessage from '../elements/errorMessage';
+import ErrorMessage from '../components/errorMessage';
 import UserView from '../components/User/UserView';
 
 const QueryUser = (props) => {
@@ -13,7 +13,7 @@ const QueryUser = (props) => {
   return (
     <Query query={GET_USER} variables={{ _id: id }}>
       {({ loading, error, data }) => {
-        if (loading) return <Spinner theme={theme} mgTop={5} />;
+        if (loading) return <Spinner theme={theme} margin="5em 0 0 0" />;
         if (error) {
           return (
             <ErrorMessage

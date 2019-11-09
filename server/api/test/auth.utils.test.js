@@ -42,10 +42,9 @@ beforeAll(async (done) => {
 
   db = mongoose.connection;
 
-  await removeData()
-    .catch((e) => {
-      console.log(e);
-    }); // Clearing mock database
+  await removeData().catch((e) => {
+    console.log(e);
+  }); // Clearing mock database
 
   await new User(testAuthUser).save(); // Create test User
   await new Post(testPost).save(); // Create test Post
@@ -53,16 +52,15 @@ beforeAll(async (done) => {
 });
 
 afterAll(async (done) => {
-  await removeData()
-    .catch((e) => {
-      console.log(e);
-    }); // Clearing mock database
+  await removeData().catch((e) => {
+    console.log(e);
+  }); // Clearing mock database
   await db.close();
   done();
 });
 
 describe(`Checking [${chalk.yellow('auth')}] functions: `, () => {
-  it('Check expect to receive OK', async (done) => {
+  it(`Check expect to receive [${chalk.yellow('OK')}]`, async (done) => {
     request(app)
       .get('/auth/check')
       .set('Accept', 'application/json')

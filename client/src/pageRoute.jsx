@@ -14,8 +14,7 @@ const PageRoute = ({ component: Component, ...rest }) => {
   useEffect(() => {
     if (utils.ifTokenExists()) {
       const getAccessRights = async () => setUserAccess(await utils.checkUser());
-      getAccessRights()
-        .catch(e => console.log(e));
+      getAccessRights().catch(e => console.log(e));
     }
   }, []);
 

@@ -3,7 +3,7 @@ import 'jsdom-global/register';
 import { mount, shallow } from 'enzyme';
 
 import { createMemoryHistory } from 'history';
-import * as localized from './assets/locales.json';
+import * as localized from './assets/locales/locales.json';
 
 // Mock browser history
 export const history = createMemoryHistory('/dashboard');
@@ -29,14 +29,23 @@ export const localizedText = {
 // Suppresses console warnings until component is mounted
 export function suppressConsoleWarnings(component, mountType, consoleObject) {
   const originalError = consoleObject.error;
+  const originalWarn = consoleObject.warn;
   // eslint-disable-next-line no-param-reassign
   consoleObject.error = jest.fn();
+  // eslint-disable-next-line no-param-reassign
+  consoleObject.warn = jest.fn();
 
-  const createdComponent = mountType === 'mount'
-    ? mount(component)
-    : shallow(component);
+  const createdComponent = mountType === 'mount' ? mount(component) : shallow(component);
   // eslint-disable-next-line no-param-reassign
   consoleObject.error = originalError;
+  // eslint-disable-next-line no-param-reassign
+  consoleObject.warn = originalWarn;
 
   return createdComponent;
 }
+
+export const state = {
+  locale: 'eng',
+  theme: 'dark',
+  search: ''
+};

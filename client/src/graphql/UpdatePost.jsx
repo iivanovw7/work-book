@@ -4,8 +4,8 @@ import { Mutation, Query } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 import { UPDATE_POST } from './mutations';
 import { GET_POST } from './queries';
-import Spinner from '../elements/UI/Spinner';
-import ErrorMessage from '../elements/errorMessage';
+import Spinner from '../components/UI/Spinner';
+import ErrorMessage from '../components/errorMessage';
 import PostForm from '../components/Post/PostForm';
 
 const UpdatePost = (props) => {
@@ -20,7 +20,7 @@ const UpdatePost = (props) => {
       }]}
     >
       {({ loading, error, data }) => {
-        if (loading) return <Spinner theme={theme} mgTop={5} />;
+        if (loading) return <Spinner theme={theme} margin="5em 0 0 0" />;
         if (error) {
           return (
             <ErrorMessage

@@ -4,25 +4,24 @@ import React from 'react';
 import useStoreon from 'storeon/react';
 import { opacify } from 'polished';
 import styled, { ThemeProvider } from 'styled-components';
-import { mdOffset } from '../../config';
+import { gridConfig, mdOffset } from '../../config';
 import * as utils from '../../utils';
 import QueryTags from '../../graphql/QueryTags';
-import Switch from '../../elements/UI/Switch';
-import NavigationLink from '../../elements/UI/NavigationLink';
-import ButtonTextIcon from '../../elements/UI/ButtonTextIcon';
+import Switch from '../UI/Switch';
+import NavigationLink from '../UI/NavigationLink';
+import ButtonTextIcon from '../UI/ButtonTextIcon';
 import SearchBar from '../Search/SearchBar';
 /* eslint react/require-default-props: 0 */
 /* eslint no-underscore-dangle: 0 */
 
 const SideBarWrapper = styled.nav`
-	@media screen and (min-width: ${mdOffset}rem) {
+	@media screen and (min-width: ${gridConfig.breakpoints.md}em) {
   	position: fixed;
-   	max-width: 340px;
-  	width: 19.5vw;
+    max-width: ${gridConfig.sidebarMaxWidth}rem;
   	display: flex;
   	flex-direction: column;
   	transition: all 0.2s ease-in-out;
-  	
+
   	>div: first-of-type {
   		flex-direction: column
   	}
@@ -38,7 +37,7 @@ const StyledContentBlock = styled.div`
   	flex-wrap: wrap;
   	transition: all 0.2s ease-in-out;
   	
-  	@media screen and (max-width: ${mdOffset}rem) {
+  	@media screen and (max-width: ${mdOffset}em) {
       display: ${props => (props.mobile || props.onlyMobile ? 'none' : 'flex')};
 		}
 `;

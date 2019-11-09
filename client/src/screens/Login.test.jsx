@@ -1,5 +1,3 @@
-import 'cross-fetch/polyfill';
-import 'jsdom-global/register';
 import React from 'react';
 import chalk from 'chalk';
 import { MemoryRouter } from 'react-router-dom';
@@ -7,7 +5,6 @@ import Login from './Login';
 import * as testUtils from '../testUtils';
 
 jest.mock('../config/apiURL', () => () => '/api');
-
 jest.mock('storeon/react', () => () => ({
   locale: 'eng',
   theme: 'dark',

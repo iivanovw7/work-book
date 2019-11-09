@@ -3,9 +3,9 @@ import React from 'react';
 import { Query } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 import { GET_POST } from './queries';
-import ErrorMessage from '../elements/errorMessage';
+import ErrorMessage from '../components/errorMessage';
 import PostView from '../components/Post/PostView';
-import Spinner from '../elements/UI/Spinner';
+import Spinner from '../components/UI/Spinner';
 
 const QueryPost = (props) => {
   const { history, id, theme } = props;
@@ -13,7 +13,7 @@ const QueryPost = (props) => {
   return (
     <Query query={GET_POST} variables={{ _id: id }}>
       {({ loading, error, data }) => {
-        if (loading) return <Spinner theme={theme} mgTop={5} />;
+        if (loading) return <Spinner theme={theme} margin="5em 0 0 0" />;
         if (error) {
           return (
             <ErrorMessage

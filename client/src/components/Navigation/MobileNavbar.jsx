@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import useStoreon from 'storeon/react';
 import styled, { ThemeProvider } from 'styled-components';
+import ButtonTextIcon from '../UI/ButtonTextIcon';
+import NavigationLink from '../UI/NavigationLink';
 import { stylesConfig } from '../../config';
-import * as utils from '../../utils';
-import ButtonTextIcon from '../../elements/UI/ButtonTextIcon';
-import NavigationLink from '../../elements/UI/NavigationLink';
 import { appBarColor } from '../../theme';
+import * as utils from '../../utils';
 /* eslint react/require-default-props: 0 */
 /* eslint no-underscore-dangle: 0 */
 
@@ -19,7 +19,7 @@ const NavBarWrapper = styled.nav`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: ${stylesConfig.appBarHeight};
+  height: ${stylesConfig.appBarHeight}px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 10px 20px rgba(0,0,0,0.24);
   background-color: ${appBarColor};
   padding: 0.5em 1em 0.5em 1em;

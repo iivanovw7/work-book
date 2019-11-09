@@ -3,8 +3,7 @@ import React from 'react';
 import { Mutation } from 'react-apollo';
 import { Redirect, withRouter } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
-import Button from '../elements/UI/Button';
-import Spinner from '../elements/UI/Spinner';
+import Button from '../components/UI/Button';
 import { DELETE_POST } from './mutations';
 import { GET_POSTS } from './queries';
 /* eslint no-underscore-dangle: 0 */

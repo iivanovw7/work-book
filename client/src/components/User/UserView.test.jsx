@@ -1,11 +1,9 @@
-import 'cross-fetch/polyfill';
-import 'jsdom-global/register';
 import React from 'react';
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import chalk from 'chalk';
 import UserView from './UserView';
 import ViewElement from './UserViewElement';
-import Button from '../../elements/UI/Button';
+import Button from '../UI/Button';
 import * as testUtils from '../../testUtils';
 import * as mocks from '../../__mocks__';
 

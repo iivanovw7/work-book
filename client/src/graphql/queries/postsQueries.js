@@ -1,15 +1,20 @@
 import { gql } from 'apollo-boost';
 
 export const GET_POSTS = gql`
-  query GetPosts{
-    getPosts{
-      _id
-      text
-      title
-      subject
-      created
-      author
-      tags
+  query GetPosts($skip: Int, $limit: Int){
+    getPosts(skip: $skip, limit: $limit){
+      skip
+      limit
+      count
+      posts{
+        _id
+        text
+        title
+        subject
+        created
+        author
+        tags
+      }
     }
   }
 `;

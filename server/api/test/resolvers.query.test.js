@@ -75,10 +75,13 @@ describe(`Testing [${chalk.yellow('Queries')}] and [${chalk.yellow('Mutations')}
   });
 
   it(`Should run [${chalk.yellow('getPosts')}] query and receive mock posts array`, async () => {
-    const response = await postResolvers.Query.getPosts();
+    const response = await postResolvers.Query.getPosts(
+      null,
+      { skip: 0, limit: 10 }
+    );
 
     expect(response).not.toBe(null);
-    expect(response[0].subject).toBe(post.subject);
+    expect(response.posts[0].subject).toBe(post.subject);
   });
 
   it(`Should run [${chalk.yellow('getPost')}] query and receive mock post`, async () => {

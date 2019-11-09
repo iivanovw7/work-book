@@ -3,13 +3,13 @@ import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 import styled, { ThemeProvider } from 'styled-components';
 import { opacify } from 'polished';
-import ErrorMessage from '../../elements/errorMessage';
-import Button from '../../elements/UI/Button';
+import ErrorMessage from '../errorMessage';
+import Button from '../UI/Button';
 import * as utils from '../../utils';
 import { backgroundColorInverse, textColorInverse, linkColor } from '../../theme';
 import DeletePost from '../../graphql/DeletePost';
 import TagsCloud from '../Tags/TagsCloud';
-import TextLink from '../../elements/UI/TextLink';
+import TextLink from '../UI/TextLink';
 /* eslint no-underscore-dangle: 0 */
 
 const StyledPostContainer = styled.div`
@@ -70,8 +70,7 @@ const PostView = (props) => {
   useEffect(() => {
     const getAccessRights = async () => setUserAccess(await utils.checkUser());
     utils.runCodePrettify();
-    getAccessRights()
-      .catch(e => console.log(e));
+    getAccessRights().catch(e => console.log(e));
   }, []);
 
   function handleClick(id) {

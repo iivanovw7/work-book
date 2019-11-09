@@ -3,9 +3,9 @@ import React from 'react';
 import { Query } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 import SearchList from '../components/Search/SearchList';
-import ErrorMessage from '../elements/errorMessage';
+import ErrorMessage from '../components/errorMessage';
 import { FIND_POSTS_BY_KEYWORD } from './queries';
-import Spinner from '../elements/UI/Spinner';
+import Spinner from '../components/UI/Spinner';
 
 const SearchPostsByKeyword = (props) => {
   const { history, keyword, theme } = props;
@@ -20,7 +20,7 @@ const SearchPostsByKeyword = (props) => {
       }]}
     >
       {({ loading, error, data }) => {
-        if (loading) return <Spinner theme={theme} mgTop={5} />;
+        if (loading) return <Spinner theme={theme} margin="5em 0 0 0" />;
         if (error) {
           return (
             <ErrorMessage

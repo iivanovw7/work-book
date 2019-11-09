@@ -3,8 +3,8 @@ import React from 'react';
 import { Mutation } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 import PostForm from '../components/Post/PostForm';
-import ErrorMessage from '../elements/errorMessage';
-import Spinner from '../elements/UI/Spinner';
+import ErrorMessage from '../components/errorMessage';
+import Spinner from '../components/UI/Spinner';
 import { ADD_POST } from './mutations';
 import { GET_POSTS } from './queries';
 
@@ -19,7 +19,7 @@ const CreatePost = (props) => {
       {(addPost, { loading, error, data }) => (
         <div>
           <PostForm addPost={addPost} data={data} {...props} />
-          {loading && <Spinner theme={theme} mgTop={5} />}
+          {loading && <Spinner theme={theme} margin="5em 0 0 0" />}
           {error && (
             <ErrorMessage
               theme={theme}

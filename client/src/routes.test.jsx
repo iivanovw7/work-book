@@ -8,8 +8,8 @@ import routes from './routes';
 import NoMatchRoute from './components/noMatchRoute';
 import * as testUtils from './testUtils';
 
-jest.mock('./config/apiURL', () => () => '/api');
 jest.mock('./utils');
+jest.mock('./config/apiURL', () => () => '/api');
 jest.mock('storeon/react', () => jest.fn());
 jest.mock('./assets/img/dark.png', () => (
   <img id="dark" alt="dark" />
@@ -51,7 +51,7 @@ describe(`Testing [${chalk.yellow('routes')}]`, () => {
     expect(component.find(NoMatchRoute)).toHaveLength(1);
   });
 
-  it(`Should open [${chalk.yellow('"Home"')}] path and check the result`, () => {
+  it(`Should open [${chalk.yellow('Home')}] path and check the result`, () => {
     const component = testUtils.suppressConsoleWarnings(
       <MemoryRouter initialEntries={['/']}>
         { routes }

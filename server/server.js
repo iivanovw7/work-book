@@ -10,7 +10,6 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
-
 const path = require('path');
 
 app.use(express.static(path.join(__dirname, '../client/dist')));

@@ -1,7 +1,7 @@
 import 'cross-fetch/polyfill';
 import chalk from 'chalk';
 import * as helpers from './helpers';
-import * as localized from '../assets/locales.json';
+import * as localized from '../assets/locales/locales.json';
 import * as testUtils from '../testUtils';
 
 jest.mock('../config/apiURL', () => () => '/api');

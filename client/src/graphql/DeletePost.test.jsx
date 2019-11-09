@@ -1,7 +1,5 @@
 import React from 'react';
 import wait from 'waait';
-import 'cross-fetch/polyfill';
-import 'jsdom-global/register';
 import chalk from 'chalk';
 import { MemoryRouter } from 'react-router-dom';
 import { MockedProvider } from 'react-apollo/test-utils';
@@ -15,7 +13,7 @@ jest.mock('storeon/react', () => () => ({
   theme: 'dark',
   search: ''
 }));
-jest.mock('../elements/UI/Button', () => () => (
+jest.mock('../components/UI/Button', () => () => (
   <div id="Button" />
 ));
 
@@ -25,7 +23,7 @@ describe(`Testing [${chalk.yellow('DeletePost')}] graphql query: `, () => {
     jest.clearAllMocks();
   });
 
-  const props = {
+  const queryProps = {
     locale: 'eng',
     text: testUtils.localizedText,
     theme: 'dark',
@@ -33,17 +31,22 @@ describe(`Testing [${chalk.yellow('DeletePost')}] graphql query: `, () => {
     post: mocks.gqlMocks[0].result.data.getPost
   };
 
-  const Composition = () => (
-    <MemoryRouter>
-      <MockedProvider mocks={[mocks.gqlMocks[0]]} addTypename={false} removeTypename>
-        <DeletePost _id={1} id="1" {...props} />
-      </MockedProvider>
-    </MemoryRouter>
-  );
+  const Composition = (props) => {
+    // eslint-disable-next-line react/prop-types
+    const { componentMocks } = props;
+
+    return (
+      <MemoryRouter>
+        <MockedProvider mocks={componentMocks} addTypename={false} removeTypename>
+          <DeletePost _id={1} id="1" {...queryProps} />
+        </MockedProvider>
+      </MemoryRouter>
+    );
+  };
 
   it('Should render Component and match snapshot', async () => {
     const component = testUtils.suppressConsoleWarnings(
-      <Composition />,
+      <Composition componentMocks={[mocks.gqlMocks[0]]} />,
       'mount',
       console
     );
@@ -56,7 +59,7 @@ describe(`Testing [${chalk.yellow('DeletePost')}] graphql query: `, () => {
 
   it('Should render Component with correct data', async () => {
     const component = testUtils.suppressConsoleWarnings(
-      <Composition />,
+      <Composition componentMocks={[mocks.gqlMocks[0]]} />,
       'mount',
       console
     );

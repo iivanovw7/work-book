@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import useStoreon from 'storeon/react';
 import styled from 'styled-components';
-import SvgButton from '../../elements/UI/SvgButton';
+import SvgButton from '../UI/SvgButton';
 import { stylesConfig } from '../../config';
 import { topBarColor, textColor } from '../../theme';
 import IconEng from '../../assets/img/eng.svg';
@@ -18,7 +18,7 @@ const TopBarWrapper = styled.nav`
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  height: ${stylesConfig.topBarHeight};
+  height: ${stylesConfig.topBarHeight}px;
   background-color: ${topBarColor};
   padding: 0.1em 1em 0.1em 1em;
   color: ${textColor};

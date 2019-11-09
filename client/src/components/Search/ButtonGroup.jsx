@@ -3,8 +3,8 @@ import React from 'react';
 import moment from 'moment';
 import styled from 'styled-components';
 import { colorScheme } from '../../config';
-import Button from '../../elements/UI/Button';
-import TagButton from '../../elements/UI/TagButton';
+import Button from '../UI/Button';
+import TagButton from '../UI/TagButton';
 import * as utils from '../../utils';
 /* eslint no-underscore-dangle: 0 */
 
@@ -25,7 +25,7 @@ const ButtonGroup = (props) => {
   const {
     theme, locale, text, query, post, handlePostClick, handleTagClick
   } = props;
-  const colorIndex = utils.getRandomInt(0, colorScheme.tagBtnBgColors.length);
+  const colorIndex = utils.setColorIndex(query.length, colorScheme.tagBtnBgColors);
   const date = post.created.toString();
 
   return (
@@ -61,8 +61,6 @@ const ButtonGroup = (props) => {
   );
 };
 
-export default ButtonGroup;
-
 ButtonGroup.propTypes = {
   locale: PropTypes.string.isRequired,
   text: PropTypes.object.isRequired,
@@ -72,3 +70,5 @@ ButtonGroup.propTypes = {
   handlePostClick: PropTypes.func.isRequired,
   handleTagClick: PropTypes.func.isRequired
 };
+
+export default ButtonGroup;

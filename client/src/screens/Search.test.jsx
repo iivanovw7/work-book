@@ -1,7 +1,5 @@
 import React from 'react';
 import wait from 'waait';
-import 'cross-fetch/polyfill';
-import 'jsdom-global/register';
 import chalk from 'chalk';
 import { MemoryRouter } from 'react-router-dom';
 import Search from './Search';

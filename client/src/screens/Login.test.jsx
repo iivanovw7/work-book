@@ -1,5 +1,3 @@
-import 'cross-fetch/polyfill';
-import 'jsdom-global/register';
 import React from 'react';
 import chalk from 'chalk';
 import { MemoryRouter } from 'react-router-dom';

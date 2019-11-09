@@ -1,6 +1,4 @@
 import React from 'react';
-import 'cross-fetch/polyfill';
-import 'jsdom-global/register';
 import { mount } from 'enzyme';
 import chalk from 'chalk';
 import { MemoryRouter } from 'react-router-dom';

@@ -56,4 +56,4 @@ server.applyMiddleware({
 });
 
 // eslint-disable-next-line import/prefer-default-export
-export { app };
+export { app, server };

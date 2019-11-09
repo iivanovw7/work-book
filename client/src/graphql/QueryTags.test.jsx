@@ -1,7 +1,5 @@
 import React from 'react';
 import wait from 'waait';
-import 'cross-fetch/polyfill';
-import 'jsdom-global/register';
 import chalk from 'chalk';
 import { MemoryRouter } from 'react-router-dom';
 import { MockedProvider } from 'react-apollo/test-utils';
@@ -32,10 +30,11 @@ describe(`Testing [${chalk.yellow('QueryTags')}] graphql query: `, () => {
   };
 
   const Composition = (props) => {
-    const { mocks } = props;
+    // eslint-disable-next-line react/prop-types
+    const { componentMocks } = props;
     return (
       <MemoryRouter>
-        <MockedProvider mocks={mocks} addTypename={false} removeTypename>
+        <MockedProvider mocks={componentMocks} addTypename={false} removeTypename>
           <QueryTags {...queryProps} />
         </MockedProvider>
       </MemoryRouter>
@@ -44,7 +43,7 @@ describe(`Testing [${chalk.yellow('QueryTags')}] graphql query: `, () => {
 
   it('Should render Component and match snapshot', async () => {
     const component = testUtils.suppressConsoleWarnings(
-      <Composition mocks={[mocks.gqlMocks[8]]} />,
+      <Composition componentMocks={[mocks.gqlMocks[8]]} />,
       'mount',
       console
     );
@@ -56,7 +55,7 @@ describe(`Testing [${chalk.yellow('QueryTags')}] graphql query: `, () => {
 
   it('Should render ErrorMessage', async () => {
     const component = testUtils.suppressConsoleWarnings(
-      <Composition mocks={[mocks.gqlMocks[11]]} />,
+      <Composition componentMocks={[mocks.gqlMocks[11]]} />,
       'mount',
       console
     );
@@ -68,7 +67,7 @@ describe(`Testing [${chalk.yellow('QueryTags')}] graphql query: `, () => {
 
   it('Should render Spinner', async () => {
     const component = testUtils.suppressConsoleWarnings(
-      <Composition mocks={[]} />,
+      <Composition componentMocks={[]} />,
       'mount',
       console
     );
@@ -79,7 +78,7 @@ describe(`Testing [${chalk.yellow('QueryTags')}] graphql query: `, () => {
 
   it('Should render Component with correct data', async () => {
     const component = testUtils.suppressConsoleWarnings(
-      <Composition mocks={[mocks.gqlMocks[10]]} />,
+      <Composition componentMocks={[mocks.gqlMocks[10]]} />,
       'mount',
       console
     );

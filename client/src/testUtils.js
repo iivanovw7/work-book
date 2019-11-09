@@ -29,12 +29,17 @@ export const localizedText = {
 // Suppresses console warnings until component is mounted
 export function suppressConsoleWarnings(component, mountType, consoleObject) {
   const originalError = consoleObject.error;
+  const originalWarn = consoleObject.warn;
   // eslint-disable-next-line no-param-reassign
   consoleObject.error = jest.fn();
+  // eslint-disable-next-line no-param-reassign
+  consoleObject.warn = jest.fn();
 
   const createdComponent = mountType === 'mount' ? mount(component) : shallow(component);
   // eslint-disable-next-line no-param-reassign
   consoleObject.error = originalError;
+  // eslint-disable-next-line no-param-reassign
+  consoleObject.warn = originalWarn;
 
   return createdComponent;
 }

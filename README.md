@@ -249,8 +249,9 @@ Should run in directory: `./work-book/client` <br />
 2. ~~Implement posts pagination~~ <br/>
 3. ~~Add Docker readme section~~ <br/>
 4. ~~Add Stylelint~~ <br/>
-5. Remove moment, use lightweight lib instead (dayjs?) <br />
-
+5. ~~Remove moment, use lightweight lib instead (dayjs?)~~ <br />
+6. Added consequent content loading after scroll to all queries
+ 
 ## License
 
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)

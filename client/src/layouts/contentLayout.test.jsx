@@ -3,10 +3,12 @@ import { mount } from 'enzyme';
 import chalk from 'chalk';
 import { MemoryRouter } from 'react-router-dom';
 import ContentLayout from './contentLayout';
-
 import * as testUtils from '../testUtils';
 
 jest.mock('../config/apiURL', () => () => '/api');
+jest.mock('../config/settings', () => ({
+  ...(jest.requireActual('../config/settings'))
+}));
 jest.mock('../utils');
 
 describe(`Testing [${chalk.yellow('content layout')}] component: `, () => {

@@ -1,10 +1,13 @@
+import 'jsdom-global/register';
 import React from 'react';
 import chalk from 'chalk';
 import SwitchedPostComponent from './postHelpers';
-import 'jsdom-global/register';
 import * as testUtils from '../testUtils';
 
 jest.mock('../config/apiURL', () => () => '/api');
+jest.mock('../config/settings', () => ({
+  ...(jest.requireActual('../config/settings'))
+}));
 
 jest.mock('../graphql/CreatePost', () => () => (
   <div id="CreatePost">

@@ -6,5 +6,8 @@ module.exports = {
   moduleNameMapper: {
     '\\.svg': '<rootDir>src/__mocks__/svgrMock.jsx',
     '\\.(ttf|eot|woff|woff2)$': '<rootDir>src/__mocks__/fileMock.js'
+  },
+  globals: {
+    CONFIG: 'test'
   }
 };

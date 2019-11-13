@@ -5,6 +5,9 @@ import wait from 'waait';
 import ListElement from './LIstElement';
 
 jest.mock('../../config/apiURL', () => () => '/api');
+jest.mock('../../config/settings', () => ({
+  ...(jest.requireActual('../../config/settings'))
+}));
 
 describe(`Testing [${chalk.yellow('ListElement')}] component`, () => {
   afterAll(() => {

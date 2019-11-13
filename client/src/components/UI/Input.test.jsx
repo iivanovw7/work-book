@@ -4,6 +4,9 @@ import Input from './Input';
 import * as testUtils from '../../testUtils';
 
 jest.mock('../../config/apiURL', () => () => '/api');
+jest.mock('../../config/settings', () => ({
+  ...(jest.requireActual('../../config/settings'))
+}));
 
 describe(`Testing [${chalk.yellow('Input')}] component`, () => {
   afterAll(() => {

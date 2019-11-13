@@ -10,6 +10,9 @@ import * as testUtils from './testUtils';
 
 jest.mock('./utils');
 jest.mock('./config/apiURL', () => () => '/api');
+jest.mock('./config/settings', () => ({
+  ...(jest.requireActual('./config/settings'))
+}));
 jest.mock('storeon/react', () => jest.fn());
 jest.mock('./assets/img/dark.png', () => (
   <img id="dark" alt="dark" />

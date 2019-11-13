@@ -5,6 +5,9 @@ import * as testUtils from '../../testUtils';
 import Button from './Button';
 
 jest.mock('../../config/apiURL', () => () => '/api');
+jest.mock('../../config/settings', () => ({
+  ...(jest.requireActual('../../config/settings'))
+}));
 
 describe(`Testing [${chalk.yellow('Button')}] component`, () => {
   afterAll(() => {

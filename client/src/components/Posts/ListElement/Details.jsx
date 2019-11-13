@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
-import moment from 'moment';
 import Button from '../../UI/Button';
 import TagsCloud from '../../Tags/TagsCloud';
+import * as utils from '../../../utils';
+import * as constants from '../../../constants';
 /* eslint no-underscore-dangle: 0 */
 
 const StyledTimeContainer = styled.p`
@@ -16,13 +17,17 @@ const ListElementDetails = (props) => {
     theme, date, post, history, locale, handleClick, text, TagsContainer
   } = props;
   const tags = post.tags[0];
+  const formattedDate = utils.convertUnixTimestamp(
+    date,
+    constants.TIMESTAMP_UNITS.MS,
+    'MMMM DD, YYYY'
+  );
 
   return (
     <div className="desktop">
       <div>
         <StyledTimeContainer className="dates">
-          {moment(date, 'x')
-            .format('MMMM DD, YYYY')}
+          {formattedDate}
         </StyledTimeContainer>
         <TagsContainer justifyContent="flex-end">
           <TagsCloud

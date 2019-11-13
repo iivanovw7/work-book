@@ -12,7 +12,8 @@ module.exports = merge(common, {
   mode: 'production',
   plugins: [
     new webpack.DefinePlugin({
-      API_URL: JSON.stringify('https://xn--r38h.tk/api')
+      API_URL: JSON.stringify('https://xn--r38h.tk/api'),
+      CONFIG: JSON.stringify('production')
     }),
     new CopyWebpackPlugin([
       { from: 'src/manifest.json', to: path.join(__dirname, '../dist') },

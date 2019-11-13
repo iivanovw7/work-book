@@ -18,6 +18,13 @@ export const postResolvers = {
     getPosts: async (_, args) => {
       const skip = args.skip || 0;
       const limit = args.limit || 5;
+      const notFoundResult = {
+        skip,
+        limit,
+        count: 0,
+        posts: []
+      };
+
       const findPromise = Post.find({})
                               .sort({ created: '-1' })
                               .skip(skip)
@@ -25,12 +32,7 @@ export const postResolvers = {
 
       const countPromise = Post.countDocuments();
       const [output, count] = await Promise.all([findPromise, countPromise])
-                                           .catch(() => ({
-                                               skip,
-                                               limit,
-                                               count: 0,
-                                               posts: []
-                                             }));
+                                           .catch(() => notFoundResult);
 
       return {
         skip,

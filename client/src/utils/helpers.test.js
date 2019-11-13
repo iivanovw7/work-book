@@ -1,10 +1,15 @@
 import 'cross-fetch/polyfill';
 import chalk from 'chalk';
+import * as mocks from '../__mocks__';
 import * as helpers from './helpers';
 import * as localized from '../assets/locales/locales.json';
 import * as testUtils from '../testUtils';
 
+jest.mock('../config/settings', () => ({
+  ...(jest.requireActual('../config/settings'))
+}));
 jest.mock('../config/apiURL', () => () => '/api');
+
 
 describe('Testing helpers: ', () => {
   it(`Should run [${chalk.yellow('forOwnProp')}] trough object and find a matching properly`, () => {
@@ -65,4 +70,13 @@ describe('Testing helpers: ', () => {
     });
   });
 
+  it(`Should [${chalk.yellow('convertUnixTimestamp')}] and verify returned value`, () => {
+    let i = mocks.convertTimestampOptions.length;
+
+    // eslint-disable-next-line no-plusplus
+    while (i--) {
+      expect(helpers.convertUnixTimestamp(...mocks.convertTimestampOptions[i]))
+        .toEqual(mocks.convertTimestampExpected[i]);
+    }
+  });
 });

@@ -5,6 +5,9 @@ import User from './User';
 import * as testUtils from '../testUtils';
 
 jest.mock('../config/apiURL', () => () => '/api');
+jest.mock('../config/settings', () => ({
+  ...(jest.requireActual('../config/settings'))
+}));
 jest.mock('storeon/react', () => () => ({
   locale: 'eng',
   theme: 'dark',

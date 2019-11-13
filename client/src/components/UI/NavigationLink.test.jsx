@@ -5,6 +5,9 @@ import { MemoryRouter, NavLink } from 'react-router-dom';
 import NavigationLink from './NavigationLink';
 
 jest.mock('../../config/apiURL', () => () => '/api');
+jest.mock('../../config/settings', () => ({
+  ...(jest.requireActual('../../config/settings'))
+}));
 
 describe(`Testing [${chalk.yellow('NavigationLink')}] component`, () => {
   afterAll(() => {

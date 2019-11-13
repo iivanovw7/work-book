@@ -6,6 +6,9 @@ import Button from './UI/Button';
 import * as testUtils from '../testUtils';
 
 jest.mock('../config/apiURL', () => () => '/api');
+jest.mock('../config/settings', () => ({
+  ...(jest.requireActual('../config/settings'))
+}));
 
 describe(`Testing [${chalk.yellow('errorMessage')}] component`, () => {
   afterAll(() => {

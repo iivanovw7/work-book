@@ -5,6 +5,9 @@ import * as testUtils from '../../testUtils';
 import ButtonTextIcon from './ButtonTextIcon';
 
 jest.mock('../../config/apiURL', () => () => '/api');
+jest.mock('../../config/settings', () => ({
+  ...(jest.requireActual('../../config/settings'))
+}));
 
 describe(`Testing [${chalk.yellow('ButtonTextIcon')}] component`, () => {
   afterAll(() => {

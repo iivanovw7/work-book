@@ -4,6 +4,9 @@ import chalk from 'chalk';
 import TextLink from './TextLink';
 
 jest.mock('../../config/apiURL', () => () => '/api');
+jest.mock('../../config/settings', () => ({
+  ...(jest.requireActual('../../config/settings'))
+}));
 
 describe(`Testing [${chalk.yellow('TextLink')}] component`, () => {
   afterAll(() => {

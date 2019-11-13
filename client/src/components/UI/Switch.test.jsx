@@ -5,6 +5,9 @@ import 'jest-styled-components';
 import * as testUtils from '../../testUtils';
 
 jest.mock('../../config/apiURL', () => () => '/api');
+jest.mock('../../config/settings', () => ({
+  ...(jest.requireActual('../../config/settings'))
+}));
 
 jest.mock('../../assets/img/dark.png', () => (
   <img id="ImageDark" alt="ImageDark" />

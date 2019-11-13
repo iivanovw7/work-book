@@ -1,4 +1,6 @@
 import '@babel/polyfill/noConflict';
+import 'dayjs/locale/en';
+import 'dayjs/locale/ru';
 import dotenv from 'dotenv';
 import React from 'react';
 import ReactDOM from 'react-dom';

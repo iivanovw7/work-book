@@ -7,6 +7,9 @@ import SvgButton from './SvgButton';
 // check /__mocks__/svgrMock.js and /jest.config.js
 import { ReactComponent as IconEng } from '../../assets/img/eng.svg';
 
+jest.mock('../../config/settings', () => ({
+  ...(jest.requireActual('../../config/settings'))
+}));
 jest.mock('../../config/apiURL', () => () => '/api');
 
 describe(`Testing [${chalk.yellow('SVG Button')}] component`, () => {

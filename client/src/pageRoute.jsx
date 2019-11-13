@@ -2,9 +2,12 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { ApolloProvider } from 'react-apollo';
 import { Redirect, Route } from 'react-router-dom';
-import { client } from './config';
-import * as utils from './utils';
 import ContentLayout from './layouts/contentLayout';
+import { client } from './config';
+import Logger from './utils/logger';
+import * as utils from './utils';
+import * as constants from './constants';
+
 
 const PageRoute = ({ component: Component, ...rest }) => {
   const { protectedRoute } = rest;
@@ -14,7 +17,12 @@ const PageRoute = ({ component: Component, ...rest }) => {
   useEffect(() => {
     if (utils.ifTokenExists()) {
       const getAccessRights = async () => setUserAccess(await utils.checkUser());
-      getAccessRights().catch(e => console.log(e));
+      getAccessRights().catch((error) => {
+        Logger.send({
+          type: constants.LOGGER_ERROR,
+          message: `getAccessRights error: ${error}`
+        });
+      });
     }
   }, []);
 

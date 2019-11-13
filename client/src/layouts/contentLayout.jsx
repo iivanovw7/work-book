@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { gridConfig } from '../config';
+import Logger from '../utils/logger';
+import * as constants from '../constants';
 import * as utils from '../utils';
 
 const ContentLayout = (props) => {
@@ -17,7 +19,12 @@ const ContentLayout = (props) => {
         setUser(userData);
       };
       getAccessRights()
-        .catch(e => console.log(e));
+        .catch((error) => {
+          Logger.send({
+            type: constants.LOGGER_ERROR,
+            message: `getAccessRights error: ${error}`
+          });
+        });
     }
   }, []);
 

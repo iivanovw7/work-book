@@ -15,14 +15,14 @@ const NoMatch = ({ location }) => (
 
 export default (
   <Switch>
-    <PageRoute exact path="/" component={Posts} privateRoute={false} />
-    <PageRoute exact path="/posts" component={Posts} privateRoute={false} />
+    <PageRoute exact path="/" component={Posts} />
+    <PageRoute exact path="/posts" component={Posts} />
     <Route exect path="/login" component={Login} />
-    <PageRoute path="/user/:id" component={User} privateRoute />
-    <PageRoute path="/posts/update/:id" component={Post} privateRoute />
-    <PageRoute path="/posts/new" component={Post} privateRoute />
-    <PageRoute path="/posts/:id" component={Post} privateRoute={false} />
-    <PageRoute path="/search/:tag" component={Search} privateRoute={false} />
+    <PageRoute path="/user/:id" component={User} protectedRoute />
+    <PageRoute path="/posts/update/:id" component={Post} protectedRoute />
+    <PageRoute path="/posts/new" component={Post} protectedRoute />
+    <PageRoute path="/posts/:id" component={Post} />
+    <PageRoute path="/search/:tag" component={Search} />
     <Route component={NoMatch} />
   </Switch>
 );

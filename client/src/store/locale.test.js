@@ -6,6 +6,9 @@ import locale from './locale';
 jest.mock('../utils/helpers');
 jest.mock('js-cookie');
 jest.mock('../config/apiURL', () => () => '/api');
+jest.mock('../config/settings', () => ({
+  ...(jest.requireActual('../config/settings'))
+}));
 
 
 describe('Testing locale store: ', () => {

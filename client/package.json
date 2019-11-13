@@ -82,6 +82,7 @@
 		"axios": "^0.19.0",
 		"cross-fetch": "^3.0.4",
 		"cssnano": "^4.1.10",
+		"dayjs": "^1.8.17",
 		"debounce": "^1.2.0",
 		"dotenv": "^8.0.0",
 		"dotenv-webpack": "^1.7.0",
@@ -89,7 +90,6 @@
 		"graphql-tag": "^2.10.1",
 		"history": "^4.9.0",
 		"js-cookie": "^2.2.0",
-		"moment": "^2.24.0",
 		"polished": "^3.4.1",
 		"prop-types": "^15.7.2",
 		"react": "^16.8.6",
@@ -114,7 +114,8 @@
 			"enzyme-to-json/serializer"
 		],
 		"globals": {
-			"API_URL": "/api"
+			"API_URL": "/api",
+      "CONFIG": "test"
 		}
 	}
 }

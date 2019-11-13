@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState, useRef } from 'react';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import styled from 'styled-components';
 import { debounce } from 'debounce';
 import ListElementContainer from './ListElement/Container';
@@ -63,15 +63,14 @@ const PostsList = (props) => {
   return (
     <Container ref={listRef} hasMore={hasMore}>
       {posts.map((post) => {
-        moment.locale(locale.slice(0, -1));
-        const date = post.created.toString();
+        dayjs.locale(locale.slice(0, -1));
         const est = utils.calculateReadingTime(post.text.length, locale);
 
         return (
           <ListElementContainer
             key={post._id}
             post={post}
-            date={date}
+            date={post.created}
             est={est}
             handleClick={handleClick}
             {...props}

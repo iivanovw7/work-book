@@ -1,6 +1,8 @@
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import { URL } from '../config/apiURL';
+import Logger from './logger';
+import * as constants from '../constants';
 /* eslint indent:0 */
 
 const inOneMonth = new Date(new Date().getTime() + (1000 * 60 * 60 * 24 * 30));
@@ -27,15 +29,27 @@ export async function loginUser(email, password, locale, text) {
   }, { withCredentials: true })
     .then((response) => {
       Cookies.set('token', response.data.token, { expires: inOneMonth });
+      Logger.send({
+        type: constants.LOGGER_SUCCESS,
+        message: 'loginUser success'
+      });
+
       return {
         success: true,
         message: text.login.loginSuccess[locale]
       };
     })
-    .catch(() => ({
-      success: false,
-      message: text.login.loginError[locale]
-    }));
+    .catch((error) => {
+      Logger.send({
+        type: constants.LOGGER_ERROR,
+        message: `loginUser error: ${error}`
+      });
+
+      return {
+        success: false,
+        message: text.login.loginError[locale]
+      };
+    });
 }
 
 /**
@@ -53,5 +67,11 @@ export async function checkUser(withDetails) {
       }
       return !!response.data.user.email;
     })
-    .catch(() => false);
+    .catch((error) => {
+      Logger.send({
+        type: constants.LOGGER_ERROR,
+        message: `checkUser error: ${error}`
+      });
+      return false;
+    });
 }

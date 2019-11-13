@@ -1,19 +1,21 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import styled, { ThemeProvider } from 'styled-components';
 import { opacify } from 'polished';
+import { backgroundColorInverse, textColorInverse, linkColor } from '../../theme';
 import ErrorMessage from '../errorMessage';
 import Button from '../UI/Button';
-import * as utils from '../../utils';
-import { backgroundColorInverse, textColorInverse, linkColor } from '../../theme';
 import DeletePost from '../../graphql/DeletePost';
 import TagsCloud from '../Tags/TagsCloud';
 import TextLink from '../UI/TextLink';
+import * as utils from '../../utils';
+import * as constants from '../../constants';
 /* eslint no-underscore-dangle: 0 */
 
 const StyledPostContainer = styled.div`
 	margin-bottom: 1em;
+	padding: 0.2em;
 	
 	code {
 		background-color: ${backgroundColorInverse};
@@ -62,10 +64,15 @@ const PostView = (props) => {
   const {
     history, data, theme, locale, text
   } = props;
+  dayjs.locale(locale.slice(0, -1));
   const post = data.getPost;
-  const date = post ? String(post.created) : 'Invalid date';
   const [userAccess, setUserAccess] = useState(false);
   const est = utils.calculateReadingTime(post.text.length, locale);
+  const formattedDate = utils.convertUnixTimestamp(
+    post.created,
+    constants.TIMESTAMP_UNITS.MS,
+    'DD MMM YYYY HH:MM A'
+  );
 
   useEffect(() => {
     const getAccessRights = async () => setUserAccess(await utils.checkUser());
@@ -109,8 +116,7 @@ const PostView = (props) => {
           {post.subject}
         </h3>
         <p className="dates">
-          {moment(date, 'x')
-            .format('DD MMM YYYY HH:MM A')}
+          {formattedDate}
         </p>
         <StyledTimeContainer className="dates">
           {est.minutes}

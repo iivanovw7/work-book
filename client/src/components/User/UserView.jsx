@@ -1,10 +1,12 @@
-import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
+import dayjs from 'dayjs';
 import { opacify } from 'polished';
 import styled from 'styled-components';
 import Button from '../UI/Button';
 import ViewElement from './UserViewElement';
+import * as utils from '../../utils';
+import * as constants from '../../constants';
 /* eslint react/require-default-props: 0 */
 /* eslint no-underscore-dangle: 0 */
 
@@ -35,8 +37,13 @@ const UserView = (props) => {
   const {
     history, data, theme, locale, text
   } = props;
+  dayjs.locale(locale.slice(0, -1));
   const user = data.getUser;
-  const date = user ? String(user.created) : 'Invalid date';
+  const formattedDate = utils.convertUnixTimestamp(
+    user.created,
+    constants.TIMESTAMP_UNITS.MS,
+    '{YYYY} MM-DDTHH:mm:ss SSS [Z] A'
+  );
 
   function handleClick() {
     history.push('/');
@@ -53,10 +60,7 @@ const UserView = (props) => {
         <ViewElement title="Role" value={user.role} />
         <ViewElement
           title="Created"
-          value={
-            moment(date, 'x')
-              .format('DD MMM YYYY HH:MM A')
-          }
+          value={formattedDate}
         />
       </StyledContainer>
       <StyledButtonContainer>

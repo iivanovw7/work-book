@@ -7,6 +7,9 @@ import NoMatchRoute from './noMatchRoute';
 import * as testUtils from '../testUtils';
 
 jest.mock('../config/apiURL', () => () => '/api');
+jest.mock('../config/settings', () => ({
+  ...(jest.requireActual('../config/settings'))
+}));
 jest.mock('storeon/react', () => jest.fn());
 
 // Used in order to return "localizedText" variable which is out of scope

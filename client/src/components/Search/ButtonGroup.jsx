@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import moment from 'moment';
 import styled from 'styled-components';
 import { colorScheme } from '../../config';
 import Button from '../UI/Button';
 import TagButton from '../UI/TagButton';
 import * as utils from '../../utils';
+import * as constants from '../../constants';
 /* eslint no-underscore-dangle: 0 */
 
 const StyledPostDescription = styled.div`
@@ -26,14 +26,17 @@ const ButtonGroup = (props) => {
     theme, locale, text, query, post, handlePostClick, handleTagClick
   } = props;
   const colorIndex = utils.setColorIndex(query.length, colorScheme.tagBtnBgColors);
-  const date = post.created.toString();
+  const formattedDate = utils.convertUnixTimestamp(
+    post.created,
+    constants.TIMESTAMP_UNITS.MS,
+    'MMMM DD, YYYY'
+  );
 
   return (
     <StyledPostDescription>
       <div>
         <h3 className="dates">
-          {moment(date, 'x')
-            .format('MMMM DD, YYYY')}
+          {formattedDate}
         </h3>
         <Button
           variant="primary"

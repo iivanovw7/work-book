@@ -8,6 +8,9 @@ import { URL } from '../config/apiURL';
 // Mocking js-cookies for testing, to run Cookies.get() function
 jest.mock('js-cookie', () => ({ get: () => 'token' }));
 jest.mock('../config/apiURL', () => () => '/api');
+jest.mock('../config/settings', () => ({
+  ...(jest.requireActual('../config/settings'))
+}));
 
 describe(`Testing [${chalk.yellow('authHelpers')}]: `, () => {
   afterEach(() => {

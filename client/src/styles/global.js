@@ -1,13 +1,13 @@
 import { createGlobalStyle } from 'styled-components';
-import * as Config from '../config';
+import * as config from '../config';
 
 import datesFont from '../assets/fonts/inconsolatalgc.ttf';
 import baseFontPrimary from '../assets/fonts/Nunito-Regular.ttf';
 import baseFontBackup from '../assets/fonts/Nunito-Regular.woff';
 
-const { baseFontFamily, datesFontFamily } = Config.typography;
-const { topBarHeight, appBarHeight } = Config.stylesConfig;
-const { colorScheme, gridConfig } = Config;
+const { baseFontFamily, datesFontFamily } = config.typography;
+const { topBarHeight, appBarHeight } = config.stylesConfig;
+const { colorScheme, gridConfig } = config;
 
 /**
  * Styles applied globally, for all themes and ui variants

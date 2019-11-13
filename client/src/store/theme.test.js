@@ -7,6 +7,9 @@ import theme from './theme';
 jest.mock('../utils/helpers');
 jest.mock('js-cookie');
 jest.mock('../config/apiURL', () => () => '/api');
+jest.mock('../config/settings', () => ({
+  ...(jest.requireActual('../config/settings'))
+}));
 jest.mock('../assets/fonts/inconsolatalgc.ttf');
 jest.mock('../assets/fonts/Nunito-Regular.ttf');
 jest.mock('../assets/fonts/Nunito-Regular.woff');

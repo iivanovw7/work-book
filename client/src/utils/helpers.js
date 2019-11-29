@@ -161,3 +161,21 @@ export function convertUnixTimestamp(date, units, pattern = 'MMMM DD, YYYY') {
 
   return parsedDate(date);
 }
+
+/**
+ * Wraps accessing the property/method in Info Logging proxy
+ * Logs every read object property.
+ *
+ * @param {Object} obj - parent object
+ * @return {*}
+ */
+export const traceGets = obj => new Proxy(obj, {
+  get(target, propKey, receiver) {
+    Logger.send({
+      type: constants.LOGGER_INFO,
+      message: `GET: ${propKey}`
+    });
+
+    return Reflect.get(target, propKey, receiver);
+  }
+});

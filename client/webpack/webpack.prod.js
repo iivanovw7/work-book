@@ -12,7 +12,7 @@ module.exports = merge(common, {
   mode: 'production',
   plugins: [
     new webpack.DefinePlugin({
-      API_URL: JSON.stringify('https://xn--r38h.tk/api'),
+      API_URL: JSON.stringify('https://xn--6s8h.gq/api'),
       CONFIG: JSON.stringify('production')
     }),
     new CopyWebpackPlugin([

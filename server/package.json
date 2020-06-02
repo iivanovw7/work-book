@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --passWithNoTests --config ./api/test/jest.config.js",
+    "coverage": "npm test -- --coverage",
     "start": "nodemon",
     "prod": "babel-node -- ./api/index.js --debug",
     "prod:dist": "babel-node -- ./server.js --debug"

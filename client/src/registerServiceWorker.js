@@ -36,6 +36,7 @@ export default function register() { // Register the service worker
           };
         })
         .catch((error) => {
+          // eslint-disable-next-line no-console
           console.error('Error during service worker registration:', error);
         });
     });

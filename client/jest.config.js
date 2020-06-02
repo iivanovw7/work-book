@@ -1,6 +1,6 @@
 module.exports = {
   clearMocks: true,
-  coverageDirectory: 'coverage',
+  coverageDirectory: './dist/coverage',
   testEnvironment: 'node',
   setupFilesAfterEnv: ['<rootDir>src/setupTests.js'],
   moduleNameMapper: {

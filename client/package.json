@@ -11,6 +11,7 @@
 		"build:webpack": "webpack --mode production --config webpack/webpack.prod.js",
 		"reset": "rm -rf dist && rm -rf node_modules",
 		"test": "jest --passWithNoTests --verbose --config jest.config.js",
+    "coverage": "npm test -- --coverage",
 		"clean": "rm -rf dist",
 		"stylelint": "stylelint ./src/**/*.jsx"
 	},
